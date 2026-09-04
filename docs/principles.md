@@ -44,4 +44,4 @@ No real credentials, personal data, or sensitive business information is ever in
 
 ---
 
-MOD-W v4.0.1 · Moderated AI Development Workflow · https://github.com/fpmcguire/mod-w
+MOD-W v5 · Moderated AI Development Workflow · https://github.com/fpmcguire/mod-w

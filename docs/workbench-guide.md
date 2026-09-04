@@ -24,7 +24,7 @@ Its job is to **verify and fine‑tune**, not to replace the Moderated AI Develo
 
 - Skipping Moderated AI Development Workflow Steps (e.g., implementing large features entirely by hand).
 - Making broad architectural changes without going through the Tech Lead.
-- Quietly expanding Step scope without updating STEP-XX.md and ROADMAP.md.
+- Quietly expanding Step scope without updating step-xx.md and roadmap.md.
 - Letting Copilot generate large, unreviewed code dumps.
 
 ---
@@ -32,10 +32,10 @@ Its job is to **verify and fine‑tune**, not to replace the Moderated AI Develo
 ## Practical Rules
 
 - If a change is **larger than a few lines or one small component**, send it back to the Development Team agent as a new revision request.
-- If a change affects architecture, domain terms, or multiple modules, involve the Tech Lead agent and update ARCHITECTURE.md and/or DOMAIN_LANGUAGE.md.
+- If a change affects architecture, domain terms, or multiple modules, involve the Tech Lead agent and update architecture.md and/or domain-language.md.
 - If you fix something directly in the Workbench that matters to behaviour, update:
-  - REVIEW.md (what changed and why)
-  - QA.md (what you re‑verified)
+  - review.md (what changed and why)
+  - qa.md (what you re‑verified)
 
 ---
 
@@ -46,9 +46,9 @@ Its job is to **verify and fine‑tune**, not to replace the Moderated AI Develo
 3. Manually test the Step in the UI.
 4. Apply small fixes with Copilot if needed.
 5. Commit local changes.
-6. Update QA.md and REVIEW.md.
+6. Update qa.md and review.md.
 7. Proceed to Tech Lead review and tagging.
 
 ---
 
-MOD-W v4.0.1 · Moderated AI Development Workflow · https://github.com/fpmcguire/mod-w
+MOD-W v5 · Moderated AI Development Workflow · https://github.com/fpmcguire/mod-w

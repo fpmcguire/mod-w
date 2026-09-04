@@ -1,4 +1,4 @@
-﻿# MOD-W: Moderated AI Development Workflow
+# MOD-W: Moderated AI Development Workflow
 
 Human-moderated workflow for AI-assisted software development
 
@@ -19,7 +19,8 @@ Each version solved a specific problem the previous version could not:
 - **v1** introduced cross-validation, HITL gates, and role separation to address AI hallucinations and unmoderated output.
 - **v2** expanded roles and artifacts (spec-driven development) to address loss of AI context across sessions and handoffs.
 - **v3** refined the workflow around direct repository access (Codex + Claude Code) to eliminate the time-consuming copy-paste bottleneck.
-- **v4** adds Claude Design as the Designer + Prototyper role, with an optional Prototype Ceremony, mandatory Architecture Handoff, and Reference Implementation disposition.
+- **v4** added Claude Design as the Designer + Prototyper role, with an optional Prototype Ceremony, mandatory Architecture Handoff, and Reference Implementation disposition.
+- **v5** aligns project files with agent entrypoint conventions, keeps support artifacts lowercase-kebab-case, adds `.codex/` and `.claude/` tool config layers, and defines a cross-agent validation protocol.
 
 The next version will address whatever capability gap the next generation of tooling exposes.
 
@@ -32,11 +33,11 @@ If you are adopting MOD-W, adopt the current version and expect it to change.
 Vibe coding is useful for quick experiments, but it collapses product, design, architecture, and implementation into one blurry chat. Moderated AI Development Workflow turns AI-assisted work into viable coding: small, reviewable steps, explicit roles, clear artifacts, and non-negotiable human quality gates.
 
 Moderated AI Development Workflow is a spec-driven workflow that improves quality through separated roles, cross-validation, and explicit human oversight.
-The core roles are **Product Owner**, **Tech Lead**, **Development Team**, and **Moderator**, with **Designer + Prototyper** available as an optional v4 kickoff role. These roles may be supported by AI tools such as ChatGPT, Claude, Perplexity, Gemini, and Copilot, while the human **Moderator** works in a local **Workbench** (e.g., VS Code + Copilot) to control context, review outputs, run builds and tests, and approve each step through explicit quality gates.
+The core roles are **Product Owner**, **Tech Lead**, **Development Team**, and **Moderator**, with **Designer + Prototyper** available as an optional kickoff role. These roles may be supported by AI tools such as ChatGPT, Claude, Perplexity, Gemini, and Copilot, while the human **Moderator** works in a local **Workbench** (e.g., VS Code + Copilot) to control context, review outputs, run builds and tests, and approve each step through explicit quality gates.
 
 A key aspect of Moderated AI Development Workflow is the intentional separation and diversity of roles and AI tooling to ensure role and agent cross-validation, accountability, and quality.
 
-Version 4.0.1 defines a **minimal role set** for most teams and adds an optional **Designer + Prototyper** role for projects where design, interaction, or visualization risk should be prototyped before architecture is committed. Example projects (such as the "Frontend Saved Views" example) show how teams can add **extended roles** like CUSTOMER and PRODUCT DESIGNER for deeper cross-validation when needed.
+Version 5 defines a **minimal role set** for most teams, keeps the optional **Designer + Prototyper** role for projects where design, interaction, or visualization risk should be prototyped before architecture is committed, and standardizes the project layout for Codex, Claude Code, and shared validation. Example projects (such as the "Frontend Saved Views" example) show how teams can add **extended roles** like CUSTOMER and PRODUCT DESIGNER for deeper cross-validation when needed.
 
 ---
 
@@ -70,9 +71,9 @@ Moderated AI Development Workflow sits at the intersection of these trends: it a
 Moderated AI Development Workflow defines a minimal set of core roles:
 
 - **Moderator** – human operator who orchestrates handoffs, works in the Workbench, validates builds/tests/UX, and controls quality gates.
-- **Product Owner** – defines _what_ is built and _why_, maintains `PRODUCT.md`, and sets acceptance intent.
-- **Designer + Prototyper** - optionally produces bounded `DESIGN-SPEC.md`, a working `prototype/` folder, and advisory `ARCHITECTURE-NOTES.md` during v4 kickoff.
-- **Tech Lead** – defines _how_ the product is built, maintains `ARCHITECTURE.md`, shapes the roadmap, and reviews technical quality.
+- **Product Owner** – defines _what_ is built and _why_, maintains `product.md`, and sets acceptance intent.
+- **Designer + Prototyper** - optionally produces bounded `design-spec.md`, a working `prototype/` folder, and advisory `architecture-notes.md` during kickoff.
+- **Tech Lead** – defines _how_ the product is built, maintains `architecture.md`, shapes the roadmap, and reviews technical quality.
 - **Development Team** – implements approved Steps as a Claude Code SubAgent, guided by `CLAUDE.md`. Runs a blocking build gate before handing off.
 - **QA / Tester** – validates that accepted output meets acceptance checks as a Claude Code SubAgent, after Tech Lead approval.
 - **Workbench** – local environment where the Moderator builds, runs, tests, debugs, and fine‑tunes changes before they pass any gate.
@@ -96,17 +97,17 @@ These extended roles are **optional** in Moderated AI Development Workflow. The 
 Each feature or change is delivered through small, traceable **Steps**:
 
 **Project Kickoff (once):**
-1. **Product Definition** – Moderator iterates with Claude chatbot, Perplexity, and Gemini to produce an approved `PRODUCT.md`.
-2. **Prototype Ceremony (optional, v4)** - Moderator iterates with Claude Design (Designer + Prototyper) to produce bounded `DESIGN-SPEC.md`, an inventoried `prototype/` folder, and evidence-based advisory `ARCHITECTURE-NOTES.md`. Run when the product has novel interaction models, real-time data, or unusual visual systems; skip for conventional UI.
-3. **Architecture Definition** - Moderator iterates with Tech Lead (Codex) to produce approved `ARCHITECTURE.md`, `ROADMAP.md`, `CLAUDE.md`, and `AGENTS.md`. If the Prototype Ceremony ran, Codex performs the Architecture Handoff: consumes `PRODUCT.md`, bounded `DESIGN-SPEC.md`, complete `prototype/` inventory, and `ARCHITECTURE-NOTES.md` evidence; then independently authors the architecture with explicit authority to override prototype-implied structures.
+1. **Product Definition** – Moderator iterates with Claude chatbot, Perplexity, and Gemini to produce an approved `product.md`.
+2. **Prototype Ceremony (optional)** - Moderator iterates with Claude Design (Designer + Prototyper) to produce bounded `design-spec.md`, an inventoried `prototype/` folder, and evidence-based advisory `architecture-notes.md`. Run when the product has novel interaction models, real-time data, or unusual visual systems; skip for conventional UI.
+3. **Architecture Definition** - Moderator iterates with Tech Lead (Codex) to produce approved `architecture.md`, `domain-language.md`, `roadmap.md`, `cross-validation.md`, root `CLAUDE.md`, root `AGENTS.md`, and minimal root tool config. If the Prototype Ceremony ran, Codex performs the Architecture Handoff: consumes `product.md`, bounded `design-spec.md`, complete `prototype/` inventory, and `architecture-notes.md` evidence; then independently authors the architecture with explicit authority to override prototype-implied structures.
 
 **Per-Step Lifecycle:**
-4. **Define the Step** – Tech Lead (Codex) writes `STEP-XX.md`. Moderator approves.
+4. **Define the Step** – Tech Lead (Codex) writes `step-xx.md`. Moderator approves.
 5. **Options Gate** – Dev Team (Claude Code) enters Plan Mode, proposes implementation plan. Moderator may request options or ramifications. Approves before any code is written.
 6. **Implement** – Dev Team implements and runs a blocking build gate. Hands off with clean build.
-7. **Tech Lead Review** – Tech Lead (Codex) reviews the diff and writes `REVIEW.md`. Sends rework directly to Dev Team if needed — no Moderator in the loop.
-8. **QA + Product Owner Validation** – QA SubAgent writes `QA.md`; Product Owner SubAgent writes sign-off. Both run after Tech Lead approves.
-9. **Moderator Final Gate** – Moderator reviews `QA.md`, performs manual checks, creates annotated Git tag, advances `ROADMAP.md`.
+7. **Tech Lead Review** – Tech Lead (Codex) reviews the diff and writes `review.md`. Sends rework directly to Dev Team if needed — no Moderator in the loop.
+8. **QA + Product Owner Validation** – QA SubAgent writes `qa.md`; Product Owner SubAgent writes sign-off. Both run after Tech Lead approves.
+9. **Moderator Final Gate** – Moderator reviews `qa.md`, performs manual checks, creates annotated Git tag, advances `roadmap.md`.
 
 In practice, this implements a **blue‑red pattern**: Codex (Tech Lead) plans and reviews; Claude Code (Dev Team) implements — intentional model contrast at every gate.
 
@@ -142,8 +143,8 @@ Claude Code does **not** replace the Tech Lead (Codex), Product Owner (Definitio
 
 ### Setup
 
-1. Complete the Project Kickoff ceremonies to produce `PRODUCT.md` and `ARCHITECTURE.md`.
-2. Run a Tech Lead (Codex) Planning Session — Codex generates `CLAUDE.md` and `AGENTS.md` from `ARCHITECTURE.md`. Place both at the repo root.
+1. Complete the Project Kickoff ceremonies to produce `product.md` and `architecture.md`.
+2. Run a Tech Lead (Codex) Planning Session — Codex generates `CLAUDE.md` and `AGENTS.md` from `architecture.md`. Place both at the repo root.
 3. Start a Claude Code session in the project root. `CLAUDE.md` loads automatically — no paste required.
 4. Dev Team SubAgent enters Plan Mode, proposes a plan, and waits for Moderator approval before writing any files.
 5. After implementation, Dev Team runs the blocking build gate (`{{BUILD_COMMAND}}` + `{{TEST_COMMAND}}`).
@@ -168,15 +169,15 @@ OpenAI Codex is a cloud-based AI coding agent that works directly against your r
 
 Codex supports the Tech Lead in three ways:
 
-- **Roadmap generation** — reads `PRODUCT.md` and `ARCHITECTURE.md` to produce an ordered `ROADMAP.md`.
-- **Step brief generation** — produces `STEP-XX.md` files with goal, scope, inputs, and acceptance checks for the Development Team.
-- **Tech Lead review** — reviews the Development Team's completed step against `STEP-XX.md`, classifying findings as must-fix or nice-to-have.
+- **Roadmap generation** — reads `product.md` and `architecture.md` to produce an ordered `roadmap.md`.
+- **Step brief generation** — produces `step-xx.md` files with goal, scope, inputs, and acceptance checks for the Development Team.
+- **Tech Lead review** — reviews the Development Team's completed step against `step-xx.md`, classifying findings as must-fix or nice-to-have.
 
 Codex does **not** write application code, merge changes, or override Moderator decisions.
 
 ### `AGENTS.md`
 
-Codex reads `AGENTS.md` from the repo root at session start — the Tech Lead equivalent of `CLAUDE.md`. Generate it from `templates/AGENTS.md` by filling in the project's stack, conventions, and domain language from `ARCHITECTURE.md`.
+Codex reads `AGENTS.md` from the repo root at session start — the Tech Lead equivalent of `CLAUDE.md`. Generate it from `templates/root-agents.md` by filling in the project's stack, conventions, and domain language from `architecture.md`.
 
 ### Codex + Claude Code in the same project
 
@@ -204,7 +205,7 @@ Use `AGENTS.md` for Codex. Use `CLAUDE.md` for Claude Code.
 
 ## Using Moderated AI Development Workflow with Claude Design
 
-**Claude Design** is Anthropic's project-scoped design environment. It can edit files, render HTML/JS in a preview pane, capture screenshots, and run scripted browser operations within a single project context — capabilities the Claude chatbot and Claude Code do not share. In MOD-W v4.0.1, Claude Design is the default agent for the **Designer + Prototyper** role.
+**Claude Design** is Anthropic's project-scoped design environment. It can edit files, render HTML/JS in a preview pane, capture screenshots, and run scripted browser operations within a single project context — capabilities the Claude chatbot and Claude Code do not share. In MOD-W v5, Claude Design remains the default agent for the optional **Designer + Prototyper** role.
 
 ### Where Claude Design fits
 
@@ -217,14 +218,14 @@ Claude Design does **not** replace Codex (Tech Lead), Claude Code (default Dev T
 
 ### Responsibility split
 
-- **Claude Design owns:** the Prototype Ceremony - producing bounded `DESIGN-SPEC.md`, the inventoried `prototype/` folder, and evidence-based `ARCHITECTURE-NOTES.md`. Optionally implementing visual Steps when assigned by the Moderator in `STEP-XX.md`.
-- **Codex (Tech Lead) owns:** authoring `ARCHITECTURE.md` after the Architecture Handoff. Codex has authority to override structures implied by the prototype.
+- **Claude Design owns:** the Prototype Ceremony - producing bounded `design-spec.md`, the inventoried `prototype/` folder, and evidence-based `architecture-notes.md`. Optionally implementing visual Steps when assigned by the Moderator in `step-xx.md`.
+- **Codex (Tech Lead) owns:** authoring `architecture.md` after the Architecture Handoff. Codex has authority to override structures implied by the prototype.
 - **Claude Code owns:** default Dev Team implementation, QA SubAgent, Product Owner SubAgent validation.
 - **MOD-W owns:** Moderator authority at every gate, cross-validation invariants, Step-scoped discipline.
 
 ### Prototype Ceremony
 
-The Prototype Ceremony is an **optional kickoff ceremony** in v4. Run it when:
+The Prototype Ceremony is an **optional kickoff ceremony**. Run it when:
 
 - The product has novel interaction models, real-time data, or unusual visual systems
 - Design decisions cannot be confidently made from text-only requirements
@@ -240,27 +241,27 @@ Product Definition  →  PROTOTYPE CEREMONY  →  ARCHITECTURE HANDOFF  →  per
                        (Claude Design)        (Codex)
 ```
 
-Exit criteria: `DESIGN-SPEC.md` Approval Record shows Product Owner and Moderator approval; prototype renders without errors, includes a complete inventory, and matches the spec; `ARCHITECTURE-NOTES.md` exists with evidence and confidence. Full lifecycle: see `docs/prototype-ceremony.md`.
+Exit criteria: `design-spec.md` Approval Record shows Product Owner and Moderator approval; prototype renders without errors, includes a complete inventory, and matches the spec; `architecture-notes.md` exists with evidence and confidence. Full lifecycle: see `docs/prototype-ceremony.md`.
 
-After approval, `DESIGN-SPEC.md` is authoritative only for user-facing visual behavior, interaction intent, screen composition, component states and variants, accessibility expectations, and approved user-facing terminology and content presentation. Technical matters remain under Codex Tech Lead authority. The prototype itself never becomes authoritative.
+After approval, `design-spec.md` is authoritative only for user-facing visual behavior, interaction intent, screen composition, component states and variants, accessibility expectations, and approved user-facing terminology and content presentation. Technical matters remain under Codex Tech Lead authority. The prototype itself never becomes authoritative.
 
 ### Architecture Handoff (non-negotiable gate)
 
-After the Prototype Ceremony, the Tech Lead (Codex) consumes the four kickoff inputs - `PRODUCT.md`, bounded `DESIGN-SPEC.md`, complete `prototype/` inventory, and `ARCHITECTURE-NOTES.md` evidence - and **independently authors** `ARCHITECTURE.md`. Codex has explicit authority to disagree with the prototype, reorganize structure, reject domain term proposals, and accept, modify, or reject `ARCHITECTURE-NOTES.md` implications. Material divergences are recorded in `ARCHITECTURE.md` section "Decisions That Diverge From Prototype".
+After the Prototype Ceremony, the Tech Lead (Codex) consumes the four kickoff inputs - `product.md`, bounded `design-spec.md`, complete `prototype/` inventory, and `architecture-notes.md` evidence - and **independently authors** `architecture.md`. Codex has explicit authority to disagree with the prototype, reorganize structure, reject domain term proposals, and accept, modify, or reject `architecture-notes.md` implications. Material divergences are recorded in `architecture.md` section "Decisions That Diverge From Prototype".
 
-**Why this gate is non-negotiable:** the architecture document is the highest-cost failure point in the project — every downstream Step inherits its assumptions. Allowing Claude Design to author it would create sequential same-model outputs, eliminating model contrast at exactly the point where contrast matters most. The Moderator may shorten or skip other v4 ceremonies under time pressure. **The Architecture Handoff may not be skipped.**
+**Why this gate is non-negotiable:** the architecture document is the highest-cost failure point in the project — every downstream Step inherits its assumptions. Allowing Claude Design to author it would create sequential same-model outputs, eliminating model contrast at exactly the point where contrast matters most. The Moderator may shorten or skip other ceremonies under time pressure. **The Architecture Handoff may not be skipped when the Prototype Ceremony ran.**
 
 Full gate definition: see `docs/architecture-handoff.md`.
 
 ### New artifact classes
 
 - **`prototype/`** — research artifact at repo root, produced by Claude Design, explicitly marked non-authoritative via `prototype/README.md` disclaimer. Lives outside `src/` to prevent accidental import.
-- **`ARCHITECTURE-NOTES.md`** - advisory input to Architecture Definition, produced by Claude Design, retained in `mod-w/` as historical context. Observations include evidence and confidence; confidence is not authority.
-- **Reference Implementation** - a candidate implementation produced outside the Dev Team role (typically inside `prototype/`). Never auto-promotes. The Tech Lead disposes of it in `STEP-XX.md` as `Adopt as-is`, `Adopt with modifications`, or `Reject`. `Adopt as-is` preserves approved behavior and relevant structure without redesign, while still requiring normal production adaptation, architecture compliance, review, QA, tests, accessibility, security, performance, and repository conventions.
+- **`architecture-notes.md`** - advisory input to Architecture Definition, produced by Claude Design, retained in `mod-w/` as historical context. Observations include evidence and confidence; confidence is not authority.
+- **Reference Implementation** - a candidate implementation produced outside the Dev Team role (typically inside `prototype/`). Never auto-promotes. The Tech Lead disposes of it in `step-xx.md` as `Adopt as-is`, `Adopt with modifications`, or `Reject`. `Adopt as-is` preserves approved behavior and relevant structure without redesign, while still requiring normal production adaptation, architecture compliance, review, QA, tests, accessibility, security, performance, and repository conventions.
 
 ### Claude Design as Development Team (optional per Step)
 
-Claude Design may play the Development Team role for a Step when the Step is visual / chart / interaction-heavy AND the Moderator explicitly assigns it in `STEP-XX.md` section "Assigned Dev Team Interface". **Hard rule:** Claude Design as Dev Team **may not** also have produced the `STEP-XX.md` spec. When Claude Design implements from its own prototype, Codex must record accepted, modified, rejected, and mandatory-divergence prototype assumptions in `STEP-XX.md`; the implementation session treats the Step and architecture as controlling.
+Claude Design may play the Development Team role for a Step when the Step is visual / chart / interaction-heavy AND the Moderator explicitly assigns it in `step-xx.md` section "Assigned Dev Team Interface". **Hard rule:** Claude Design as Dev Team **may not** also have produced the `step-xx.md` spec. When Claude Design implements from its own prototype, Codex must record accepted, modified, rejected, and mandatory-divergence prototype assumptions in `step-xx.md`; the implementation session treats the Step and architecture as controlling.
 
 ### Bottom line
 
@@ -293,16 +294,16 @@ Kiro provides the spec‑driven editor/runtime, and Moderated AI Development Wor
 
 When using Moderated AI Development Workflow with Kiro, map Moderated AI Development Workflow's docs to Kiro's spec phases:
 
-- **Requirements (Kiro)** ↔ `PRODUCT.md`
+- **Requirements (Kiro)** ↔ `product.md`
   High‑level product problem, users, goals, requirements, and product‑level acceptance criteria.
 
-- **Design (Kiro)** ↔ `ARCHITECTURE.md`
+- **Design (Kiro)** ↔ `architecture.md`
   Technical approach, architecture decisions, data model, integration points, constraints.
 
-- **Tasks (Kiro)** ↔ `ROADMAP.md` + `STEP-XX.md`
+- **Tasks (Kiro)** ↔ `roadmap.md` + `step-xx.md`
   Roadmap of steps and task‑level specs: context, scope, inputs, expected outputs, and step‑level acceptance criteria.
 
-Other Moderated AI Development Workflow docs (e.g., `DOMAIN_LANGUAGE.md`, `AI_AGENTS.md`, workbench guidelines) can be treated as **Steering Docs** and referenced from Kiro specs as part of the context.
+Other Moderated AI Development Workflow docs (e.g., `domain-language.md`, `ai-agents.md`, workbench guidelines) can be treated as **Steering Docs** and referenced from Kiro specs as part of the context.
 
 ### Moderator and approvals
 
@@ -344,18 +345,18 @@ Moderated AI Development Workflow layers on top of this: Spec Kit provides the S
 When using Moderated AI Development Workflow with Spec Kit, map Moderated AI Development Workflow's docs to Spec Kit's phases:
 
 - **Constitution (Spec Kit)** ↔ Moderated AI Development Workflow principles & steering docs
-  Spec Kit's constitution maps to project‑wide principles and is complemented by Moderated AI Development Workflow steering docs such as `DOMAIN_LANGUAGE.md`, `AI_AGENTS.md`, and any Moderated AI Development Workflow‑specific rules the Moderator enforces.
+  Spec Kit's constitution maps to project‑wide principles and is complemented by Moderated AI Development Workflow steering docs such as `domain-language.md`, `ai-agents.md`, and any Moderated AI Development Workflow‑specific rules the Moderator enforces.
 
-- **Spec (Spec Kit)** ↔ `PRODUCT.md`
+- **Spec (Spec Kit)** ↔ `product.md`
   Functional problem, users, goals, requirements, and product‑level acceptance criteria.
 
-- **Plan (Spec Kit)** ↔ `ARCHITECTURE.md`
+- **Plan (Spec Kit)** ↔ `architecture.md`
   Technical approach, stack, architecture decisions, data model, integration points, constraints.
 
-- **Tasks (Spec Kit)** ↔ `ROADMAP.md` + `STEP-XX.md`
+- **Tasks (Spec Kit)** ↔ `roadmap.md` + `step-xx.md`
   Task breakdown and sequencing correspond to Moderated AI Development Workflow's roadmap and per‑step templates (context, scope, inputs, expected outputs, and step‑level acceptance criteria).
 
-Moderated AI Development Workflow's `REVIEW.md` and `QA.md` sit on top of these phases to structure human and cross‑agent evaluation of each step.
+Moderated AI Development Workflow's `review.md` and `qa.md` sit on top of these phases to structure human and cross‑agent evaluation of each step.
 
 ### Moderator and approval flow
 
@@ -365,7 +366,7 @@ With Spec Kit + Moderated AI Development Workflow:
   - a constitution is strong enough to drive spec work
   - a spec is clear enough to move into planning
   - a plan is coherent enough to generate tasks
-  - tasks and resulting implementation satisfy the acceptance criteria in `PRODUCT.md` and `STEP-XX.md`
+  - tasks and resulting implementation satisfy the acceptance criteria in `product.md` and `step-xx.md`
 
 - Spec Kit's commands and phases should be treated as **subject to Moderator approval**, not self‑ratifying.
 - Moderated AI Development Workflow encourages using different roles/agents/models for spec, plan, and implementation and adding at least one cross‑agent review step before the Moderator accepts a phase.
@@ -440,13 +441,13 @@ Use Moderated AI Development Workflow for role separation, governance, review, a
 ## Repository Layout
 
 - `docs/` – methodology reference (manifesto, roles, lifecycle, artifacts, domain language, etc.)
-- `templates/` – reusable templates for `PRODUCT.md`, `DESIGN-SPEC.md`, `ARCHITECTURE-NOTES.md`, `ARCHITECTURE.md`, `ROADMAP.md`, `STEP-XX.md`, `REVIEW.md`, `QA.md`, `DOMAIN_LANGUAGE.md`, `AI_AGENTS.md`, and `CLAUDE.md`
-- `prompts/` – role prompts for Product Owner, Designer + Prototyper, Tech Lead, Development Team, Moderator, and Workbench usage. They support per‑request answer depths (`minimal`, `options`, `full`) so Moderators can choose between speed, choice, and depth without changing tools. Includes `CLAUDE.md` — the Development Team prompt config for Claude Code, generated by the Tech Lead from the project's `ARCHITECTURE.md`.
-- `examples/` – concrete examples of Moderated AI Development Workflow in action (starting with a small frontend "saved views" feature)
+- `templates/` – reusable templates for `product.md`, `design-spec.md`, `architecture-notes.md`, `architecture.md`, `roadmap.md`, `step-xx.md`, `review.md`, `qa.md`, `domain-language.md`, `ai-agents.md`, `cross-validation.md`, `root-agents.md`, and `CLAUDE.md`
+- `prompts/` – role prompts for Product Owner, Designer + Prototyper, Tech Lead, Development Team, Moderator, and Workbench usage. They support per-request answer depths (`minimal`, `options`, `full`) so Moderators can choose between speed, choice, and depth without changing tools. Includes `CLAUDE.md` - the Development Team prompt config for Claude Code, generated by the Tech Lead from the project's `architecture.md`.
+- `examples/` – concrete examples of Moderated AI Development Workflow artifacts in action, starting with the pseudo-MOD-W frontend "saved views" project
 
 ### Example project structure
 
-The `examples/` directory shows how Moderated AI Development Workflow artifacts and code can live together in a real project.
+The `examples/` directory shows how Moderated AI Development Workflow artifacts and code can live together in a project. `examples/frontend-saved-views` is a pseudo-MOD-W project: it demonstrates a realistic artifact layout and Step 01 acceptance trail without claiming to be a complete production application.
 
 A typical Moderated AI Development Workflow‑enabled project might look like:
 
@@ -454,25 +455,47 @@ A typical Moderated AI Development Workflow‑enabled project might look like:
 my-saas-app/
   AGENTS.md                     # Codex config for the Tech Lead role (auto-read by Codex)
   CLAUDE.md                     # Claude Code config for the Development Team role (auto-read by Claude Code)
-  prototype/                    # Optional v4 research prototype, non-authoritative
+  .codex/
+    config.toml                 # Project-scoped Codex settings; keep minimal until tuning is needed
+  .claude/
+    settings.json               # Claude Code settings and optional hook automation
+  .mcp.json                     # Shared MCP tool/data connection config
+  prototype/                    # Optional research prototype, non-authoritative
+    README.md                   # Prototype inventory and limitations
   mod-w/
     MOD-W.md                    # The workflow and process docs
-    AI_AGENTS.md                   # Agent definitions and guidelines
-    PRODUCT.md                  # What and why for this product
-    DESIGN-SPEC.md              # Optional v4 visual and interaction design spec
-    ARCHITECTURE-NOTES.md       # Optional v4 advisory prototype observations
-    ARCHITECTURE.md             # How the system is structured
-    ROADMAP.md                  # Ordered list of Steps
-    STEP-XX.md                  # Current Step brief
-    REVIEW.md                   # Review notes and decisions for the current Step
-    QA.md                       # Verification evidence for the current Step
-    DOMAIN_LANGUAGE.md   # Shared vocabulary for the product's domain
-    (Optional) Other supporting docs, only when they earn their existence.
+    product.md                  # What and why for this product
+    design-spec.md              # Optional visual and interaction design spec
+    architecture-notes.md       # Optional advisory prototype observations
+    architecture.md             # How the system is structured
+    domain-language.md          # Shared vocabulary for the product's domain
+    roadmap.md                  # Ordered list of Steps
+    step-xx.md                  # Current Step brief
+    review.md                   # Review notes and decisions for the current Step
+    qa.md                       # Verification evidence for the current Step
+    ai-agents.md                # Agent registry and role boundaries
+    cross-validation.md         # Claude/Codex validation mode and discrepancy protocol
+    agents/
+      architect.md              # Tool-neutral Tech Lead role definition
+      reviewer.md               # Tool-neutral review role definition
+      qa.md                     # Tool-neutral QA role definition
+      validator.md              # Tool-neutral independent validation role definition
+    rules/
+      architecture.md           # Path-scoped architecture constraints, filled as they arise
+      testing.md                # Path-scoped testing constraints, filled as they arise
+      security.md               # Path-scoped security constraints, filled as they arise
+    skills/                     # Reusable MOD-W procedure skills, empty until a procedure earns one
+    validation/
+      discrepancies.md          # Human-resolved Claude/Codex disagreement log
+      step-xx-codex.md          # Optional per-step Codex validation output
+    (Optional) Other supporting docs, only when they earn their existence
   src/                          # Application code
     ...
   tests/                        # Automated tests
     ...
 ```
+
+`AGENTS.md`, `CLAUDE.md`, `.codex/`, `.claude/`, and `.mcp.json` live at the project root because the tools discover them there. MOD-W artifacts live under `mod-w/` so product intent, architecture, step definitions, review, QA, and validation evidence stay together. Inside `mod-w/`, only `MOD-W.md` stays uppercase because it is the workflow anchor; support artifacts use lowercase-kebab-case.
 
 ---
 
@@ -486,7 +509,7 @@ To get started with Moderated AI Development Workflow, you only need a small sub
   - `docs/roles.md` – role definitions and responsibilities.
   - `docs/moderator-checklist.md` – the Moderator's go/no‑go checklist for accepting work.
   - `docs/step-lifecycle.md` – end‑to‑end Step workflow.
-  - `docs/artifacts.md` - what lives in PRODUCT / DESIGN-SPEC / ARCHITECTURE-NOTES / ARCHITECTURE / ROADMAP / STEP-XX / REVIEW / QA.
+  - `docs/artifacts.md` - what lives in `product.md`, `design-spec.md`, `architecture-notes.md`, `architecture.md`, `roadmap.md`, `step-xx.md`, `review.md`, `qa.md`, and the v5 support folders.
 
 - **Extended references (use as needed):**
   - `docs/quality-gates.md` – detailed quality gate levels.
@@ -507,12 +530,13 @@ To get started with Moderated AI Development Workflow, you only need a small sub
 
 ## Status
 
-**MOD-W v4.0.1** is the current stable release.
+**MOD-W v5** is the current layout described by this repository.
 
 - **Default tooling:** Codex (Tech Lead), Claude Code (Development Team + QA + Product Owner SubAgents), Claude chatbot + Perplexity + Gemini (Product Definition phase), and Claude Design for the optional Designer + Prototyper role.
 - **Direct repo access:** Codex, Claude Code, and Claude Design work directly against project files in their assigned lanes.
-- **v4 additions:** Optional Prototype Ceremony, mandatory Architecture Handoff when the ceremony runs, bounded `DESIGN-SPEC.md`, evidence-based `ARCHITECTURE-NOTES.md`, `prototype/` inventory, and Reference Implementation disposition.
-- **Examples included:** A reference implementation for a **Frontend Saved Views** feature is available in `/examples/frontend-saved-views`, demonstrating the full lifecycle from `PRODUCT.md` to annotated Git tags.
+- **Prototype additions retained from v4:** Optional Prototype Ceremony, mandatory Architecture Handoff when the ceremony runs, bounded `design-spec.md`, evidence-based `architecture-notes.md`, `prototype/` inventory, and Reference Implementation disposition.
+- **v5 layout additions:** Lowercase-kebab-case supporting artifacts, root `AGENTS.md` and `CLAUDE.md`, `.codex/`, `.claude/`, `.mcp.json`, `cross-validation.md`, `agents/`, `rules/`, `skills/`, and `validation/`.
+- **Examples included:** A pseudo-MOD-W **Frontend Saved Views** project is available in `/examples/frontend-saved-views`, demonstrating the artifact lifecycle from `mod-w/product.md` through Step 01 review, QA, and annotated Git tag documentation.
 
 ---
 
@@ -520,16 +544,17 @@ To get started with Moderated AI Development Workflow, you only need a small sub
 
 1. Read `docs/manifesto.md` and `docs/roles.md`.
 2. Copy the templates from `/templates` into your own project's `mod-w/` folder.
-3. Run the **Project Kickoff** ceremonies (`docs/ceremonies.md`):
-   - **Product Definition** — iterate with Claude chatbot, Perplexity, and Gemini to produce an approved `PRODUCT.md`.
-2. **Prototype Ceremony (optional, v4)** - Moderator iterates with Claude Design (Designer + Prototyper) to produce bounded `DESIGN-SPEC.md`, an inventoried `prototype/` folder, and evidence-based advisory `ARCHITECTURE-NOTES.md`. Run when the product has novel interaction models, real-time data, or unusual visual systems; skip for conventional UI.
-3. **Architecture Definition** - Moderator iterates with Tech Lead (Codex) to produce approved `ARCHITECTURE.md`, `ROADMAP.md`, `CLAUDE.md`, and `AGENTS.md`. If the Prototype Ceremony ran, Codex performs the Architecture Handoff: consumes `PRODUCT.md`, bounded `DESIGN-SPEC.md`, complete `prototype/` inventory, and `ARCHITECTURE-NOTES.md` evidence; then independently authors the architecture with explicit authority to override prototype-implied structures.
-4. For each Step, follow `docs/step-lifecycle.md`:
-   - Tech Lead (Codex) defines `STEP-XX.md` → Moderator approves
-   - Dev Team (Claude Code SubAgent) proposes plan → Moderator approves → implements → build gate
-   - Tech Lead (Codex) reviews → Dev Team revises if needed
-   - QA + Product Owner SubAgents validate → Moderator final gate
-5. When prompting, specify the desired answer depth (`minimal`, `options`, or `full`) — see `prompts/prompt-guidelines.md`.
+3. Add the v5 support structure: `mod-w/agents/`, `mod-w/rules/`, `mod-w/skills/`, `mod-w/validation/`, `.codex/config.toml`, `.claude/settings.json`, and `.mcp.json`.
+4. Run the **Project Kickoff** ceremonies (`docs/ceremonies.md`):
+   - **Product Definition** - iterate with Claude chatbot, Perplexity, and Gemini to produce an approved `product.md`.
+   - **Prototype Ceremony (optional)** - use Claude Design only when visual, interaction, chart, or real-time risk warrants it.
+   - **Architecture Definition** - iterate with Tech Lead (Codex) to produce approved `architecture.md`, `domain-language.md`, `roadmap.md`, `cross-validation.md`, root `CLAUDE.md`, root `AGENTS.md`, and the first `step-xx.md`.
+5. For each Step, follow `docs/step-lifecycle.md`:
+   - Tech Lead (Codex) defines `step-xx.md`; Moderator approves.
+   - Dev Team (Claude Code SubAgent) proposes a plan; Moderator approves; Dev Team implements and runs the build gate.
+   - Tech Lead (Codex) reviews; Dev Team revises if needed.
+   - QA + Product Owner SubAgents validate; Moderator performs the final gate.
+6. When prompting, specify the desired answer depth (`minimal`, `options`, or `full`) - see `prompts/prompt-guidelines.md`.
 
 Contributions, feedback, and adoption stories are welcome – see `CONTRIBUTING.md`.
 
@@ -554,4 +579,4 @@ For inquiries, open an issue or contact the maintainer via the repository profil
 
 ---
 
-MOD-W v4.0.1 - Moderated AI Development Workflow - https://github.com/fpmcguire/mod-w
+MOD-W v5 - Moderated AI Development Workflow - https://github.com/fpmcguire/mod-w

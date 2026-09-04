@@ -1,4 +1,4 @@
-﻿# AI Agents
+# AI Agents
 
 **Project:** {{PROJECT_NAME}}
 **Date:** {{DATE}}
@@ -21,19 +21,19 @@ This project uses multiple AI agents under MOD-W. Each agent has a defined role,
 
 Responsibilities:
 
-- Author and maintain `PRODUCT.md`.
+- Author and maintain `product.md`.
 - Validate completed Steps against acceptance intent after Tech Lead approval.
 
 ### Designer + Prototyper
 
-**Role:** Optional v4 design and prototype role
+**Role:** Optional design and prototype role
 **Interface:** Claude Design
 
 Responsibilities:
 
-- Produce `DESIGN-SPEC.md` with bounded authority, Design IDs, traceability, and approval record.
+- Produce `design-spec.md` with bounded authority, Design IDs, traceability, and approval record.
 - Produce `prototype/` with inventory.
-- Produce advisory `ARCHITECTURE-NOTES.md` with evidence and confidence.
+- Produce advisory `architecture-notes.md` with evidence and confidence.
 
 Constraints:
 
@@ -47,18 +47,19 @@ Constraints:
 
 Responsibilities:
 
-- Author and maintain `ARCHITECTURE.md`, `DOMAIN_LANGUAGE.md`, `ROADMAP.md`, `STEP-XX.md`, `CLAUDE.md`, and `AGENTS.md`.
+- Author and maintain `architecture.md`, `domain-language.md`, `roadmap.md`, `step-xx.md`, `CLAUDE.md`, `AGENTS.md`, and `cross-validation.md`.
+- Create or update minimal root tool config when project setup changes.
 - Perform Architecture Handoff when Prototype Ceremony ran.
-- Review completed Steps and write `REVIEW.md` before QA acceptance.
+- Review completed Steps and write `review.md` before QA acceptance.
 
 ### Development Team
 
 **Role:** Implementation
-**Interface:** Claude Code by default; Claude Design only by Moderator assignment in `STEP-XX.md`
+**Interface:** Claude Code by default; Claude Design only by Moderator assignment in `step-xx.md`
 
 Responsibilities:
 
-- Implement the approved `STEP-XX.md`.
+- Implement the approved `step-xx.md`.
 - Preserve relevant Design ID intent.
 - Run the blocking build gate.
 - Apply normal production adaptation for any Reference Implementation.
@@ -70,9 +71,9 @@ Responsibilities:
 
 Responsibilities:
 
-- Validate implementation against `STEP-XX.md` acceptance checks.
+- Validate implementation against `step-xx.md` acceptance checks.
 - Verify approved Design ID intent where applicable without treating prototype code as authoritative.
-- Write `QA.md`.
+- Write `qa.md`.
 
 ---
 
@@ -82,7 +83,7 @@ Responsibilities:
 - No agent self-approves its work.
 - Planning and implementation are separated.
 - The same model does not both author and implement a Step.
-- `ARCHITECTURE.md` is authored by Codex, never Claude Design.
+- `architecture.md` is authored by Codex, never Claude Design.
 - Every Step receives Codex Tech Lead review before QA acceptance.
 - Every Step receives Moderator final approval before tagging and Roadmap advancement.
 - Single-role-per-session remains enforced.
@@ -90,4 +91,4 @@ Responsibilities:
 
 ---
 
-MOD-W v4.0.1
+MOD-W v5

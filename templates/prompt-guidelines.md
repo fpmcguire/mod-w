@@ -25,7 +25,7 @@ Always:
 
 Use only:
 
-- STEP-XX.md
+- step-xx.md
 - relevant R-IDs
 - relevant D-IDs
 
@@ -41,4 +41,4 @@ Ask:
 
 ---
 
-MOD-W v4.0.1
+MOD-W v5

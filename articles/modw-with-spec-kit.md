@@ -33,25 +33,25 @@ Spec Kit works with four main phases:
 
 Moderated AI Development Workflow ^(MOD-W) uses these core artifacts:
 
-- `PRODUCT.md` – product problem, users, goals, requirements
-- `ARCHITECTURE.md` – technical approach, architecture decisions
-- `ROADMAP.md` + `STEP-XX.md` – ordered Steps and per‑Step briefs
-- `REVIEW.md` + `QA.md` – review decisions and verification evidence
-- `DOMAIN_LANGUAGE.md` + `AI_AGENTS.md` – steering docs for humans and agents
+- `product.md` – product problem, users, goals, requirements
+- `architecture.md` – technical approach, architecture decisions
+- `roadmap.md` + `step-xx.md` – ordered Steps and per‑Step briefs
+- `review.md` + `qa.md` – review decisions and verification evidence
+- `domain-language.md` + `ai-agents.md` – steering docs for humans and agents
 
 The mapping is:
 
 | Spec Kit phase | MOD-W artifact(s)                                                                    | Purpose                                 |
 | -------------- | ------------------------------------------------------------------------------------ | --------------------------------------- |
-| Constitution   | MOD-W principles & steering docs (`docs/*.md`, `AI_AGENTS.md`, `DOMAIN_LANGUAGE.md`) | Project‑wide rules and constraints      |
-| Spec           | `PRODUCT.md`                                                                         | What we’re building and why             |
-| Plan           | `ARCHITECTURE.md`                                                                    | How we’re building it                   |
-| Tasks          | `ROADMAP.md` + `STEP-XX.md`                                                          | Concrete, bounded units of work (Steps) |
+| Constitution   | MOD-W principles & steering docs (`docs/*.md`, `ai-agents.md`, `domain-language.md`) | Project‑wide rules and constraints      |
+| Spec           | `product.md`                                                                         | What we’re building and why             |
+| Plan           | `architecture.md`                                                                    | How we’re building it                   |
+| Tasks          | `roadmap.md` + `step-xx.md`                                                          | Concrete, bounded units of work (Steps) |
 
 MOD-W then layers review and evidence on top of Spec Kit’s flow:
 
-- `REVIEW.md` – why a Step was accepted or rejected
-- `QA.md` – how we verified behavior in reality
+- `review.md` – why a Step was accepted or rejected
+- `qa.md` – how we verified behavior in reality
 
 ---
 
@@ -61,12 +61,12 @@ In a Spec Kit + Moderated AI Development Workflow project, the roles line up lik
 
 - **Product Owner**
   - Owns the **Spec** phase.
-  - Writes and refines the Spec with Spec Kit, then ensures it is reflected in `PRODUCT.md`.
+  - Writes and refines the Spec with Spec Kit, then ensures it is reflected in `product.md`.
   - Decides when the Spec is “clear enough” to move into planning.
 
 - **Tech Lead**
   - Owns the **Plan** phase.
-  - Collaborates with Spec Kit to create the Plan, then keeps it in sync with `ARCHITECTURE.md`.
+  - Collaborates with Spec Kit to create the Plan, then keeps it in sync with `architecture.md`.
   - Translates Spec → Plan → Tasks/Steps in a way that supports small, verifiable units.
 
 - **Development Team**
@@ -79,7 +79,7 @@ In a Spec Kit + Moderated AI Development Workflow project, the roles line up lik
   - Ensures that:
     - constitution/spec/plan/tasks are acceptable from Moderated AI Development Workflow’s perspective,
     - each Task’s implementation passes Workbench checks (build/test/UX),
-    - `REVIEW.md` and `QA.md` are updated for each Step.
+    - `review.md` and `qa.md` are updated for each Step.
   - Has final say on whether a Step is accepted and tagged.
 
 The central rule: **Spec Kit drives structure; Moderated AI Development Workflow decides when each phase and task is good enough to move on.**
@@ -99,13 +99,13 @@ The central rule: **Spec Kit drives structure; Moderated AI Development Workflow
 - In Moderated AI Development Workflow:
   - Complement the constitution with:
     - `docs/manifesto.md` and `docs/principles.md` – Moderated AI Development Workflow’s own beliefs and day‑to‑day rules.
-    - `DOMAIN_LANGUAGE.md` – shared vocabulary.
-    - `AI_AGENTS.md` – rules, commands, and limits for AI agents.
+    - `domain-language.md` – shared vocabulary.
+    - `ai-agents.md` – rules, commands, and limits for AI agents.
 
 **Gate:** The Moderator and Tech Lead decide that the constitution + Moderated AI Development Workflow steering docs are strong enough to guide Specs and Plans.  
 Spec Kit’s constitution is **not self‑ratifying**; Moderated AI Development Workflow requires explicit human agreement.
 
-### 2. Spec ↔ PRODUCT.md
+### 2. Spec ↔ product.md
 
 **Goal:** Describe the product problem, users, and requirements clearly.
 
@@ -116,8 +116,8 @@ Spec Kit’s constitution is **not self‑ratifying**; Moderated AI Development 
     - high‑level acceptance intent.
 
 - In Moderated AI Development Workflow:
-  - The Product Owner owns `PRODUCT.md` in the repo.
-  - Sync Spec Kit’s Spec into `PRODUCT.md`:
+  - The Product Owner owns `product.md` in the repo.
+  - Sync Spec Kit’s Spec into `product.md`:
     - keep it human‑readable,
     - ensure alignment with any Customer / Product Designer input (if you use those extended roles),
     - capture out‑of‑scope items explicitly.
@@ -130,7 +130,7 @@ Spec Kit’s constitution is **not self‑ratifying**; Moderated AI Development 
 
 Only then do you move to Spec Kit’s Plan phase.
 
-### 3. Plan ↔ ARCHITECTURE.md
+### 3. Plan ↔ architecture.md
 
 **Goal:** Decide on a technical approach that supports small, safe Steps.
 
@@ -142,7 +142,7 @@ Only then do you move to Spec Kit’s Plan phase.
     - sequencing of work.
 
 - In Moderated AI Development Workflow:
-  - The Tech Lead owns `ARCHITECTURE.md`.
+  - The Tech Lead owns `architecture.md`.
   - Translate the Spec Kit Plan into:
     - clear module and boundary definitions,
     - decisions and trade‑offs (with rationale),
@@ -152,7 +152,7 @@ Only then do you move to Spec Kit’s Plan phase.
 
 - no fundamental unknowns that would blow up every Step,
 - clear boundaries for where code should live,
-- alignment with `PRODUCT.md` and domain language.
+- alignment with `product.md` and domain language.
 
 ### 4. Tasks ↔ ROADMAP + STEP-XX
 
@@ -164,13 +164,13 @@ Only then do you move to Spec Kit’s Plan phase.
 
 - In Moderated AI Development Workflow:
   - The Tech Lead and Development Team maintain:
-    - `ROADMAP.md` – ordered list of Steps with goals and dependencies.
-    - `STEP-XX.md` – per‑Step brief (scope, inputs, expected outputs, acceptance checks).
+    - `roadmap.md` – ordered list of Steps with goals and dependencies.
+    - `step-xx.md` – per‑Step brief (scope, inputs, expected outputs, acceptance checks).
 
 Each Spec Kit Task should:
 
 - map to exactly one Moderated AI Development Workflow Step, or
-- be clearly attached as part of a specific Step in `STEP-XX.md`.
+- be clearly attached as part of a specific Step in `step-xx.md`.
 
 **Gate:** Tech Lead enforces **MVP discipline**:
 
@@ -185,8 +185,8 @@ Each Spec Kit Task should:
 Here is a concrete end‑to‑end flow for implementing and accepting a Step:
 
 1. **Select a Step**
-   - Choose an item from `ROADMAP.md`.
-   - Ensure `STEP-XX.md` exists and describes:
+   - Choose an item from `roadmap.md`.
+   - Ensure `step-xx.md` exists and describes:
      - goal and scope,
      - inputs and relevant files,
      - acceptance checks,
@@ -194,14 +194,14 @@ Here is a concrete end‑to‑end flow for implementing and accepting a Step:
 
 2. **Align with a Spec Kit Task**
    - Identify or create a matching Task in Spec Kit.
-   - Link the Task to `STEP-XX.md` (e.g., via a comment or ID).
+   - Link the Task to `step-xx.md` (e.g., via a comment or ID).
 
 3. **Implement via AI assistants**
    - Use Spec Kit to drive AI‑assisted implementation (e.g., Copilot, Claude Code, Q Developer).
    - Ensure prompts reference:
-     - relevant parts of `PRODUCT.md`, `ARCHITECTURE.md`, `STEP-XX.md`,
-     - the DOMAIN_LANGUAGE.md,
-     - any agent rules from `AI_AGENTS.md`.
+     - relevant parts of `product.md`, `architecture.md`, `step-xx.md`,
+     - the domain-language.md,
+     - any agent rules from `ai-agents.md`.
 
 4. **Bring changes to the Workbench**
    - Once the Task is “complete” in Spec Kit:
@@ -212,7 +212,7 @@ Here is a concrete end‑to‑end flow for implementing and accepting a Step:
      - inspects diffs for architectural fit and maintainability.
 
 5. **Review and record**
-   - The Moderator fills in `REVIEW.md` for this Step:
+   - The Moderator fills in `review.md` for this Step:
      - summary of changes,
      - findings and concerns,
      - required revisions (if any).
@@ -222,7 +222,7 @@ Here is a concrete end‑to‑end flow for implementing and accepting a Step:
 
 6. **QA and tag**
    - When the implementation looks good:
-     - run the QA plan in `QA.md`,
+     - run the QA plan in `qa.md`,
      - record outcomes, defects, and confidence level.
    - If everything passes:
      - Moderator marks the Step as Done in Moderated AI Development Workflow,
@@ -238,7 +238,7 @@ Spec Kit may have marked the Task as done earlier. **The Moderated AI Developmen
   Treat `/spec`, `/plan`, and `/tasks` outputs as drafts that still need Moderated AI Development Workflow’s role‑based review.
 
 - **Keep Moderated AI Development Workflow artifacts canonical.**  
-  Constitution, Spec, Plan, and Tasks may live in multiple places; Moderated AI Development Workflow’s `PRODUCT.md`, `ARCHITECTURE.md`, `ROADMAP.md`, and `STEP-XX.md` are the primary artifacts in the repo.
+  Constitution, Spec, Plan, and Tasks may live in multiple places; Moderated AI Development Workflow’s `product.md`, `architecture.md`, `roadmap.md`, and `step-xx.md` are the primary artifacts in the repo.
 
 - **Use model contrast consciously.**  
   You can use one model for Spec Kit spec/plan phases and another for Moderated AI Development Workflow Dev Team work, letting them cross‑validate each other before the Moderator decides.

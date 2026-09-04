@@ -8,12 +8,12 @@ This matrix shows the default tool assignment for each MOD-W role. These are the
 
 | Role | Phase | Interface | Config | Primary artifacts |
 | ---- | ----- | --------- | ------ | ----------------- |
-| Product Owner | Definition (project start) | Claude chatbot + Perplexity + Gemini | None — no project infrastructure yet | `PRODUCT.md` |
+| Product Owner | Definition (project start) | Claude chatbot + Perplexity + Gemini | None — no project infrastructure yet | `product.md` |
 | Product Owner | Validation (per-step) | Claude Code SubAgent | `CLAUDE.md` (auto-loaded) | Acceptance sign-off |
-| Designer + Prototyper | Prototype Ceremony (optional, v4) | Claude Design | `prompts/designer.md` pasted at session start | `DESIGN-SPEC.md`, `prototype/`, `ARCHITECTURE-NOTES.md` |
-| Tech Lead | Planning + Review | Codex (full session) | `AGENTS.md` (auto-loaded) | `ARCHITECTURE.md`, `ROADMAP.md`, `STEP-XX.md`, `REVIEW.md` |
+| Designer + Prototyper | Prototype Ceremony (optional) | Claude Design | `prompts/designer.md` pasted at session start | `design-spec.md`, `prototype/`, `architecture-notes.md` |
+| Tech Lead | Planning + Review | Codex (full session) | `AGENTS.md` (auto-loaded) | `architecture.md`, `roadmap.md`, `step-xx.md`, `review.md` |
 | Development Team | Implementation | Claude Code SubAgent by default; Claude Design when explicitly assigned for visual / chart / interaction-heavy Steps | `CLAUDE.md` (auto-loaded where supported) | Code, tests, docs |
-| QA | Acceptance validation | Claude Code SubAgent | `CLAUDE.md` (auto-loaded) | `QA.md` |
+| QA | Acceptance validation | Claude Code SubAgent | `CLAUDE.md` (auto-loaded) | `qa.md` |
 | Moderator | All gates | Human | — | Approvals, git tags |
 
 ---
@@ -39,7 +39,7 @@ The Product Definition phase (project start) uses external chatbots because no p
 
 | Tool | Use |
 | ---- | --- |
-| Claude chatbot (claude.ai) | Draft and iterate on `PRODUCT.md` |
+| Claude chatbot (claude.ai) | Draft and iterate on `product.md` |
 | Perplexity | Research, fact-finding, market and domain context |
 | Gemini | Informal cross-validation of scope, goals, and user workflows |
 
@@ -53,12 +53,12 @@ Codex runs two session types for the Tech Lead role:
 
 | Session | Trigger | Reads | Writes |
 | ------- | ------- | ----- | ------ |
-| Planning | Before each Step | `PRODUCT.md`, `ARCHITECTURE.md` | `ARCHITECTURE.md`, `ROADMAP.md`, `STEP-XX.md`, `CLAUDE.md`, `AGENTS.md` |
-| Review | After Dev Team build gate | `STEP-XX.md`, implementation diff | `REVIEW.md` |
+| Planning | Before each Step | `product.md`, `architecture.md` | `architecture.md`, `roadmap.md`, `step-xx.md`, `CLAUDE.md`, `AGENTS.md`, `cross-validation.md`, root tool config |
+| Review | After Dev Team build gate | `step-xx.md`, implementation diff | `review.md` |
 
 In the Review session, Tech Lead reads only — no edits to implementation files.
 
-If the Prototype Ceremony ran, the Planning session also reads `DESIGN-SPEC.md`, `prototype/`, and `ARCHITECTURE-NOTES.md` as Architecture Handoff inputs. Codex may override prototype-implied structures and records material divergences in `ARCHITECTURE.md`.
+If the Prototype Ceremony ran, the Planning session also reads `design-spec.md`, `prototype/`, and `architecture-notes.md` as Architecture Handoff inputs. Codex may override prototype-implied structures and records material divergences in `architecture.md`.
 
 ---
 
@@ -75,4 +75,4 @@ These commands are populated by the Tech Lead when generating the project-specif
 
 ---
 
-MOD-W v4.0.1 · Moderated AI Development Workflow · https://github.com/fpmcguire/mod-w
+MOD-W v5 · Moderated AI Development Workflow · https://github.com/fpmcguire/mod-w

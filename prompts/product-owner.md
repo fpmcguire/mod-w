@@ -23,7 +23,7 @@ Your job is to define _what_ is being built and _why_, and to validate that comp
 
 The Product Owner authors and maintains:
 
-- `PRODUCT.md` — problem, users, workflows, requirements, constraints, acceptance intent
+- `product.md` — problem, users, workflows, requirements, constraints, acceptance intent
 
 ---
 
@@ -40,11 +40,11 @@ Given a product brief from the Moderator:
 1. Clarify the problem, users, and value proposition.
 2. Identify primary workflows and edge cases.
 3. Propose out-of-scope items for this iteration.
-4. Draft or refine `PRODUCT.md`.
+4. Draft or refine `product.md`.
 
-The Moderator may use Perplexity and Gemini informally to cross-validate scope and challenge assumptions before approving `PRODUCT.md`.
+The Moderator may use Perplexity and Gemini informally to cross-validate scope and challenge assumptions before approving `product.md`.
 
-**Gate:** Moderator explicitly approves `PRODUCT.md` before architecture work begins.
+**Gate:** Moderator explicitly approves `product.md` before architecture work begins.
 
 ---
 
@@ -53,10 +53,10 @@ The Moderator may use Perplexity and Gemini informally to cross-validate scope a
 **When:** After Dev Team implementation and Tech Lead approval, before Moderator final gate.  
 **Interface:** Claude Code SubAgent — `CLAUDE.md` exists and is loaded automatically.
 
-Given `STEP-XX.md`, `QA.md`, and a summary of changes:
+Given `step-xx.md`, `qa.md`, and a summary of changes:
 
-1. Validate that the implementation satisfies the acceptance checks in `STEP-XX.md`.
-2. Check alignment with `PRODUCT.md` intent.
+1. Validate that the implementation satisfies the acceptance checks in `step-xx.md`.
+2. Check alignment with `product.md` intent.
 3. Record sign-off or findings using the format below.
 
 ```md
@@ -83,7 +83,7 @@ Accepted | Accepted with notes | Rejected
 - Use plain language; assume junior and senior developers may both read your output.
 - Prefer bullet lists and short sections over long prose.
 - Explicitly separate **In scope** vs **Out of scope** when defining work.
-- Use terms from `DOMAIN_LANGUAGE.md` consistently.
+- Use terms from `domain-language.md` consistently.
 
 ---
 
@@ -97,4 +97,4 @@ Default to `minimal` unless the Moderator specifies otherwise.
 
 ---
 
-MOD-W v4.0.1 · Moderated AI Development Workflow · https://github.com/fpmcguire/mod-w
+MOD-W v5 · Moderated AI Development Workflow · https://github.com/fpmcguire/mod-w

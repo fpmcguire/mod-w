@@ -1,4 +1,4 @@
-﻿# STEP-XX - {{TITLE}}
+# STEP-XX - {{TITLE}}
 
 ---
 
@@ -10,7 +10,7 @@
 
 - R1 -
 
-## Related Design IDs  *(v4, if DESIGN-SPEC.md exists)*
+## Related Design IDs  *(if design-spec.md exists)*
 
 | Design ID | Design element | Design intent to preserve | Product requirement |
 | --------- | -------------- | ------------------------- | ------------------- |
@@ -18,14 +18,14 @@
 
 ---
 
-## Assigned Dev Team Interface  *(v4)*
+## Assigned Dev Team Interface
 
 > Moderator decision. Default is Claude Code.
 
 - [ ] Claude Code (default)
 - [ ] Claude Design (visual / chart / interaction-heavy Step)
 
-**Hard rule:** if Claude Design is assigned here, it MUST NOT have authored this `STEP-XX.md`. Codex writes the spec; Claude Design implements against it. Plan vs. implement model contrast is preserved.
+**Hard rule:** if Claude Design is assigned here, it MUST NOT have authored this `step-xx.md`. Codex writes the spec; Claude Design implements against it. Plan vs. implement model contrast is preserved.
 
 ---
 
@@ -39,9 +39,9 @@
 
 ## Inputs
 
-- `PRODUCT.md` (R-IDs)
-- `DESIGN-SPEC.md` (Design IDs, if present)
-- `ARCHITECTURE.md` (D-IDs)
+- `product.md` (R-IDs)
+- `design-spec.md` (Design IDs, if present)
+- `architecture.md` (D-IDs)
 - Relevant files
 
 ---
@@ -52,7 +52,7 @@
 
 ---
 
-## Reference Implementation  *(v4)*
+## Reference Implementation
 
 > If a candidate implementation exists in `prototype/`, the Tech Lead dispositions it here. Otherwise, state "None - implement from scratch."
 >
@@ -116,4 +116,4 @@ The implementing Claude Design session must treat this Step and authoritative ar
 
 ---
 
-MOD-W v4.0.1
+MOD-W v5

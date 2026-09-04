@@ -16,9 +16,9 @@ Domain language is the specific vocabulary of your product and its problem space
 
 ---
 
-## The DOMAIN_LANGUAGE.md
+## The domain-language.md
 
-The DOMAIN_LANGUAGE.md is a table that captures agreed terms and their usage. See the template at [templates/DOMAIN_LANGUAGE.md](../templates/DOMAIN_LANGUAGE.md).
+The domain-language.md is a table that captures agreed terms and their usage. See the template at [templates/domain-language.md](../templates/domain-language.md).
 
 Each entry in the matrix records:
 
@@ -35,7 +35,7 @@ Each entry in the matrix records:
 
 ## Embedding Domain Language in Prompts
 
-Every prompt sent to an AI agent should include the relevant portion of the DOMAIN_LANGUAGE.md. This ensures AI output uses team-agreed vocabulary consistently.
+Every prompt sent to an AI agent should include the relevant portion of the domain-language.md. This ensures AI output uses team-agreed vocabulary consistently.
 
 Example pattern (from [prompts/development-team.md](../prompts/development-team.md)):
 
@@ -58,4 +58,4 @@ The following terms must be used consistently in all output:
 
 ---
 
-MOD-W v4.0.1 · Moderated AI Development Workflow · https://github.com/fpmcguire/mod-w
+MOD-W v5 · Moderated AI Development Workflow · https://github.com/fpmcguire/mod-w

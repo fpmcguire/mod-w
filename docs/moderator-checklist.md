@@ -6,28 +6,30 @@ Use this checklist for every Step in the MOD-W workflow.
 
 ## 1. Before Engaging AI
 
-- [ ] `ROADMAP.md`: next Step chosen and clearly named.
-- [ ] `STEP-XX.md`: goal, scope, inputs, required changes, acceptance checks, and risks filled in.
-- [ ] `DOMAIN_LANGUAGE.md`: key terms for this Step defined or updated.
-- [ ] `PRODUCT.md` / `ARCHITECTURE.md`: still accurate for this Step.
-- [ ] `CLAUDE.md` and `AGENTS.md`: current at repo root (regenerate via Tech Lead if `ARCHITECTURE.md` has changed).
+- [ ] `roadmap.md`: next Step chosen and clearly named.
+- [ ] `step-xx.md`: goal, scope, inputs, required changes, acceptance checks, and risks filled in.
+- [ ] `domain-language.md`: key terms for this Step defined or updated.
+- [ ] `product.md` / `architecture.md`: still accurate for this Step.
+- [ ] `CLAUDE.md` and `AGENTS.md`: current at repo root (regenerate via Tech Lead if `architecture.md` has changed).
+- [ ] `.codex/config.toml`, `.claude/settings.json`, and `.mcp.json`: present and valid at repo root.
 
 ---
 
 ## 2. Tech Lead Planning Session (Codex)
 
-Trigger a Tech Lead Planning Session when starting a new project phase or when `ARCHITECTURE.md`, `ROADMAP.md`, or `STEP-XX.md` needs to be generated or updated.
+Trigger a Tech Lead Planning Session when starting a new project phase or when `architecture.md`, `roadmap.md`, or `step-xx.md` needs to be generated or updated.
 
 - [ ] Open a Codex session — `AGENTS.md` loads automatically.
-- [ ] Provide `PRODUCT.md` and existing `ARCHITECTURE.md` (if present).
+- [ ] Provide `product.md` and existing `architecture.md` (if present).
 - [ ] Ask Tech Lead to generate or update:
-  - `ARCHITECTURE.md`
-  - `DOMAIN_LANGUAGE.md`
-  - `ROADMAP.md`
-  - `STEP-XX.md` for the current Step
-  - `CLAUDE.md` and `AGENTS.md` (from `ARCHITECTURE.md` and the MOD-W templates)
+  - `architecture.md`
+  - `domain-language.md`
+  - `roadmap.md`
+  - `step-xx.md` for the current Step
+  - `CLAUDE.md` and `AGENTS.md` (from `architecture.md` and the MOD-W templates)
+  - `cross-validation.md`, `.codex/config.toml`, `.claude/settings.json`, and `.mcp.json` when missing or stale
 - [ ] Review all artifacts and iterate until Moderator-approved.
-- [ ] Confirm `CLAUDE.md` and `AGENTS.md` are committed to the repo root before briefing the Development Team.
+- [ ] Confirm `CLAUDE.md`, `AGENTS.md`, and root tool config files are committed before briefing the Development Team.
 
 ---
 
@@ -72,7 +74,7 @@ If issues are significant:
 
 The Development Team spawns these automatically after the build gate passes.
 
-- [ ] Review `QA.md` produced by the QA SubAgent:
+- [ ] Review `qa.md` produced by the QA SubAgent:
   - acceptance check outcomes
   - manual checks requiring human or browser verification
   - known limitations
@@ -85,9 +87,9 @@ The Development Team spawns these automatically after the build gate passes.
 ## 7. Tech Lead Review Session (Codex)
 
 - [ ] Open a Codex Review Session — `AGENTS.md` loads automatically.
-- [ ] Ask the Tech Lead to review the implementation against the active `STEP-XX.md`.
-- [ ] Codex reads the changed files and `QA.md` directly — no handoff packet required.
-- [ ] Review `REVIEW.md` findings:
+- [ ] Ask the Tech Lead to review the implementation against the active `step-xx.md`.
+- [ ] Codex reads the changed files and `qa.md` directly — no handoff packet required.
+- [ ] Review `review.md` findings:
   - **Must-fix** items return to the Development Team.
   - **Could-fix-later** items are logged for a future Step.
 - [ ] Repeat the Development Team → Build Gate → QA → Tech Lead loop until all must-fix items are resolved.
@@ -97,18 +99,18 @@ The Development Team spawns these automatically after the build gate passes.
 ## 8. Tag and Advance
 
 - [ ] Confirm all acceptance checks pass.
-- [ ] Confirm `REVIEW.md` and `QA.md` are complete.
+- [ ] Confirm `review.md` and `qa.md` are complete.
 - [ ] Create an **annotated Git tag** for the Step, including:
   - Step identifier (e.g., `step-01-saved-views-list`)
   - Short description
-  - References to `STEP-XX.md`, `REVIEW.md`, `QA.md`
+  - References to `step-xx.md`, `review.md`, `qa.md`
   - Notable decisions or caveats
 - [ ] Push the tag to the remote repository.
-- [ ] Update `PRODUCT.md` if behaviour or UX changed meaningfully.
-- [ ] Update `ARCHITECTURE.md` if design decisions changed.
-- [ ] Update `ROADMAP.md` to mark the Step complete and adjust future Steps if needed.
-- [ ] If `ARCHITECTURE.md` was updated, ask the Tech Lead to regenerate `CLAUDE.md` for the next Step.
-- [ ] Select the next Step from `ROADMAP.md` and return to section 1.
+- [ ] Update `product.md` if behaviour or UX changed meaningfully.
+- [ ] Update `architecture.md` if design decisions changed.
+- [ ] Update `roadmap.md` to mark the Step complete and adjust future Steps if needed.
+- [ ] If `architecture.md` was updated, ask the Tech Lead to regenerate `CLAUDE.md` for the next Step.
+- [ ] Select the next Step from `roadmap.md` and return to section 1.
 
 ---
 
@@ -116,4 +118,4 @@ This checklist should be lightweight enough to use for every Step but strict eno
 
 ---
 
-MOD-W v4.0.1 · Moderated AI Development Workflow · https://github.com/fpmcguire/mod-w
+MOD-W v5 · Moderated AI Development Workflow · https://github.com/fpmcguire/mod-w

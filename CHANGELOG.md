@@ -1,4 +1,4 @@
-﻿# Changelog
+# Changelog
 
 All notable changes to the Moderated AI Development Workflow (MOD-W) will be documented in this file.
 
@@ -13,9 +13,20 @@ Each version of MOD-W addressed a specific problem that the previous version cou
 - **v3** — refined the workflow around direct repository access (Codex + Claude Code) to eliminate the time-consuming copy-paste bottleneck.
 - **v4** — introduced Claude Design as the Designer + Prototyper role, the optional Prototype Ceremony, the mandatory Architecture Handoff gate, and the Reference Implementation dispositional concept.
 
+- **v5** - aligned project layout with agent entrypoint conventions, added tool-specific config layers, and introduced a cross-agent validation protocol.
+
 ## [Unreleased]
 
 _No unreleased changes yet._
+
+## [5.0.0] - 2026-09-04
+
+### Changed
+
+- Migrated active workflow docs, templates, prompts, and example artifacts to MOD-W v5 naming and layout conventions.
+- Added v5 project structure guidance for root tool entrypoints, `.codex/`, `.claude/`, `.mcp.json`, `cross-validation.md`, `agents/`, `rules/`, `skills/`, and `validation/`.
+- Clarified that the Frontend Saved Views example is a pseudo-MOD-W project demonstrating artifact structure and Step 01 acceptance evidence.
+- Aligned the example Step 01 review, QA, and annotated tag documentation around the frontend read-only Saved Views list scope.
 
 ## [4.0.1] - 2026-09-03
 
@@ -23,13 +34,13 @@ _No unreleased changes yet._
 
 - Updated the repository URL throughout docs, templates, prompts, examples, and articles after the GitHub repository was renamed from `moderated-ai-development-workflow` to `mod-w` (`https://github.com/fpmcguire/mod-w`).
 - Bumped the remaining `MOD-W v4.0.0` file footers to `MOD-W v4.0.1` so all footers reflect the current release (historical references in `CHANGELOG.md` and `MOD-W-v4-RELEASE.md` left unchanged).
-- Bounded `DESIGN-SPEC.md` authority to approved visual behavior, interaction intent, screen composition, component states, accessibility expectations, and user-facing terminology; technical authority remains with the Tech Lead.
+- Bounded `design-spec.md` authority to approved visual behavior, interaction intent, screen composition, component states, accessibility expectations, and user-facing terminology; technical authority remains with the Tech Lead.
 - Clarified Reference Implementation dispositions so `Adopt as-is` preserves approved behavior and relevant structure without bypassing production adaptation, architecture, review, QA, tests, accessibility, security, or repository conventions.
 - Added lightweight Design ID traceability from Product requirements to prototype evidence and first implementation Step.
-- Structured `ARCHITECTURE-NOTES.md` observations with evidence, prototype location, reproduction conditions, confidence, and possible architectural implication.
+- Structured `architecture-notes.md` observations with evidence, prototype location, reproduction conditions, confidence, and possible architectural implication.
 - Distinguished backfill, re-executed gates, and prohibited retroactive approval.
 - Added safeguards for Claude Design implementing Steps derived from its own prototype assumptions.
-- Added a `DESIGN-SPEC.md` approval record and clarified `DESIGN.md` versus `DESIGN-SPEC.md` policy.
+- Added a `design-spec.md` approval record and clarified `DESIGN.md` versus `design-spec.md` policy.
 - Improved prototype inventory and scalable Architecture Handoff inspection rules.
 - Repaired v4 artifact, ownership, location, and example consistency issues.
 
@@ -37,28 +48,28 @@ _No unreleased changes yet._
 
 ### Added
 
-- **Designer + Prototyper role** - Claude Design as the default interface; optional per project; produces `DESIGN-SPEC.md` (bounded authority after approval), `prototype/` (research artifact), and `ARCHITECTURE-NOTES.md` (advisory).
+- **Designer + Prototyper role** - Claude Design as the default interface; optional per project; produces `design-spec.md` (bounded authority after approval), `prototype/` (research artifact), and `architecture-notes.md` (advisory).
 - **Prototype Ceremony** — optional kickoff ceremony slotting between Product Definition and Architecture Definition; 9-step Moderator-gated loop with a mandatory cross-validation pause before exit.
-- **Architecture Handoff** — mandatory gate when the Prototype Ceremony ran; Codex independently authors `ARCHITECTURE.md` from all four kickoff inputs and has explicit authority to override prototype-implied structures.
-- **Reference Implementation** — dispositional concept (not a file); Tech Lead classifies candidate prototype code in `STEP-XX.md` as `Adopt as-is`, `Adopt with modifications`, or `Reject`.
+- **Architecture Handoff** — mandatory gate when the Prototype Ceremony ran; Codex independently authors `architecture.md` from all four kickoff inputs and has explicit authority to override prototype-implied structures.
+- **Reference Implementation** — dispositional concept (not a file); Tech Lead classifies candidate prototype code in `step-xx.md` as `Adopt as-is`, `Adopt with modifications`, or `Reject`.
 - `prompts/designer.md` — Designer + Prototyper role prompt; promoted to top-level path.
 - `docs/prototype-ceremony.md` — complete Prototype Ceremony lifecycle: when to run, inputs, outputs, 9-step gated loop, exit criteria, and anti-patterns.
 - `docs/architecture-handoff.md` — Architecture Handoff ceremony doc; non-negotiable gate, Codex authority scope, 8-step lifecycle, material divergence definition.
-- `templates/ARCHITECTURE-NOTES.md` — advisory architecture observations template for Prototype Ceremony output.
+- `templates/architecture-notes.md` — advisory architecture observations template for Prototype Ceremony output.
 - `templates/prototype-README.md` — non-authoritative disclaimer template for the `prototype/` folder.
 - `templates/MOD-W.md` — project-level workflow quick-reference: roles table, cross-validation diagram, phase overview, operating rules.
 - `articles/modw-with-claude-design.md` — integration guide for Claude Design in MOD-W: where it fits, responsibility split, ceremony lifecycle, drift prevention rules.
-- Claude Design as optional Dev Team interface for visual, chart, or interaction-heavy Steps (assigned explicitly in `STEP-XX.md §"Assigned Dev Team Interface"`).
+- Claude Design as optional Dev Team interface for visual, chart, or interaction-heavy Steps (assigned explicitly in `step-xx.md §"Assigned Dev Team Interface"`).
 
 ### Changed
 
-- `templates/DESIGN-SPEC.md` — v4 rewrite: 10 structured sections including Visual Identity (5 subsections), Accessibility, Component Library with `data-testid` convention, Domain Language Proposals table, Scope Rules.
-- `templates/STEP-XX.md` — added `Assigned Dev Team Interface` section (Claude Code default or Claude Design) and `Reference Implementation` section with `Location`, `Disposition`, and `Required Changes` fields.
-- `prompts/tech-lead.md` — Planning Session step 1 expanded to include Prototype Ceremony inputs (`DESIGN-SPEC.md`, `prototype/`, `ARCHITECTURE-NOTES.md`); added step 6 (Architecture Handoff) and step 7 (Domain Language ratification from `DESIGN-SPEC.md §"Domain Language Proposals"`).
-- `prompts/development-team.md` — opening note expanded with alternate Claude Design interface (v4) and hard authorship-separation rule: Claude Design implementing a Step must not have authored that Step's `STEP-XX.md`.
+- `templates/design-spec.md` — v4 rewrite: 10 structured sections including Visual Identity (5 subsections), Accessibility, Component Library with `data-testid` convention, Domain Language Proposals table, Scope Rules.
+- `templates/step-xx.md` — added `Assigned Dev Team Interface` section (Claude Code default or Claude Design) and `Reference Implementation` section with `Location`, `Disposition`, and `Required Changes` fields.
+- `prompts/tech-lead.md` — Planning Session step 1 expanded to include Prototype Ceremony inputs (`design-spec.md`, `prototype/`, `architecture-notes.md`); added step 6 (Architecture Handoff) and step 7 (Domain Language ratification from `design-spec.md §"Domain Language Proposals"`).
+- `prompts/development-team.md` — opening note expanded with alternate Claude Design interface (v4) and hard authorship-separation rule: Claude Design implementing a Step must not have authored that Step's `step-xx.md`.
 - `docs/roles.md` — added `### Designer + Prototyper` role section with authoritative/non-authoritative outputs, authority, and constraints; updated Default Tool Implementations; updated Role Summary Table.
 - `docs/ceremonies.md` — kickoff restructured as three sequential Moderator-gated phases: 1a Product Definition, 1b Prototype Ceremony (optional, v4), 1c Architecture Definition (with Architecture Handoff `v4 note` when Prototype Ceremony ran).
-- `docs/artifacts.md` — added Designer + Prototyper artifacts section (`DESIGN-SPEC.md`, `ARCHITECTURE-NOTES.md`, `prototype/`) and Reference Implementation concept.
+- `docs/artifacts.md` — added Designer + Prototyper artifacts section (`design-spec.md`, `architecture-notes.md`, `prototype/`) and Reference Implementation concept.
 - `README.md` — added "Using MOD-W with Claude Design" section; updated kickoff block to three phases; version footer bumped.
 - All file footers standardized to `MOD-W v4.0.0 · Moderated AI Development Workflow · https://github.com/fpmcguire/mod-w`.
 

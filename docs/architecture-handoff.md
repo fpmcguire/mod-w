@@ -1,4 +1,4 @@
-﻿# Architecture Handoff
+# Architecture Handoff
 
 > Mandatory kickoff gate when the Prototype Ceremony has run. Runs in a Codex Tech Lead session immediately after the Prototype Ceremony exits.
 
@@ -18,12 +18,12 @@ Codex receives all four kickoff inputs:
 
 | Input | Status |
 | ----- | ------ |
-| `PRODUCT.md` | Authoritative product intent |
-| `DESIGN-SPEC.md` | Bounded design authority after approval |
+| `product.md` | Authoritative product intent |
+| `design-spec.md` | Bounded design authority after approval |
 | `prototype/` folder | Research artifact with inventory |
-| `ARCHITECTURE-NOTES.md` | Advisory evidence |
+| `architecture-notes.md` | Advisory evidence |
 
-`DESIGN-SPEC.md` is authoritative only for user-facing visual behavior, interaction intent, screen composition, component states and variants, accessibility expectations, and approved user-facing terminology and content presentation. Technical matters remain under Tech Lead authority.
+`design-spec.md` is authoritative only for user-facing visual behavior, interaction intent, screen composition, component states and variants, accessibility expectations, and approved user-facing terminology and content presentation. Technical matters remain under Tech Lead authority.
 
 ---
 
@@ -34,8 +34,8 @@ Codex must:
 - inspect the complete `prototype/README.md` inventory;
 - run or view all in-scope flows listed in the inventory;
 - read all prototype files identified as architecturally relevant;
-- inspect screenshots, routes, or pages cited as prototype evidence in `DESIGN-SPEC.md`;
-- evaluate all significant `ARCHITECTURE-NOTES.md` observations, including evidence, reproduction conditions, and confidence;
+- inspect screenshots, routes, or pages cited as prototype evidence in `design-spec.md`;
+- evaluate all significant `architecture-notes.md` observations, including evidence, reproduction conditions, and confidence;
 - sample supporting prototype files as needed for confidence.
 
 Codex is not required to read every generated or supporting prototype file line by line when the prototype is large, unless the inventory identifies those files as architecturally relevant.
@@ -49,11 +49,11 @@ Codex has explicit authority to:
 - disagree with structural choices implied by the prototype;
 - reorganize service boundaries, module boundaries, type names, and file layout;
 - choose framework, library, runtime, and test strategy;
-- reject or revise domain term proposals from `DESIGN-SPEC.md`;
-- accept, modify, or reject possible implications from `ARCHITECTURE-NOTES.md`;
+- reject or revise domain term proposals from `design-spec.md`;
+- accept, modify, or reject possible implications from `architecture-notes.md`;
 - decide the disposition of every candidate Reference Implementation in `prototype/`.
 
-`ARCHITECTURE-NOTES.md` is input, not constraint. Confidence levels in the notes do not create architectural authority.
+`architecture-notes.md` is input, not constraint. Confidence levels in the notes do not create architectural authority.
 
 ---
 
@@ -63,22 +63,22 @@ Codex produces:
 
 | Output | Path |
 | ------ | ---- |
-| `ARCHITECTURE.md` | `mod-w/ARCHITECTURE.md` |
-| `DOMAIN_LANGUAGE.md` | `mod-w/DOMAIN_LANGUAGE.md` |
-| `ROADMAP.md` | `mod-w/ROADMAP.md` |
+| `architecture.md` | `mod-w/architecture.md` |
+| `domain-language.md` | `mod-w/domain-language.md` |
+| `roadmap.md` | `mod-w/roadmap.md` |
 | `CLAUDE.md` | repo root |
 | `AGENTS.md` | repo root |
-| `STEP-01.md` | `mod-w/STEP-01.md` |
+| `step-01.md` | `mod-w/step-01.md` |
 
-If `ARCHITECTURE.md` materially diverges from prototype implications, Codex records the divergence in `ARCHITECTURE.md` section "Decisions That Diverge From Prototype" with rationale.
+If `architecture.md` materially diverges from prototype implications, Codex records the divergence in `architecture.md` section "Decisions That Diverge From Prototype" with rationale.
 
-When writing `STEP-XX.md`, Codex cites relevant Design IDs. If Claude Design is assigned to implement a Step derived from its own prototype, Codex records accepted, modified, rejected, and mandatory-divergence prototype assumptions in the Step.
+When writing `step-xx.md`, Codex cites relevant Design IDs. If Claude Design is assigned to implement a Step derived from its own prototype, Codex records accepted, modified, rejected, and mandatory-divergence prototype assumptions in the Step.
 
 ---
 
 ## Reference Implementation Disposition
 
-The Tech Lead disposes of candidate prototype code in `STEP-XX.md` as:
+The Tech Lead disposes of candidate prototype code in `step-xx.md` as:
 
 - `Adopt as-is`
 - `Adopt with modifications`
@@ -111,12 +111,12 @@ Existing work may be analyzed and backfilled, but it may not be retroactively de
 
 ## Anti-patterns
 
-- Treating `ARCHITECTURE-NOTES.md` as authoritative.
-- Treating `DESIGN-SPEC.md` as technical architecture.
-- Codex consuming only `DESIGN-SPEC.md` and skipping prototype inventory or `ARCHITECTURE-NOTES.md`.
-- Letting Claude Design author `ARCHITECTURE.md`.
+- Treating `architecture-notes.md` as authoritative.
+- Treating `design-spec.md` as technical architecture.
+- Codex consuming only `design-spec.md` and skipping prototype inventory or `architecture-notes.md`.
+- Letting Claude Design author `architecture.md`.
 - Letting `Adopt as-is` bypass production-quality requirements.
 
 ---
 
-MOD-W v4.0.1
+MOD-W v5

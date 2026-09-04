@@ -1,4 +1,4 @@
-﻿# Ceremonies in Moderated AI Development Workflow
+# Ceremonies in Moderated AI Development Workflow
 
 Ceremonies are structured, Moderator-gated events that create shared understanding and traceable decisions.
 
@@ -13,33 +13,33 @@ The kickoff has up to three sequential phases. No phase ends until the Moderator
 **When:** Once at project start; revisited when scope changes materially
 **Who:** Moderator, Product Owner, research and cross-validation tools
 
-**Purpose:** Produce a Moderator-approved `PRODUCT.md`.
+**Purpose:** Produce a Moderator-approved `product.md`.
 
-**Output:** Approved `PRODUCT.md`.
+**Output:** Approved `product.md`.
 
-### 1b. Prototype Ceremony (optional, v4)
+### 1b. Prototype Ceremony (optional)
 
-**When:** After `PRODUCT.md` is approved, when visual or interaction risk warrants it
+**When:** After `product.md` is approved, when visual or interaction risk warrants it
 **Who:** Moderator, Designer + Prototyper (Claude Design)
 
-Produces `DESIGN-SPEC.md`, `prototype/`, and `ARCHITECTURE-NOTES.md`.
+Produces `design-spec.md`, `prototype/`, and `architecture-notes.md`.
 
-`DESIGN-SPEC.md` becomes authoritative only after Product Owner and Moderator approval, and only within its bounded visual and interaction authority. The prototype remains non-authoritative. `ARCHITECTURE-NOTES.md` remains advisory.
+`design-spec.md` becomes authoritative only after Product Owner and Moderator approval, and only within its bounded visual and interaction authority. The prototype remains non-authoritative. `architecture-notes.md` remains advisory.
 
-**Output:** Approved `DESIGN-SPEC.md`, complete `prototype/` inventory, advisory `ARCHITECTURE-NOTES.md`.
+**Output:** Approved `design-spec.md`, complete `prototype/` inventory, advisory `architecture-notes.md`.
 
 See `docs/prototype-ceremony.md`.
 
 ### 1c. Architecture Definition / Architecture Handoff
 
-**When:** After `PRODUCT.md` approval; after Prototype Ceremony if it ran
+**When:** After `product.md` approval; after Prototype Ceremony if it ran
 **Who:** Moderator, Tech Lead (Codex)
 
 **Purpose:** Produce approved technical artifacts before Roadmap and Step implementation.
 
-If the Prototype Ceremony ran, this is the Architecture Handoff: Codex consumes `PRODUCT.md`, bounded `DESIGN-SPEC.md`, the complete `prototype/` inventory, and `ARCHITECTURE-NOTES.md`; evaluates evidence; and independently authors `ARCHITECTURE.md`.
+If the Prototype Ceremony ran, this is the Architecture Handoff: Codex consumes `product.md`, bounded `design-spec.md`, the complete `prototype/` inventory, and `architecture-notes.md`; evaluates evidence; and independently authors `architecture.md`.
 
-**Output:** Approved `ARCHITECTURE.md`, `DOMAIN_LANGUAGE.md`, `ROADMAP.md`, `CLAUDE.md`, `AGENTS.md`, and first `STEP-XX.md`.
+**Output:** Approved `architecture.md`, `domain-language.md`, `roadmap.md`, `CLAUDE.md`, `AGENTS.md`, `cross-validation.md`, minimal root tool config, and first `step-xx.md`.
 
 See `docs/architecture-handoff.md`.
 
@@ -54,13 +54,13 @@ See `docs/architecture-handoff.md`.
 
 **Activities:**
 
-- Author or refine `STEP-XX.md`.
+- Author or refine `step-xx.md`.
 - Confirm acceptance criteria with Product Owner.
-- Cite relevant Design IDs when `DESIGN-SPEC.md` exists.
+- Cite relevant Design IDs when `design-spec.md` exists.
 - Record Reference Implementation disposition when candidate prototype code exists.
 - If Claude Design implements from its own prototype, record accepted, modified, rejected, and mandatory-divergence prototype assumptions.
 
-**Output:** Approved `STEP-XX.md`.
+**Output:** Approved `step-xx.md`.
 
 ---
 
@@ -84,9 +84,9 @@ See `docs/architecture-handoff.md`.
 
 **Activities:**
 
-- Development Team implements only the approved `STEP-XX.md`.
-- Development Team treats `ARCHITECTURE.md`, `DOMAIN_LANGUAGE.md`, and `STEP-XX.md` as controlling.
-- If Claude Design implements from its own prototype, it follows the assumption disposition in `STEP-XX.md`.
+- Development Team implements only the approved `step-xx.md`.
+- Development Team treats `architecture.md`, `domain-language.md`, and `step-xx.md` as controlling.
+- If Claude Design implements from its own prototype, it follows the assumption disposition in `step-xx.md`.
 - Development Team runs the blocking build gate.
 
 **Output:** Implemented Step with passing build gate.
@@ -100,7 +100,7 @@ See `docs/architecture-handoff.md`.
 
 **Purpose:** Review implementation for architecture, maintainability, scope compliance, domain language, tests, and approved design intent.
 
-**Output:** `REVIEW.md` with Tech Lead verdict and findings.
+**Output:** `review.md` with Tech Lead verdict and findings.
 
 ---
 
@@ -113,7 +113,7 @@ See `docs/architecture-handoff.md`.
 
 QA may verify approved Design ID intent but does not treat prototype code as authoritative.
 
-**Output:** `QA.md` and Product Owner sign-off.
+**Output:** `qa.md` and Product Owner sign-off.
 
 ---
 
@@ -124,7 +124,7 @@ QA may verify approved Design ID intent but does not treat prototype code as aut
 
 **Purpose:** Human final approval before tagging and Roadmap advancement.
 
-**Output:** Annotated Git tag and updated `ROADMAP.md`.
+**Output:** Annotated Git tag and updated `roadmap.md`.
 
 ---
 
@@ -136,4 +136,4 @@ Existing work may be analyzed and backfilled, but it may not be retroactively de
 
 ---
 
-MOD-W v4.0.1 - Moderated AI Development Workflow - https://github.com/fpmcguire/mod-w
+MOD-W v5 - Moderated AI Development Workflow - https://github.com/fpmcguire/mod-w

@@ -59,8 +59,8 @@
 
 * [ ] All Must-have requirements implemented
 * [ ] No unresolved critical risks
-* [ ] QA.md completed
-* [ ] REVIEW.md approved
+* [ ] qa.md completed
+* [ ] review.md approved
 * [ ] Moderator sign-off
 
 ---
@@ -96,4 +96,4 @@
 
 ---
 
-MOD-W v4.0.1
+MOD-W v5

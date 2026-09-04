@@ -1,4 +1,4 @@
-# DOMAIN_LANGUAGE.md
+# domain-language.md
 
 **Project:** {{PROJECT_NAME}}
 
@@ -16,7 +16,7 @@
 ## Enforcement
 
 - Development Team must use these terms
-- REVIEW.md must flag violations
+- review.md must flag violations
 
 ## Terms
 
@@ -30,8 +30,8 @@
 - One term = one meaning
 - No synonyms unless defined
 - Must be used consistently across:
-  - PRODUCT.md
-  - ARCHITECTURE.md
+  - product.md
+  - architecture.md
   - code
   - prompts
 
@@ -45,4 +45,4 @@
 
 ---
 
-MOD-W v4.0.1
+MOD-W v5

@@ -20,7 +20,7 @@ In MOD-W terms:
 
 - Product Owner, Tech Lead, and Development Team outputs can be AI-assisted.
 - Moderator acceptance remains mandatory before a Step is considered done.
-- REVIEW.md and QA.md are the evidence of acceptance, not chat completion status.
+- review.md and qa.md are the evidence of acceptance, not chat completion status.
 
 ## Recommended setup
 
@@ -28,14 +28,14 @@ In MOD-W terms:
 
 Use these as your source of truth:
 
-- [templates/PRODUCT.md](../templates/PRODUCT.md)
-- [templates/ARCHITECTURE.md](../templates/ARCHITECTURE.md)
-- [templates/ROADMAP.md](../templates/ROADMAP.md)
-- [templates/STEP-XX.md](../templates/STEP-XX.md)
-- [templates/REVIEW.md](../templates/REVIEW.md)
-- [templates/QA.md](../templates/QA.md)
-- [templates/DOMAIN_LANGUAGE.md](../templates/DOMAIN_LANGUAGE.md)
-- [templates/AI_AGENTS.md](../templates/AI_AGENTS.md)
+- [templates/product.md](../templates/product.md)
+- [templates/architecture.md](../templates/architecture.md)
+- [templates/roadmap.md](../templates/roadmap.md)
+- [templates/step-xx.md](../templates/step-xx.md)
+- [templates/review.md](../templates/review.md)
+- [templates/qa.md](../templates/qa.md)
+- [templates/domain-language.md](../templates/domain-language.md)
+- [templates/ai-agents.md](../templates/ai-agents.md)
 
 Treat Gemini chats as working notes. Move accepted content into repo artifacts.
 
@@ -86,11 +86,11 @@ Use NotebookLM as a curated reference layer for long-lived project context, not 
 
 Recommended NotebookLM source set:
 
-- [templates/PRODUCT.md](../templates/PRODUCT.md)
-- [templates/ARCHITECTURE.md](../templates/ARCHITECTURE.md)
-- [templates/ROADMAP.md](../templates/ROADMAP.md)
-- [templates/DOMAIN_LANGUAGE.md](../templates/DOMAIN_LANGUAGE.md)
-- [templates/AI_AGENTS.md](../templates/AI_AGENTS.md)
+- [templates/product.md](../templates/product.md)
+- [templates/architecture.md](../templates/architecture.md)
+- [templates/roadmap.md](../templates/roadmap.md)
+- [templates/domain-language.md](../templates/domain-language.md)
+- [templates/ai-agents.md](../templates/ai-agents.md)
 - relevant Step files and review artifacts for active work
 
 How to use it in MOD-W:
@@ -106,7 +106,7 @@ Guardrail: if NotebookLM and repository files disagree, repository artifacts win
 
 ### Product shaping phase
 
-Goal: produce a clear, testable [templates/PRODUCT.md](../templates/PRODUCT.md).
+Goal: produce a clear, testable [templates/product.md](../templates/product.md).
 
 Use Gemini to:
 
@@ -122,7 +122,7 @@ Moderator checks:
 
 ### Technical design phase
 
-Goal: produce an implementable [templates/ARCHITECTURE.md](../templates/ARCHITECTURE.md).
+Goal: produce an implementable [templates/architecture.md](../templates/architecture.md).
 
 Use Gemini to:
 
@@ -138,7 +138,7 @@ Moderator and Tech Lead checks:
 
 ### Step planning phase
 
-Goal: maintain [templates/ROADMAP.md](../templates/ROADMAP.md) with small, reviewable steps.
+Goal: maintain [templates/roadmap.md](../templates/roadmap.md) with small, reviewable steps.
 
 Use Gemini to:
 
@@ -158,12 +158,12 @@ Goal: execute one Step at a time with full traceability.
 
 Per step:
 
-1. Copy [templates/STEP-XX.md](../templates/STEP-XX.md) into a concrete STEP-XX file.
+1. Copy [templates/step-xx.md](../templates/step-xx.md) into a concrete STEP-XX file.
 2. Ask Gemini for implementation proposals tied to that step only.
 3. Apply changes in the Workbench.
 4. Run build, tests, lint, and manual checks.
-5. Record findings in [templates/REVIEW.md](../templates/REVIEW.md).
-6. Record verification evidence in [templates/QA.md](../templates/QA.md).
+5. Record findings in [templates/review.md](../templates/review.md).
+6. Record verification evidence in [templates/qa.md](../templates/qa.md).
 7. Accept or reject the step.
 
 ## Prompting pattern for Gemini

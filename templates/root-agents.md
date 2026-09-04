@@ -1,4 +1,4 @@
-﻿# AGENTS.md
+# AGENTS.md
 
 ## Role
 
@@ -17,15 +17,15 @@ The Moderator has final authority.
 Use these in order:
 
 1. Moderator instruction
-2. `PRODUCT.md`
-3. approved `DESIGN-SPEC.md` within its bounded authority, if present
-4. `ARCHITECTURE.md`
-5. `DOMAIN_LANGUAGE.md`
-6. `ROADMAP.md`
-7. active `STEP-XX.md`
+2. `product.md`
+3. approved `design-spec.md` within its bounded authority, if present
+4. `architecture.md`
+5. `domain-language.md`
+6. `roadmap.md`
+7. active `step-xx.md`
 8. relevant code, tests, docs, and prototype evidence
 
-`DESIGN-SPEC.md` is authoritative only for approved user-facing visual behavior, interaction intent, screen composition, component states and variants, accessibility expectations, and user-facing terminology/content presentation. Technical matters remain under Tech Lead authority.
+`design-spec.md` is authoritative only for approved user-facing visual behavior, interaction intent, screen composition, component states and variants, accessibility expectations, and user-facing terminology/content presentation. Technical matters remain under Tech Lead authority.
 
 ---
 
@@ -35,12 +35,12 @@ When shaping architecture, roadmap, or Steps:
 
 - Keep Steps small, coherent, and verifiable.
 - Cite Product requirement IDs.
-- Cite relevant Design IDs from `DESIGN-SPEC.md` when present.
+- Cite relevant Design IDs from `design-spec.md` when present.
 - Record Reference Implementation disposition when prototype code is relevant.
-- If Claude Design will implement from its own prototype, record accepted, modified, rejected, and mandatory-divergence prototype assumptions in `STEP-XX.md`.
+- If Claude Design will implement from its own prototype, record accepted, modified, rejected, and mandatory-divergence prototype assumptions in `step-xx.md`.
 - Do not silently resolve artifact conflicts; name the chosen resolution.
 
-When the Prototype Ceremony ran, inspect the complete prototype inventory, view all in-scope flows, read all architecturally relevant prototype files, evaluate `ARCHITECTURE-NOTES.md` evidence and confidence, and sample supporting files as needed.
+When the Prototype Ceremony ran, inspect the complete prototype inventory, view all in-scope flows, read all architecturally relevant prototype files, evaluate `architecture-notes.md` evidence and confidence, and sample supporting files as needed.
 
 ---
 
@@ -48,14 +48,14 @@ When the Prototype Ceremony ran, inspect the complete prototype inventory, view 
 
 When reviewing Development Team output:
 
-1. Compare implementation against the active `STEP-XX.md`.
-2. Check alignment with `ARCHITECTURE.md`.
-3. Check alignment with `DOMAIN_LANGUAGE.md`.
+1. Compare implementation against the active `step-xx.md`.
+2. Check alignment with `architecture.md`.
+3. Check alignment with `domain-language.md`.
 4. Check relevant Design IDs without treating prototype code as authoritative.
 5. Check Reference Implementation disposition.
 6. Check tests, maintainability, security, and scope.
 
-Write findings in `REVIEW.md`. QA runs after Tech Lead approval.
+Write findings in `review.md`. QA runs after Tech Lead approval.
 
 ---
 
@@ -81,4 +81,4 @@ Default: `minimal` for review tasks, `options` for planning and Step design task
 
 ---
 
-MOD-W v4.0.1 - Moderated AI Development Workflow - https://github.com/fpmcguire/mod-w
+MOD-W v5 - Moderated AI Development Workflow - https://github.com/fpmcguire/mod-w

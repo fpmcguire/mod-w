@@ -30,7 +30,7 @@ In MOD-W v3, Claude Code is the **default** agent for the **Development Team** r
 
 Cross-validation is intentional: Codex plans and reviews; Claude Code implements. Model diversity at the Tech Lead / Dev Team boundary is MOD-W's primary quality lever.
 
-Claude Code does **not** generate roadmaps, write architecture docs, or perform Tech Lead review. It owns the Development Team role only: implementing an approved `STEP-XX.md` with minimal, scoped changes.
+Claude Code does **not** generate roadmaps, write architecture docs, or perform Tech Lead review. It owns the Development Team role only: implementing an approved `step-xx.md` with minimal, scoped changes.
 
 ---
 
@@ -38,11 +38,11 @@ Claude Code does **not** generate roadmaps, write architecture docs, or perform 
 
 Claude Code reads `CLAUDE.md` from the repo root at session start, the same way Codex reads `AGENTS.md`. This file is the Development Team's primary configuration artifact — it defines the role, the context files to read, the expected behavior, and the project conventions to follow.
 
-**Who generates it:** The Tech Lead (Codex) generates the project-specific `CLAUDE.md` from `ARCHITECTURE.md` and `DOMAIN_LANGUAGE.md` using the `templates/CLAUDE.md` template, during the Architecture Definition planning session.
+**Who generates it:** The Tech Lead (Codex) generates the project-specific `CLAUDE.md` from `architecture.md` and `domain-language.md` using the `templates/CLAUDE.md` template, during the Architecture Definition planning session.
 
 **Where it lives:** Repo root — `CLAUDE.md`.
 
-**When to update it:** Whenever `ARCHITECTURE.md`, the stack, or project conventions change significantly.
+**When to update it:** Whenever `architecture.md`, the stack, or project conventions change significantly.
 
 ---
 
@@ -50,7 +50,7 @@ Claude Code reads `CLAUDE.md` from the repo root at session start, the same way 
 
 | Claude Code owns                                              | MOD-W owns                                                  |
 | ------------------------------------------------------------- | ----------------------------------------------------------- |
-| Reading `CLAUDE.md` and `STEP-XX.md` at session start        | Moderator go/no-go authority at every gate                  |
+| Reading `CLAUDE.md` and `step-xx.md` at session start        | Moderator go/no-go authority at every gate                  |
 | Restating the step and proposing a plan before writing code   | Moderator approval of the plan before implementation begins |
 | Implementing the step with minimal, scoped changes            | Moderator review of the diff in the Workbench               |
 | Running a blocking build gate before handoff                  | Tech Lead review of implementation for architectural fit    |
@@ -63,16 +63,16 @@ Claude Code does **not** merge code, override quality gates, or make scope decis
 ## Setup
 
 1. **Complete the core MOD-W artifacts first.**
-   Ensure `PRODUCT.md`, `ARCHITECTURE.md`, `DOMAIN_LANGUAGE.md`, `AGENTS.md`, and a project-specific `CLAUDE.md` exist and are approved before starting a Development Team session.
+   Ensure `product.md`, `architecture.md`, `domain-language.md`, `AGENTS.md`, and a project-specific `CLAUDE.md` exist and are approved before starting a Development Team session.
 
 2. **Install Claude Code.**
    Claude Code is available as a CLI (`npm install -g @anthropic-ai/claude-code`) and as a VS Code extension (search **Claude Code** in the Extensions panel). Both read the same `CLAUDE.md` and share conversation history.
 
 3. **Prepare the step brief.**
-   Ensure the active `STEP-XX.md` is approved by the Moderator and Tech Lead before handing it to Claude Code. An ambiguous or over-scoped step brief is a Moderator issue, not a Development Team issue.
+   Ensure the active `step-xx.md` is approved by the Moderator and Tech Lead before handing it to Claude Code. An ambiguous or over-scoped step brief is a Moderator issue, not a Development Team issue.
 
 4. **Start a Claude Code session.**
-   In the VS Code extension, open the Claude Code panel. Provide the path to `STEP-XX.md` as the first message. Claude Code reads `CLAUDE.md` automatically and begins with a plan.
+   In the VS Code extension, open the Claude Code panel. Provide the path to `step-xx.md` as the first message. Claude Code reads `CLAUDE.md` automatically and begins with a plan.
 
 ---
 
@@ -82,8 +82,8 @@ Claude Code does **not** merge code, override quality gates, or make scope decis
 
 **Goal:** Claude Code reads its role and the step before touching any files.
 
-- **Moderator → Claude Code:** Provide the path to the active `STEP-XX.md`.
-- **Claude Code:** Reads `CLAUDE.md`, `STEP-XX.md`, `ARCHITECTURE.md`, `AGENTS.md`, and `DOMAIN_LANGUAGE.md`. Restates the step in its own words so the Moderator can confirm understanding before proceeding.
+- **Moderator → Claude Code:** Provide the path to the active `step-xx.md`.
+- **Claude Code:** Reads `CLAUDE.md`, `step-xx.md`, `architecture.md`, `AGENTS.md`, and `domain-language.md`. Restates the step in its own words so the Moderator can confirm understanding before proceeding.
 - **Gate:** The Moderator confirms the restatement is correct. Misunderstandings are corrected before any plan is proposed.
 
 ### 2. Plan Mode — implementation options gate
@@ -103,26 +103,26 @@ Claude Code does **not** merge code, override quality gates, or make scope decis
 
 ### 4. QA SubAgent
 
-**Goal:** Validate that acceptance checks in `STEP-XX.md` are met.
+**Goal:** Validate that acceptance checks in `step-xx.md` are met.
 
 - **Claude Code:** Spawns a QA SubAgent automatically after the build gate passes.
-- **QA SubAgent:** Reads the implementation and `STEP-XX.md` acceptance checks. Produces `QA.md` with outcomes, a manual check list, and known limitations. Flags any checks requiring human or browser verification.
-- **Gate:** The Moderator reviews `QA.md`. Items requiring manual verification are checked in the Workbench. If acceptance checks are not met, findings go back to the Development Team.
+- **QA SubAgent:** Reads the implementation and `step-xx.md` acceptance checks. Produces `qa.md` with outcomes, a manual check list, and known limitations. Flags any checks requiring human or browser verification.
+- **Gate:** The Moderator reviews `qa.md`. Items requiring manual verification are checked in the Workbench. If acceptance checks are not met, findings go back to the Development Team.
 
 ### 5. Product Owner validation SubAgent
 
-**Goal:** Confirm the step delivers what was intended in `PRODUCT.md`.
+**Goal:** Confirm the step delivers what was intended in `product.md`.
 
 - **Claude Code:** Spawns a Product Owner SubAgent after QA passes.
-- **Product Owner SubAgent:** Validates completed work against `STEP-XX.md` acceptance intent and signs off.
+- **Product Owner SubAgent:** Validates completed work against `step-xx.md` acceptance intent and signs off.
 - **Gate:** The Moderator reviews the sign-off. The step is not marked ready for Tech Lead review until both QA and Product Owner SubAgents have completed.
 
 ### 6. Tech Lead review
 
 **Goal:** Verify architectural fit, naming consistency, and maintainability.
 
-- **Moderator → Codex (Tech Lead):** Ask Codex to review the Development Team's output against the active `STEP-XX.md`.
-- **Codex:** Produces a structured `REVIEW.md` classifying findings as **must-fix** or **nice-to-have**.
+- **Moderator → Codex (Tech Lead):** Ask Codex to review the Development Team's output against the active `step-xx.md`.
+- **Codex:** Produces a structured `review.md` classifying findings as **must-fix** or **nice-to-have**.
 - **Gate:** Must-fix items return to the Development Team. Nice-to-haves are logged for a future step. The step is not accepted until all must-fix items are resolved.
 
 ---
@@ -185,7 +185,7 @@ For a full account of the Tech Lead (Codex) side of this setup, see [modw-with-c
 
 - **Approve `CLAUDE.md` before the first Dev Team session.** A Development Team prompt that lacks correct stack, naming conventions, or build commands will produce output the Moderator cannot safely accept.
 - **Do not skip Plan Mode.** The implementation options gate exists to catch misunderstandings before they become diffs. A two-minute plan review is cheaper than a revert.
-- **Keep steps narrow.** If `STEP-XX.md` has more than 5–7 acceptance checks, return it to the Tech Lead to split before handing it to Claude Code.
+- **Keep steps narrow.** If `step-xx.md` has more than 5–7 acceptance checks, return it to the Tech Lead to split before handing it to Claude Code.
 - **Treat the build gate as non-negotiable.** Do not accept a step that did not pass a clean build and test run inside the Claude Code session.
 - **Commit before switching agents.** If you hand work from Claude Code back to Codex for review, commit first so Codex reads the actual output.
 - **Clean up worktree branches.** After each session, verify leftover `claude/` branches are pruned. One branch per active session is the right state.
@@ -199,10 +199,10 @@ For a full account of the Tech Lead (Codex) side of this setup, see [modw-with-c
 | **Session start**        | Claude Code (Dev Team)         | Step understood and confirmed                        |
 | **Plan Mode**            | Claude Code (Dev Team)         | Implementation approach approved by Moderator        |
 | **Implementation**       | Claude Code (Dev Team)         | Step implemented, build gate passed                  |
-| **QA**                   | Claude Code SubAgent           | `QA.md` with acceptance check outcomes               |
+| **QA**                   | Claude Code SubAgent           | `qa.md` with acceptance check outcomes               |
 | **PO validation**        | Claude Code SubAgent           | Product Owner sign-off                               |
-| **Tech Lead review**     | Codex (Tech Lead)              | Must-fix / nice-to-have findings in `REVIEW.md`      |
-| **Accept**               | Moderator (human)              | Git tag, `ROADMAP.md` advanced                       |
+| **Tech Lead review**     | Codex (Tech Lead)              | Must-fix / nice-to-have findings in `review.md`      |
+| **Accept**               | Moderator (human)              | Git tag, `roadmap.md` advanced                       |
 
 ---
 

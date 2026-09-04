@@ -1,4 +1,4 @@
-﻿# Design Spec - {{PROJECT_NAME}}
+# Design Spec - {{PROJECT_NAME}}
 
 **Date:** {{DATE}}
 **Designer:** {{DESIGNER_NAME}}
@@ -11,7 +11,7 @@
 
 After Product Owner and Moderator approval, this spec is authoritative for user-facing visual behavior, interaction intent, screen composition, component states and variants, accessibility expectations, and approved user-facing terminology and content presentation.
 
-It is not independently authoritative for production file paths, service or module boundaries, framework or library choices, canonical domain types, internal implementation names, test implementation strategy, or technical component decomposition. Those decisions remain under Tech Lead authority in `ARCHITECTURE.md`, `DOMAIN_LANGUAGE.md`, and `STEP-XX.md`.
+It is not independently authoritative for production file paths, service or module boundaries, framework or library choices, canonical domain types, internal implementation names, test implementation strategy, or technical component decomposition. Those decisions remain under Tech Lead authority in `architecture.md`, `domain-language.md`, and `step-xx.md`.
 
 The prototype is evidence for this spec, not an authoritative production source.
 
@@ -47,9 +47,9 @@ Product Owner and Moderator approval are required before this spec becomes autho
 
 ## DESIGN.md Policy
 
-`DESIGN-SPEC.md` is the canonical MOD-W design artifact. A separate `DESIGN.md` is optional project documentation for broader design-system foundations, brand language, or durable visual principles.
+`design-spec.md` is the canonical MOD-W design artifact. A separate `DESIGN.md` is optional project documentation for broader design-system foundations, brand language, or durable visual principles.
 
-When both exist, `DESIGN.md` contains reusable principles and global design-system guidance; `DESIGN-SPEC.md` contains product-specific screens, components, states, interactions, traceability, and approval. Reference `DESIGN.md` instead of duplicating token catalogues here.
+When both exist, `DESIGN.md` contains reusable principles and global design-system guidance; `design-spec.md` contains product-specific screens, components, states, interactions, traceability, and approval. Reference `DESIGN.md` instead of duplicating token catalogues here.
 
 ---
 
@@ -86,7 +86,7 @@ When both exist, `DESIGN.md` contains reusable principles and global design-syst
 
 ## 3. Component Library
 
-> One section per component. For each component document: name (from `DOMAIN_LANGUAGE.md`), one-sentence purpose, states (default / hover / active / disabled / loading / empty / error), variants, and `data-testid` convention.
+> One section per component. For each component document: name (from `domain-language.md`), one-sentence purpose, states (default / hover / active / disabled / loading / empty / error), variants, and `data-testid` convention.
 
 ### 3.x {{COMPONENT_NAME}}
 
@@ -123,9 +123,9 @@ When both exist, `DESIGN.md` contains reusable principles and global design-syst
 
 ---
 
-## 7. Domain Language Proposals  *(v4)*
+## 7. Domain Language Proposals
 
-> Terms the prototype surfaced that are NOT in `DOMAIN_LANGUAGE.md`. Each entry is a proposal for the Tech Lead to ratify, modify, or reject during Architecture Definition. Do not treat any term here as canonical.
+> Terms the prototype surfaced that are NOT in `domain-language.md`. Each entry is a proposal for the Tech Lead to ratify, modify, or reject during Architecture Definition. Do not treat any term here as canonical.
 
 | Proposed term | Form (type / value / both) | Definition | Rationale | First appearance |
 | ------------- | -------------------------- | ---------- | --------- | ---------------- |
@@ -140,13 +140,13 @@ If no terms proposed, state "None proposed."
 - Only define components required for current or near-term Steps
 - Do not design beyond approved PRODUCT scope
 - Each in-scope screen, major component, and significant interaction must have a Design ID and Product requirement mapping
-- When `ROADMAP.md` exists, connect Design IDs to the first implementation Step
+- When `roadmap.md` exists, connect Design IDs to the first implementation Step
 
 ---
 
 ## 9. UI Scope Rules
 
-- Only implement UI elements in current `STEP-XX.md`
+- Only implement UI elements in current `step-xx.md`
 - Future states must not be implemented early
 - Design supports incremental delivery
 
@@ -159,4 +159,4 @@ If no terms proposed, state "None proposed."
 
 ---
 
-MOD-W v4.0.1
+MOD-W v5

@@ -90,14 +90,14 @@ By splitting responsibilities, Moderated AI Development Workflow makes sure no s
 
 Instead of burying decisions inside chat logs, Moderated AI Development Workflow uses a small set of shared artifacts:
 
-- `PRODUCT.md` – what we are building and why
-- `ARCHITECTURE.md` – how we are structuring it
-- `ROADMAP.md` – ordered list of Steps
-- `STEP-XX.md` – brief for a single Step
-- `REVIEW.md` – review decisions per Step
-- `QA.md` – verification evidence per Step
-- `DOMAIN_LANGUAGE.md` – shared vocabulary
-- `AI_AGENTS.md` – rules and conventions for AI agents
+- `product.md` – what we are building and why
+- `architecture.md` – how we are structuring it
+- `roadmap.md` – ordered list of Steps
+- `step-xx.md` – brief for a single Step
+- `review.md` – review decisions per Step
+- `qa.md` – verification evidence per Step
+- `domain-language.md` – shared vocabulary
+- `ai-agents.md` – rules and conventions for AI agents
 
 Vibe coding tends to generate code first and documentation later (if at all).  
 Moderated AI Development Workflow insists that **intent and design are captured in artifacts before and alongside code**.
@@ -106,8 +106,8 @@ Moderated AI Development Workflow insists that **intent and design are captured 
 
 Each Step in Moderated AI Development Workflow has an explicit **quality gate**:
 
-- defined in `STEP-XX.md`
-- evaluated in `REVIEW.md` and `QA.md`
+- defined in `step-xx.md`
+- evaluated in `review.md` and `qa.md`
 - enforced by the Moderator in the Workbench
 
 A Step is not “done” because the model says so. It is done when:

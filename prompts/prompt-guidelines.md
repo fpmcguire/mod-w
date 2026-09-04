@@ -118,7 +118,7 @@ This is useful for:
 Good example:
 
 > You are the Tech Lead.  
-> Here are excerpts from `ARCHITECTURE.md`, `DOMAIN_LANGUAGE.md`, and `STEP-03.md`.  
+> Here are excerpts from `architecture.md`, `domain-language.md`, and `STEP-03.md`.  
 > Answer at `options` depth.  
 > Tell me whether this Step is too large, propose a tighter version if needed, and list the likely files affected.
 
@@ -132,11 +132,11 @@ Use prompts to reinforce MOD-W discipline:
 - ask what is out of scope
 - ask what could break
 - ask how acceptance checks will be verified
-- ask whether naming matches `DOMAIN_LANGUAGE.md`
-- ask whether the implementation drifted from `PRODUCT.md` or `ARCHITECTURE.md`
+- ask whether naming matches `domain-language.md`
+- ask whether the implementation drifted from `product.md` or `architecture.md`
 
 These questions help the Moderator stay in control.
 
 ---
 
-MOD-W v4.0.1 · Moderated AI Development Workflow · https://github.com/fpmcguire/mod-w
+MOD-W v5 · Moderated AI Development Workflow · https://github.com/fpmcguire/mod-w

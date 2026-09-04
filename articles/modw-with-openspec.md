@@ -20,10 +20,10 @@ OpenSpec operates on a **Change Management** model where every feature or fix li
 
 | OpenSpec Artifact | MOD-W Artifact(s)             | MOD-W Purpose                                                |
 | :---------------- | :---------------------------- | :----------------------------------------------------------- |
-| `openspec/specs/` | `PRODUCT.md`                  | The "Source of Truth" representing the current system state. |
-| `proposal.md`     | `ROADMAP.md` / `STEP-XX.md`   | The "Why" and "What" of a specific change delta.             |
-| `design.md`       | `ARCHITECTURE.md`             | Technical approach, trade-offs, and decisions.               |
-| `tasks.md`        | `STEP-XX.md` (Implementation) | The concrete checklist for the AI agent.                     |
+| `openspec/specs/` | `product.md`                  | The "Source of Truth" representing the current system state. |
+| `proposal.md`     | `roadmap.md` / `step-xx.md`   | The "Why" and "What" of a specific change delta.             |
+| `design.md`       | `architecture.md`             | Technical approach, trade-offs, and decisions.               |
+| `tasks.md`        | `step-xx.md` (Implementation) | The concrete checklist for the AI agent.                     |
 | `archive/`        | Git History / Tags            | The audit trail of validated and merged changes.             |
 
 ---
@@ -42,7 +42,7 @@ OpenSpec operates on a **Change Management** model where every feature or fix li
 - **Moderator**
   - Controls the **Archive** phase.
   - Performs the final **Workbench** verification (build/test/UX).
-  - Signs off on the `REVIEW.md` and `QA.md` before the change is merged into the Source of Truth.
+  - Signs off on the `review.md` and `qa.md` before the change is merged into the Source of Truth.
 
 ---
 
@@ -70,14 +70,14 @@ OpenSpec operates on a **Change Management** model where every feature or fix li
 
 - **OpenSpec:** Use `/opsx:verify` to validate that all requirements in the spec delta are implemented.
 - **MOD-W:** The Moderator performs a manual code review against the `design.md` and recorded scenarios.
-- **Gate:** Record evidence in `QA.md`. The implementation must pass all "GIVEN/WHEN/THEN" scenarios defined in the proposal.
+- **Gate:** Record evidence in `qa.md`. The implementation must pass all "GIVEN/WHEN/THEN" scenarios defined in the proposal.
 
 ### 4. Archiving ↔ Step Closure
 
 **Goal:** Merge the validated change into the permanent record.
 
 - **OpenSpec:** Run `/opsx:archive` (or `/opsx:sync`) to move the delta into the `openspec/specs/` source of truth.
-- **MOD-W:** The Moderator marks the Step as **Done** in the `ROADMAP.md` and creates a Git tag.
+- **MOD-W:** The Moderator marks the Step as **Done** in the `roadmap.md` and creates a Git tag.
 
 ---
 
@@ -94,7 +94,7 @@ OpenSpec operates on a **Change Management** model where every feature or fix li
 
 ## Best practices
 
-- **Brownfield Focus:** Use OpenSpec's ability to "capture existing state" to build the `PRODUCT.md` and `ARCHITECTURE.md` incrementally if they don't already exist.
+- **Brownfield Focus:** Use OpenSpec's ability to "capture existing state" to build the `product.md` and `architecture.md` incrementally if they don't already exist.
 - **Token Efficiency:** Keep change deltas small. If a proposal has more than 5-7 major tasks, break it into two MOD-W Steps.
 - **Living Documentation:** Ensure the **Archive** phase is never skipped; this ensures your MOD-W "Source of Truth" never rots.
 
@@ -109,7 +109,7 @@ This detailed section outlines the end-to-end lifecycle of a project using **MOD
 Before writing code, you must establish the "Source of Truth" for your codebase.
 
 - **Initialize OpenSpec:** Run `openspec init` to create the global `openspec/specs/` directory.
-- **Establish the Baseline:** Use the `/opsx:explore` command to have the AI analyze your existing codebase and generate a project-wide `PRODUCT.md` and initial specs.
+- **Establish the Baseline:** Use the `/opsx:explore` command to have the AI analyze your existing codebase and generate a project-wide `product.md` and initial specs.
 - **MOD-W Governance:** The **Moderator** and **Tech Lead** review these baseline specs to ensure the AI's "mental model" of the system matches the actual business intent and architecture.
 
 ### **2. Proposal & Design (The "What" and "How")**
@@ -135,7 +135,7 @@ The implementation phase is strictly bound by the approved specifications.
 OpenSpec confirms the code matches the spec, but MOD-W confirms the code is "production-ready".
 
 - **Workbench Verification:** The **Moderator** pulls the changes into their local environment and runs manual UX checks, performance tests, and security scans.
-- **The Artifact Sign-off:** The Moderator updates `REVIEW.md` and `QA.md` with final findings. If accepted, they give the final command to integrate the change.
+- **The Artifact Sign-off:** The Moderator updates `review.md` and `qa.md` with final findings. If accepted, they give the final command to integrate the change.
 
 ### **5. Archiving & Sync (The "Finished Product")**
 
@@ -150,11 +150,11 @@ The change is only "finished" when it moves from a delta to the system's permane
 
 | Phase      | Command(s)                     | Lead Role     | MOD-W Outcome                         |
 | :--------- | :----------------------------- | :------------ | :------------------------------------ |
-| **Setup**  | `openspec init` / `explore`    | Tech Lead     | Validated baseline `PRODUCT.md`.      |
+| **Setup**  | `openspec init` / `explore`    | Tech Lead     | Validated baseline `product.md`.      |
 | **Define** | `/opsx:new` / `/opsx:continue` | Product Owner | Approved `proposal.md` & `specs`.     |
 | **Plan**   | `/opsx:continue`               | Tech Lead     | Approved `design.md` & `tasks.md`.    |
 | **Build**  | `/opsx:apply`                  | Dev Team      | Verified implementation via `verify`. |
-| **Finish** | `/opsx:archive`                | Moderator     | `REVIEW.md` sign-off & spec sync.     |
+| **Finish** | `/opsx:archive`                | Moderator     | `review.md` sign-off & spec sync.     |
 
 ---
 

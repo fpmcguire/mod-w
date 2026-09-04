@@ -37,11 +37,11 @@ Codex does **not** replace the Moderator, Product Owner, or Development Team. It
 
 Codex reads `AGENTS.md` from the repo root at session start, the same way Claude Code reads `CLAUDE.md`. This file is the Tech Lead's primary configuration artifact for Codex — it defines the role, the context files to read, the expected outputs, and the conventions to follow.
 
-**Who generates it:** The Tech Lead (Codex) generates `AGENTS.md` from the project's `ARCHITECTURE.md` and `DOMAIN_LANGUAGE.md` using the `templates/AGENTS.md` template, during the Architecture Definition planning session.
+**Who generates it:** The Tech Lead (Codex) generates `AGENTS.md` from the project's `architecture.md` and `domain-language.md` using the `templates/root-agents.md` template, during the Architecture Definition planning session.
 
 **Where it lives:** Repo root — `AGENTS.md`.
 
-**When to update it:** Whenever `ARCHITECTURE.md`, the stack, or project conventions change.
+**When to update it:** Whenever `architecture.md`, the stack, or project conventions change.
 
 ---
 
@@ -50,7 +50,7 @@ Codex reads `AGENTS.md` from the repo root at session start, the same way Claude
 | Codex owns                                             | MOD-W owns                                               |
 | ------------------------------------------------------ | -------------------------------------------------------- |
 | Reading repo files and context docs                    | Moderator go/no-go authority                             |
-| Generating `ROADMAP.md` and `STEP-XX.md`               | Tech Lead approval of roadmap and step briefs            |
+| Generating `roadmap.md` and `step-xx.md`               | Tech Lead approval of roadmap and step briefs            |
 | Reviewing Development Team output                      | Moderator and Tech Lead quality gates                    |
 | Classifying review findings as must-fix / nice-to-have | Moderator decision to accept, reject, or request changes |
 
@@ -61,10 +61,10 @@ Codex does **not** merge code, override quality gates, or make product scope dec
 ## Setup
 
 1. **Complete the core MOD-W artifacts first.**
-   Ensure `PRODUCT.md`, `ARCHITECTURE.md`, and `DOMAIN_LANGUAGE.md` exist and are approved by the Moderator before involving Codex.
+   Ensure `product.md`, `architecture.md`, and `domain-language.md` exist and are approved by the Moderator before involving Codex.
 
 2. **Generate `AGENTS.md`.**
-   The Tech Lead uses the `templates/AGENTS.md` template, filling all `{{PLACEHOLDERS}}` from `ARCHITECTURE.md` and `DOMAIN_LANGUAGE.md`. Place the completed file at the repo root.
+   The Tech Lead uses the `templates/root-agents.md` template, filling all `{{PLACEHOLDERS}}` from `architecture.md` and `domain-language.md`. Place the completed file at the repo root.
 
 3. **Generate `CLAUDE.md`.**
    The Tech Lead also generates `CLAUDE.md` from `templates/CLAUDE.md` for the Development Team (Claude Code). Both files live at the repo root — Codex reads `AGENTS.md`, Claude Code reads `CLAUDE.md`.
@@ -78,25 +78,25 @@ Codex does **not** merge code, override quality gates, or make product scope dec
 
 ### 1. Roadmap generation
 
-**Goal:** Break the approved `PRODUCT.md` into a sequence of small, reviewable steps.
+**Goal:** Break the approved `product.md` into a sequence of small, reviewable steps.
 
-- **Moderator → Codex:** Provide `PRODUCT.md` and `ARCHITECTURE.md`. Ask Codex to generate `ROADMAP.md`.
-- **Codex:** Reads both files, produces an ordered `ROADMAP.md` with one goal and one set of acceptance checks per step.
+- **Moderator → Codex:** Provide `product.md` and `architecture.md`. Ask Codex to generate `roadmap.md`.
+- **Codex:** Reads both files, produces an ordered `roadmap.md` with one goal and one set of acceptance checks per step.
 - **Gate:** The Moderator and Tech Lead review the roadmap for scope, ordering, and feasibility before any step is implemented.
 
 ### 2. Step brief generation
 
-**Goal:** Produce a single, unambiguous `STEP-XX.md` for the Development Team to implement.
+**Goal:** Produce a single, unambiguous `step-xx.md` for the Development Team to implement.
 
-- **Moderator → Codex:** Reference the approved `ROADMAP.md` entry. Ask Codex to generate `STEP-XX.md`.
-- **Codex:** Reads `ROADMAP.md`, `ARCHITECTURE.md`, and `DOMAIN_LANGUAGE.md`, then produces a step brief with goal, scope, inputs, out-of-scope items, and acceptance checks.
+- **Moderator → Codex:** Reference the approved `roadmap.md` entry. Ask Codex to generate `step-xx.md`.
+- **Codex:** Reads `roadmap.md`, `architecture.md`, and `domain-language.md`, then produces a step brief with goal, scope, inputs, out-of-scope items, and acceptance checks.
 - **Gate:** The Moderator confirms the step brief is clear and complete before handing it to the Development Team. Ambiguous or over-scoped briefs go back to Codex for revision.
 
 ### 3. Development Team implementation
 
 **Goal:** Implement the approved step.
 
-- **Moderator → Development Team (Claude Code):** Provide the confirmed `STEP-XX.md`.
+- **Moderator → Development Team (Claude Code):** Provide the confirmed `step-xx.md`.
 - **Claude Code:** Reads `CLAUDE.md` and the step brief, restates the step, proposes a plan, and waits for Moderator approval before writing code.
 - **Gate:** Moderator reviews the diff in the Workbench (VS Code). Minor issues fixed directly; significant issues returned to the Development Team with feedback.
 
@@ -104,16 +104,16 @@ Codex does **not** merge code, override quality gates, or make product scope dec
 
 **Goal:** Validate the implementation for architectural fit, naming consistency, and maintainability.
 
-- **Moderator → Codex:** Ask Codex to review the Development Team's output against the active `STEP-XX.md`.
+- **Moderator → Codex:** Ask Codex to review the Development Team's output against the active `step-xx.md`.
 - **Codex:** Reads changed files and the step brief, then produces a structured review classifying findings as **must-fix** or **nice-to-have**.
-- **Gate:** Moderator records findings in `REVIEW.md`. Must-fix items return to the Development Team; nice-to-haves are logged for a future step. The step is not accepted until all must-fix items are resolved.
+- **Gate:** Moderator records findings in `review.md`. Must-fix items return to the Development Team; nice-to-haves are logged for a future step. The step is not accepted until all must-fix items are resolved.
 
 ### 5. Acceptance and tagging
 
 **Goal:** Close the step and advance the roadmap.
 
-- **Moderator:** Confirms all acceptance checks pass, `REVIEW.md` and `QA.md` are complete.
-- **Moderator:** Creates an annotated Git tag for the step and marks it done in `ROADMAP.md`.
+- **Moderator:** Confirms all acceptance checks pass, `review.md` and `qa.md` are complete.
+- **Moderator:** Creates an annotated Git tag for the step and marks it done in `roadmap.md`.
 - The next step cycle begins at phase 2.
 
 ---
@@ -138,7 +138,7 @@ Codex (Tech Lead) and Claude Code (Development Team) are designed to work alongs
 - **Approve `AGENTS.md` before the first Codex session.** A Tech Lead prompt that lacks correct stack or naming conventions will produce a roadmap the Development Team cannot safely follow.
 - **Keep steps narrow.** If Codex proposes a step with more than 5–7 acceptance checks, ask it to split the step before handing it to the Development Team.
 - **Use Codex reviews consistently.** Every completed step should pass through a Codex Tech Lead review before Moderator acceptance — not just complex ones.
-- **Update `AGENTS.md` when architecture changes.** If `ARCHITECTURE.md` is updated mid-project, regenerate `AGENTS.md` so Codex's context stays current.
+- **Update `AGENTS.md` when architecture changes.** If `architecture.md` is updated mid-project, regenerate `AGENTS.md` so Codex's context stays current.
 - **Commit before switching agents.** If you switch between Codex and Claude Code within a step, commit the repo first so both agents read the current file state.
 
 ---
@@ -147,11 +147,11 @@ Codex (Tech Lead) and Claude Code (Development Team) are designed to work alongs
 
 | Phase          | Agent                  | MOD-W outcome                                   |
 | -------------- | ---------------------- | ----------------------------------------------- |
-| **Roadmap**    | Codex (Tech Lead)      | Approved `ROADMAP.md`                           |
-| **Step brief** | Codex (Tech Lead)      | Approved `STEP-XX.md`                           |
+| **Roadmap**    | Codex (Tech Lead)      | Approved `roadmap.md`                           |
+| **Step brief** | Codex (Tech Lead)      | Approved `step-xx.md`                           |
 | **Implement**  | Claude Code (Dev Team) | Step implemented and summarised                 |
-| **Review**     | Codex (Tech Lead)      | Must-fix / nice-to-have findings in `REVIEW.md` |
-| **Accept**     | Moderator (human)      | Git tag, `ROADMAP.md` advanced                  |
+| **Review**     | Codex (Tech Lead)      | Must-fix / nice-to-have findings in `review.md` |
+| **Accept**     | Moderator (human)      | Git tag, `roadmap.md` advanced                  |
 
 ---
 

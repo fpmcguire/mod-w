@@ -1,6 +1,6 @@
 # Glossary
 
-This glossary defines the core terms used in the Moderated AI Development Workflow methodology. For product-specific domain terms, see the [DOMAIN_LANGUAGE.md](../templates/DOMAIN_LANGUAGE.md) for each project.
+This glossary defines the core terms used in the Moderated AI Development Workflow methodology. For product-specific domain terms, see the [domain-language.md](../templates/domain-language.md) for each project.
 
 ---
 
@@ -11,16 +11,16 @@ An AI model (such as ChatGPT or Claude) assigned a specific role in the Moderate
 A ceremony in which the Tech Lead submits prompts to an AI agent to generate step artifacts. See [ceremonies.md](ceremonies.md).
 
 **Artifact**  
-Any document, file, or record produced during a Moderated AI Development Workflow step or project. Artifacts include PRODUCT.md, ARCHITECTURE.md, STEP-XX.md, REVIEW.md, and QA.md. See [artifacts.md](artifacts.md).
+Any document, file, or record produced during a Moderated AI Development Workflow step or project. Artifacts include product.md, architecture.md, step-xx.md, review.md, and qa.md. See [artifacts.md](artifacts.md).
 
 **Ceremony**  
 A structured, time-boxed event in the Moderated AI Development Workflow process. Ceremonies include Kickoff, Step Planning, AI Work Session, Step Review, QA Verification, and Retrospective. See [ceremonies.md](ceremonies.md).
 
 **Domain language**  
-The agreed vocabulary of a product and its problem space, captured in the DOMAIN_LANGUAGE.md and embedded in all AI prompts. See [domain-language.md](domain-language.md).
+The agreed vocabulary of a product and its problem space, captured in the domain-language.md and embedded in all AI prompts. See [domain-language.md](domain-language.md).
 
-**DOMAIN_LANGUAGE.md**  
-A table that records canonical domain terms, their definitions, their code identifiers, and terms to avoid. See [templates/DOMAIN_LANGUAGE.md](../templates/DOMAIN_LANGUAGE.md).
+**domain-language.md**  
+A table that records canonical domain terms, their definitions, their code identifiers, and terms to avoid. See [templates/domain-language.md](../templates/domain-language.md).
 
 **Hallucination**  
 AI-generated content that is factually incorrect, references non-existent APIs or libraries, or invents information. A key target of the moderation quality gate.
@@ -32,16 +32,16 @@ The human responsible for reviewing AI-generated artifacts against quality gate 
 The instruction given to an AI agent to generate a specific artifact. Prompts are written, stored, and reviewed as first-class engineering artifacts. See [principles.md](principles.md).
 
 **Quality gate**  
-An explicit checklist of criteria that AI-generated artifacts must satisfy before acceptance. Gates are defined in STEP-XX.md and evaluated in REVIEW.md. See [quality-gates.md](quality-gates.md).
+An explicit checklist of criteria that AI-generated artifacts must satisfy before acceptance. Gates are defined in step-xx.md and evaluated in review.md. See [quality-gates.md](quality-gates.md).
 
-**ROADMAP.md**  
-A project-level artifact listing all planned steps, their order, and their current status. See [templates/ROADMAP.md](../templates/ROADMAP.md).
+**roadmap.md**  
+A project-level artifact listing all planned steps, their order, and their current status. See [templates/roadmap.md](../templates/roadmap.md).
 
 **Step**  
 The fundamental unit of work in MOD-W. A step is a bounded, reviewable slice of AI-assisted development with a defined scope, quality gate, and lifecycle. See [step-lifecycle.md](step-lifecycle.md).
 
-**STEP-XX.md**
-An artifact that defines a single step: its scope, inputs, expected outputs, acceptance criteria, assigned AI agent, and quality gate level. See [templates/STEP-XX.md](../templates/STEP-XX.md).
+**step-xx.md**
+An artifact that defines a single step: its scope, inputs, expected outputs, acceptance criteria, assigned AI agent, and quality gate level. See [templates/step-xx.md](../templates/step-xx.md).
 
 **Tech Lead**  
 The human responsible for technical architecture, prompt authoring, and moderation of AI output. See [roles.md](roles.md).
@@ -51,4 +51,4 @@ The Workbench is the human-operated development environment used by the Moderato
 
 ---
 
-MOD-W v4.0.1 · Moderated AI Development Workflow · https://github.com/fpmcguire/mod-w
+MOD-W v5 · Moderated AI Development Workflow · https://github.com/fpmcguire/mod-w

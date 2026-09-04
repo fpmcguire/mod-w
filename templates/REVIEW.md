@@ -1,4 +1,4 @@
-﻿# Review: Step {{STEP_NUMBER}}
+# Review: Step {{STEP_NUMBER}}
 
 **Project:** {{PROJECT_NAME}}
 **Step:** {{STEP_NUMBER}} - {{STEP_TITLE}}
@@ -16,7 +16,7 @@ Pass / Pass with changes / Rework required
 
 ## Scope Check
 
-- [ ] Output matches `STEP-XX.md` scope.
+- [ ] Output matches `step-xx.md` scope.
 - [ ] Product requirements are satisfied.
 - [ ] Relevant Design IDs are satisfied where applicable.
 - [ ] Reference Implementation disposition was honored where applicable.
@@ -51,8 +51,8 @@ Pass / Pass with changes / Rework required
 
 ### Level 2 - Code Quality
 
-- [ ] Follows `ARCHITECTURE.md`.
-- [ ] Naming matches `DOMAIN_LANGUAGE.md`.
+- [ ] Follows `architecture.md`.
+- [ ] Naming matches `domain-language.md`.
 - [ ] Error handling present.
 - [ ] No obvious security issues.
 - [ ] Code is testable.
@@ -85,4 +85,4 @@ Pass / Pass with changes / Rework required
 
 ---
 
-MOD-W v4.0.1
+MOD-W v5

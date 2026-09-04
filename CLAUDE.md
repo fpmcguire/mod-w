@@ -7,6 +7,8 @@
 
 This repository contains the MOD-W methodology itself: documentation, templates, prompts, examples, and supporting project files.
 
+Start with the workflow anchor in `MOD-W.md`.
+
 Use this file as the working agreement for editing this repository safely and consistently.
 
 ## Working Style
@@ -23,11 +25,12 @@ Use this file as the working agreement for editing this repository safely and co
 When relevant, use these in order:
 
 1. the user’s current request
-2. canonical docs in `docs/`
-3. root guidance files such as `CLAUDE.md` and `AGENTS.md`
-4. templates in `templates/`
-5. prompts in `prompts/`
-6. examples and supporting files
+2. the workflow anchor in `MOD-W.md`
+3. canonical docs in `docs/`
+4. root guidance files such as `CLAUDE.md` and `AGENTS.md`
+5. templates in `templates/`
+6. prompts in `prompts/`
+7. examples and supporting files
 
 If files conflict, preserve the current canon and highlight the inconsistency.
 

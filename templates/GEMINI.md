@@ -17,7 +17,7 @@ Cross-check / Reviewer
 
 ## Context Rules
 
-- Start from STEP-XX.md
+- Start from step-xx.md
 - Use R-IDs and D-IDs
 - Expand only if needed
 
@@ -40,4 +40,4 @@ Cross-check / Reviewer
 
 ---
 
-MOD-W v4.0.1
+MOD-W v5

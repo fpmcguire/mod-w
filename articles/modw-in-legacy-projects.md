@@ -1,4 +1,4 @@
-﻿# Introducing Moderated AI Development Workflow into a Legacy Codebase
+# Introducing Moderated AI Development Workflow into a Legacy Codebase
 
 ## Overview
 
@@ -44,16 +44,16 @@ On very small teams, the same person may hold multiple roles. The important part
 
 For legacy, you can start with a very small set of MOD-W docs:
 
-- `PRODUCT.md` – for the specific feature/area you’re touching:
+- `product.md` – for the specific feature/area you’re touching:
   - what problem you’re solving,
   - which users are affected,
   - constraints and non‑goals in the legacy system.
-- `ARCHITECTURE.md` – focused on existing structure:
+- `architecture.md` – focused on existing structure:
   - modules involved,
   - major dependencies,
   - “do not touch” zones.
-- `STEP-XX.md` – for the **one** piece of work you want to run through MOD-W.
-- `REVIEW.md` and `QA.md` – to record what was checked and why it was accepted.
+- `step-xx.md` – for the **one** piece of work you want to run through MOD-W.
+- `review.md` and `qa.md` – to record what was checked and why it was accepted.
 
 You don’t need to document the entire legacy system up front.
 Start with the **slice you are actually changing**.
@@ -90,7 +90,7 @@ Your goal is to prove that **MOD-W can improve clarity and safety** on a small c
 For that first legacy Step:
 
 1. **Shape the Step**
-   - Fill in `STEP-XX.md`:
+   - Fill in `step-xx.md`:
      - current behavior (as observed),
      - desired change,
      - affected files or modules,
@@ -101,7 +101,7 @@ For that first legacy Step:
      - propose changes,
      - suggest tests,
      - draft refactors.
-   - Keep prompts grounded in `PRODUCT.md` and `ARCHITECTURE.md`.
+   - Keep prompts grounded in `product.md` and `architecture.md`.
 
 3. **Moderate in the Workbench**
    - The Moderator:
@@ -111,11 +111,11 @@ For that first legacy Step:
      - inspects diffs with an eye on legacy constraints (“do we risk breaking X?”).
 
 4. **Record REVIEW + QA**
-   - Capture in `REVIEW.md`:
+   - Capture in `review.md`:
      - what changed,
      - issues found and fixed,
      - any compromises made.
-   - Capture in `QA.md`:
+   - Capture in `qa.md`:
      - tests run (automated and manual),
      - results,
      - remaining risks and confidence level.
@@ -153,8 +153,8 @@ A hidden benefit of MOD-W in legacy projects is **structure recovery**:
   - how it was tested,
   - where in the legacy system it lives.
 - Over multiple Steps you naturally accumulate:
-  - clarified architecture in `ARCHITECTURE.md`,
-  - updated terminology in `DOMAIN_LANGUAGE.md`,
+  - clarified architecture in `architecture.md`,
+  - updated terminology in `domain-language.md`,
   - known risk areas recorded in REVIEW/QA notes.
 
 You’re effectively turning a messy system into a **gradually better‑documented system**, one Step at a time.

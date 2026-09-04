@@ -23,9 +23,9 @@ Out of scope (for this Step):
 
 ## Inputs
 
-- `PRODUCT.md` for feature context and workflows.
-- `ARCHITECTURE.md` (frontend section) for stack and structure.
-- `DOMAIN_LANGUAGE.md` entries for “Dashboard”, “Saved View”, “Filters”, “Sort”, “Columns”, and “Active Saved View”.
+- `product.md` for feature context and workflows.
+- `architecture.md` (frontend section) for stack and structure.
+- `domain-language.md` entries for “Dashboard”, “Saved View”, “Filters”, “Sort”, “Columns”, and “Active Saved View”.
 - This Step brief.
 
 ## Required Changes
@@ -58,7 +58,7 @@ Implementation can use dummy data or a simple in-memory store for Saved Views.
 
 ## Files Likely Affected
 
-_(Adjust names to your chosen stack once ARCHITECTURE.md is written.)_
+_(Adjust names to your chosen stack once architecture.md is written.)_
 
 - `src/components/SavedViewsList.*`
 - `src/components/Dashboard.*`
@@ -85,10 +85,10 @@ _(Adjust names to your chosen stack once ARCHITECTURE.md is written.)_
 ## Notes for Reviewers
 
 - Focus review on clarity of component boundaries and state handling.
-- Confirm that naming aligns with `DOMAIN_LANGUAGE.md`.
+- Confirm that naming aligns with `domain-language.md`.
 - Confirm that the Step does not sneak in create/rename/delete logic; those belong to later Steps.
 - Confirm that apply behaviour is visible and testable from the UI, not only through internal state.
 
 ---
 
-MOD-W v4.0.1 · Moderated AI Development Workflow · https://github.com/fpmcguire/mod-w
+MOD-W v5 · Moderated AI Development Workflow · https://github.com/fpmcguire/mod-w

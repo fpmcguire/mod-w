@@ -1,4 +1,4 @@
-﻿# Prototype Ceremony
+# Prototype Ceremony
 
 > Optional kickoff ceremony introduced in MOD-W v4. Run before Architecture Definition when the Moderator decides visual, interaction, chart, animation, or real-time risk warrants a prototype.
 
@@ -6,9 +6,9 @@
 
 ## Purpose
 
-Produce a working clickable prototype, a bounded design specification, and advisory architecture observations before architecture is committed. The prototype surfaces what `PRODUCT.md` alone cannot: visual fidelity, interaction grain, state behavior, simulated integrations, and performance clues that emerge only when the design is forced to run.
+Produce a working clickable prototype, a bounded design specification, and advisory architecture observations before architecture is committed. The prototype surfaces what `product.md` alone cannot: visual fidelity, interaction grain, state behavior, simulated integrations, and performance clues that emerge only when the design is forced to run.
 
-The ceremony preserves MOD-W cross-validation by keeping technical authority with the Tech Lead. `ARCHITECTURE-NOTES.md` is advisory, the prototype is a research artifact, and `ARCHITECTURE.md` is authored by Codex in the Architecture Handoff that follows.
+The ceremony preserves MOD-W cross-validation by keeping technical authority with the Tech Lead. `architecture-notes.md` is advisory, the prototype is a research artifact, and `architecture.md` is authored by Codex in the Architecture Handoff that follows.
 
 ---
 
@@ -31,10 +31,10 @@ The Moderator decides per project and records the decision in the project's `MOD
 
 | Input | Source | Authority |
 | ----- | ------ | --------- |
-| `PRODUCT.md` | Product Owner | Authoritative |
+| `product.md` | Product Owner | Authoritative |
 | Brand assets, reference imagery, written tone descriptions | Moderator | Directional |
-| `templates/DESIGN-SPEC.md` | MOD-W repo | Template |
-| `templates/ARCHITECTURE-NOTES.md` | MOD-W repo | Template |
+| `templates/design-spec.md` | MOD-W repo | Template |
+| `templates/architecture-notes.md` | MOD-W repo | Template |
 | `templates/prototype-README.md` | MOD-W repo | Template |
 | `prompts/designer.md` | MOD-W repo | Role prompt |
 
@@ -44,11 +44,11 @@ The Moderator decides per project and records the decision in the project's `MOD
 
 | Output | Status | Path |
 | ------ | ------ | ---- |
-| `DESIGN-SPEC.md` | Bounded authority after Product Owner and Moderator approval | `mod-w/DESIGN-SPEC.md` |
+| `design-spec.md` | Bounded authority after Product Owner and Moderator approval | `mod-w/design-spec.md` |
 | Clickable prototype | Research artifact, non-authoritative | `prototype/` at repo root |
-| `ARCHITECTURE-NOTES.md` | Advisory evidence for Architecture Definition | `mod-w/ARCHITECTURE-NOTES.md` |
+| `architecture-notes.md` | Advisory evidence for Architecture Definition | `mod-w/architecture-notes.md` |
 
-After approval, `DESIGN-SPEC.md` is authoritative for user-facing visual behavior, interaction intent, screen composition, component states and variants, accessibility expectations, and approved user-facing terminology and content presentation.
+After approval, `design-spec.md` is authoritative for user-facing visual behavior, interaction intent, screen composition, component states and variants, accessibility expectations, and approved user-facing terminology and content presentation.
 
 It is not independently authoritative for production file paths, service or module boundaries, framework or library choices, canonical domain types, internal implementation names, test implementation strategy, or technical component decomposition.
 
@@ -58,7 +58,7 @@ It is not independently authoritative for production file paths, service or modu
 
 ### 1. Brief
 
-The Moderator provides `PRODUCT.md`, assets, references, `prompts/designer.md`, and the three templates.
+The Moderator provides `product.md`, assets, references, `prompts/designer.md`, and the three templates.
 
 ### 2. Restate
 
@@ -80,15 +80,15 @@ The Moderator approves or adjusts the plan.
 
 Claude Design produces:
 
-- `DESIGN-SPEC.md` with Design IDs, traceability, and Approval Record.
+- `design-spec.md` with Design IDs, traceability, and Approval Record.
 - `prototype/` with `prototype/README.md` inventory.
-- `ARCHITECTURE-NOTES.md` with evidence and confidence.
+- `architecture-notes.md` with evidence and confidence.
 
 ### 7. Cross-validation Pause
 
 Before exit, the following reviews run:
 
-- Product Owner reviews `DESIGN-SPEC.md` against `PRODUCT.md` acceptance intent.
+- Product Owner reviews `design-spec.md` against `product.md` acceptance intent.
 - Codex performs a Tech Lead feasibility pre-review of the design, prototype inventory, and architecture notes.
 - Optional independent design review checks visual coherence.
 
@@ -108,14 +108,14 @@ The Moderator accepts or rejects the ceremony output.
 
 The ceremony exits only when:
 
-- `DESIGN-SPEC.md` Approval Record shows Product Owner approval.
-- `DESIGN-SPEC.md` Approval Record shows Moderator approval for Architecture Handoff.
+- `design-spec.md` Approval Record shows Product Owner approval.
+- `design-spec.md` Approval Record shows Moderator approval for Architecture Handoff.
 - Tech Lead feasibility pre-review is recorded, even if concerns remain open for Architecture Handoff.
 - Prototype renders without errors, demonstrates every screen in scope, and matches the spec.
 - `prototype/README.md` includes the full inventory.
-- `ARCHITECTURE-NOTES.md` exists with concrete evidence and honest confidence levels where observations exist.
+- `architecture-notes.md` exists with concrete evidence and honest confidence levels where observations exist.
 
-Approval of `DESIGN-SPEC.md` does not make the prototype authoritative.
+Approval of `design-spec.md` does not make the prototype authoritative.
 
 ---
 
@@ -129,10 +129,10 @@ Existing design or prototype work may be analyzed and backfilled as reference do
 
 - Skipping the cross-validation pause.
 - Treating the prototype as production scaffolding.
-- Treating `DESIGN-SPEC.md` as technical architecture.
+- Treating `design-spec.md` as technical architecture.
 - Allowing the Designer + Prototyper to declare canonical types, file paths, framework choices, or domain terms.
 - Running the ceremony when it is not needed.
 
 ---
 
-MOD-W v4.0.1
+MOD-W v5

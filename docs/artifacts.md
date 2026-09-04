@@ -1,4 +1,4 @@
-﻿# Artifacts
+# Artifacts
 
 Moderated AI Development Workflow is artifact-driven. Each role works against a small set of shared files that keep intent, design, architecture, implementation, and verification aligned.
 
@@ -6,12 +6,15 @@ Moderated AI Development Workflow is artifact-driven. Each role works against a 
 
 ## Locations
 
-In a MOD-W-enabled project, methodology artifacts normally live in `mod-w/`. Two tool config files live at the repo root because the CLI tools read them automatically:
+In a MOD-W-enabled project, methodology artifacts normally live in `mod-w/`. Tool entrypoints and tool-specific config live at the repo root because the CLI tools discover them there:
 
-- `CLAUDE.md` - Development Team config for Claude Code
 - `AGENTS.md` - Tech Lead config for Codex
+- `CLAUDE.md` - Development Team config for Claude Code
+- `.codex/config.toml` - project-scoped Codex settings
+- `.claude/settings.json` - Claude Code settings and optional hook automation
+- `.mcp.json` - shared MCP tool/data connection config
 
-The optional v4 `prototype/` folder also lives at the repo root and must include `prototype/README.md`.
+The optional `prototype/` folder also lives at the repo root and must include `prototype/README.md`.
 
 Templates for each artifact are in `/templates`.
 
@@ -21,40 +24,48 @@ Templates for each artifact are in `/templates`.
 
 | Artifact | Owner (primary) | Location | Purpose |
 | -------- | --------------- | -------- | ------- |
-| `PRODUCT.md` | Product Owner | `mod-w/` | What we are building and why |
-| `DESIGN-SPEC.md` | Designer + Prototyper | `mod-w/` | Bounded visual and interaction design authority after approval |
+| `product.md` | Product Owner | `mod-w/` | What we are building and why |
+| `design-spec.md` | Designer + Prototyper | `mod-w/` | Bounded visual and interaction design authority after approval |
 | `DESIGN.md` (optional) | Designer / Moderator | `mod-w/` or project docs | Durable design-system foundations and brand principles |
-| `ARCHITECTURE-NOTES.md` | Designer + Prototyper | `mod-w/` | Advisory prototype observations with evidence and confidence |
+| `architecture-notes.md` | Designer + Prototyper | `mod-w/` | Advisory prototype observations with evidence and confidence |
 | `prototype/` | Designer + Prototyper | repo root | Non-authoritative research prototype and inventory |
-| `ARCHITECTURE.md` | Tech Lead | `mod-w/` | How the system is built |
-| `DOMAIN_LANGUAGE.md` | Tech Lead | `mod-w/` | Canonical domain and agent language |
-| `ROADMAP.md` | Tech Lead | `mod-w/` | Ordered list of Steps |
-| `STEP-XX.md` | Tech Lead | `mod-w/` | Brief for a single Step |
-| `REVIEW.md` | Tech Lead | `mod-w/` | Technical review verdict and findings per Step |
-| `QA.md` | QA / Tester | `mod-w/` | Test and verification record per Step |
-| `AI_AGENTS.md` | Tech Lead | `mod-w/` | Agent definitions and data-handling decisions |
+| `architecture.md` | Tech Lead | `mod-w/` | How the system is built |
+| `domain-language.md` | Tech Lead | `mod-w/` | Canonical domain and agent language |
+| `roadmap.md` | Tech Lead | `mod-w/` | Ordered list of Steps |
+| `step-xx.md` | Tech Lead | `mod-w/` | Brief for a single Step |
+| `review.md` | Tech Lead | `mod-w/` | Technical review verdict and findings per Step |
+| `qa.md` | QA / Tester | `mod-w/` | Test and verification record per Step |
+| `ai-agents.md` | Tech Lead | `mod-w/` | Agent definitions and data-handling decisions |
+| `cross-validation.md` | Moderator | `mod-w/` | Claude/Codex validation mode and discrepancy protocol |
+| `agents/*.md` | Tech Lead | `mod-w/agents/` | Tool-neutral role definitions |
+| `rules/*.md` | Tech Lead / Moderator | `mod-w/rules/` | Path-scoped architecture, testing, and security constraints |
+| `skills/` | Tech Lead / Moderator | `mod-w/skills/` | Reusable MOD-W procedures, added only when identified |
+| `validation/discrepancies.md` | Moderator | `mod-w/validation/` | Human-resolved Claude/Codex disagreement log |
 | `CLAUDE.md` | Tech Lead | repo root | Development Team role config for Claude Code |
 | `AGENTS.md` | Tech Lead | repo root | Tech Lead role config for Codex |
+| `.codex/config.toml` | Tech Lead / Moderator | repo root | Project-scoped Codex settings |
+| `.claude/settings.json` | Tech Lead / Moderator | repo root | Claude Code settings and hook automation |
+| `.mcp.json` | Tech Lead / Moderator | repo root | Shared MCP tool/data connection config |
 
 ---
 
-## PRODUCT.md
+## product.md
 
 **Owner:** Product Owner
 **Audience:** All roles and agents
 
 Defines the product concept and scope: problem, users, workflows, requirements, constraints, out-of-scope items, and product-level acceptance intent.
 
-`PRODUCT.md` is the main reference for what and why in every Step.
+`product.md` is the main reference for what and why in every Step.
 
 ---
 
-## DESIGN-SPEC.md
+## design-spec.md
 
 **Owner:** Designer + Prototyper
 **Audience:** Product Owner, Tech Lead, Development Team, QA, Moderator
 
-After Product Owner and Moderator approval, `DESIGN-SPEC.md` is authoritative for:
+After Product Owner and Moderator approval, `design-spec.md` is authoritative for:
 
 - user-facing visual behavior
 - interaction intent
@@ -73,27 +84,27 @@ It is not independently authoritative for:
 - test implementation strategy
 - technical component decomposition
 
-Those technical matters remain under Tech Lead authority in `ARCHITECTURE.md`, `DOMAIN_LANGUAGE.md`, and `STEP-XX.md`. Approval of `DESIGN-SPEC.md` does not make the prototype authoritative.
+Those technical matters remain under Tech Lead authority in `architecture.md`, `domain-language.md`, and `step-xx.md`. Approval of `design-spec.md` does not make the prototype authoritative.
 
-`DESIGN-SPEC.md` carries Design IDs such as `DS-001` so screens, components, and significant interactions can trace Product requirements to prototype evidence and first implementation Steps.
+`design-spec.md` carries Design IDs such as `DS-001` so screens, components, and significant interactions can trace Product requirements to prototype evidence and first implementation Steps.
 
 ---
 
 ## DESIGN.md (optional)
 
-`DESIGN-SPEC.md` is the canonical MOD-W design artifact. A separate `DESIGN.md` is optional project documentation for broader design-system foundations, brand language, or durable visual principles.
+`design-spec.md` is the canonical MOD-W design artifact. A separate `DESIGN.md` is optional project documentation for broader design-system foundations, brand language, or durable visual principles.
 
 When both exist:
 
 - `DESIGN.md` contains reusable principles and global design-system guidance.
-- `DESIGN-SPEC.md` contains product-specific screens, components, states, interactions, traceability, and approval.
-- `DESIGN-SPEC.md` references `DESIGN.md` instead of duplicating token catalogues.
+- `design-spec.md` contains product-specific screens, components, states, interactions, traceability, and approval.
+- `design-spec.md` references `DESIGN.md` instead of duplicating token catalogues.
 
 `DESIGN.md` is not required for every project.
 
 ---
 
-## ARCHITECTURE-NOTES.md
+## architecture-notes.md
 
 **Owner:** Designer + Prototyper
 **Audience:** Tech Lead, Moderator
@@ -107,14 +118,14 @@ Records evidence-based observations from prototyping:
 - confidence
 - possible architectural implication
 
-`ARCHITECTURE-NOTES.md` is advisory. Confidence is not architectural authority. The Tech Lead may accept, modify, or reject any implication.
+`architecture-notes.md` is advisory. Confidence is not architectural authority. The Tech Lead may accept, modify, or reject any implication.
 
 ---
 
 ## prototype/
 
 **Owner:** Designer + Prototyper
-**Audience:** Tech Lead, Development Team when referenced by `STEP-XX.md`, QA when validating design intent
+**Audience:** Tech Lead, Development Team when referenced by `step-xx.md`, QA when validating design intent
 
 The repo-root `prototype/` folder is a clickable research artifact. It must include `prototype/README.md` with:
 
@@ -130,29 +141,29 @@ The prototype is not production code and must not be imported into `src/`.
 
 ---
 
-## ARCHITECTURE.md
+## architecture.md
 
 **Owner:** Tech Lead
 **Audience:** Tech Lead, Development Team, Moderator
 
 Captures stack, boundaries, data flow, integration points, test strategy, risks, and architectural decisions. It is the authoritative reference for how and where changes should be made.
 
-`ARCHITECTURE.md` is authored by Codex, never by Claude Design.
+`architecture.md` is authored by Codex, never by Claude Design.
 
 ---
 
-## DOMAIN_LANGUAGE.md
+## domain-language.md
 
 **Owner:** Tech Lead, with Product Owner input
 **Audience:** All roles and agents
 
 Defines canonical domain vocabulary, business meaning, technical meaning, allowed and banned synonyms, and code naming guidance.
 
-The current artifact is `DOMAIN_LANGUAGE.md`; `DOMAIN_LANGUAGE_MATRIX.md` is not an active MOD-W v4 artifact.
+The current artifact is `domain-language.md`; `DOMAIN_LANGUAGE_MATRIX.md` is not an active MOD-W artifact.
 
 ---
 
-## ROADMAP.md
+## roadmap.md
 
 **Owner:** Tech Lead
 **Audience:** All roles and agents
@@ -161,27 +172,27 @@ Lists small, verifiable Steps with goals, sequencing, dependencies, and risks.
 
 ---
 
-## STEP-XX.md
+## step-xx.md
 
 **Owner:** Tech Lead
 **Audience:** Development Team, Tech Lead, QA, Moderator
 
 Defines a single Step: goal, scope, inputs, related requirements, related Design IDs, expected changes, Reference Implementation disposition, acceptance checks, and risks.
 
-`STEP-XX.md` is the active Step artifact. `STEP.md` is stale shorthand and should not be used for current v4 projects.
+`step-xx.md` is the active Step artifact. `STEP.md` is stale shorthand and should not be used for current projects.
 
 ---
 
-## REVIEW.md
+## review.md
 
 **Owner:** Tech Lead
 **Audience:** Tech Lead, Development Team, Moderator, Product Owner
 
-Records the Codex Tech Lead review verdict, findings, acceptance-check mapping, required revisions, and final technical approval. The Moderator uses `REVIEW.md` as input to the final gate but does not replace the Tech Lead review.
+Records the Codex Tech Lead review verdict, findings, acceptance-check mapping, required revisions, and final technical approval. The Moderator uses `review.md` as input to the final gate but does not replace the Tech Lead review.
 
 ---
 
-## QA.md
+## qa.md
 
 **Owner:** QA / Tester, with Moderator final review
 **Audience:** Moderator, Tech Lead, stakeholders
@@ -192,12 +203,57 @@ QA may verify approved design acceptance intent by Design ID, but prototype code
 
 ---
 
-## AI_AGENTS.md
+## ai-agents.md
 
 **Owner:** Tech Lead
 **Audience:** All agents; Moderator
 
 Defines active agents, interfaces, role boundaries, build/test commands, data handling, and tool constraints.
+
+---
+
+## cross-validation.md
+
+**Owner:** Moderator
+**Audience:** Reviewer, Validator, Tech Lead, Moderator
+
+Defines whether Claude and Codex validation runs happen in `parallel` or `sequential` mode. It also defines where disagreements are recorded. Agents re-read this file before each validation pass.
+
+---
+
+## agents/
+
+**Owner:** Tech Lead
+**Audience:** Tool-neutral role runners and Moderator
+
+Contains role definition files such as `architect.md`, `reviewer.md`, `qa.md`, and `validator.md`. These are supporting role descriptions, not root entrypoints.
+
+---
+
+## rules/
+
+**Owner:** Tech Lead / Moderator
+**Audience:** All implementation, review, and validation roles
+
+Contains modular path-scoped constraints such as `architecture.md`, `testing.md`, and `security.md`. These files start empty and are filled only when real project constraints arise.
+
+---
+
+## skills/
+
+**Owner:** Tech Lead / Moderator
+**Audience:** Agents performing reusable MOD-W procedures
+
+Reserved for reusable `SKILL.md` procedures. Do not pre-create empty skill scaffolding; add skills only when a specific procedure becomes reusable.
+
+---
+
+## validation/
+
+**Owner:** Moderator
+**Audience:** Reviewer, Validator, Tech Lead, Moderator
+
+Contains independent validation outputs and `discrepancies.md`, the log of Claude/Codex disagreements that require human resolution.
 
 ---
 
@@ -219,9 +275,36 @@ Configures the Tech Lead role. It lives at the repo root so Codex reads it autom
 
 ---
 
-## Reference Implementation (v4, concept - not a file)
+## .codex/
 
-A Reference Implementation is a candidate implementation produced outside the Development Team role, typically inside `prototype/`. It does not auto-promote to production. The Tech Lead disposes of it in `STEP-XX.md` as:
+**Owner:** Tech Lead / Moderator
+**Audience:** Codex
+
+Contains project-scoped Codex configuration such as model, sandbox, and approval policy. Keep it minimal until the project needs tuning.
+
+---
+
+## .claude/
+
+**Owner:** Tech Lead / Moderator
+**Audience:** Claude Code
+
+Contains Claude Code settings and optional hook automation such as PreToolUse, PostToolUse, and Stop hooks. An empty `{}` settings file is valid when no hooks are configured.
+
+---
+
+## .mcp.json
+
+**Owner:** Tech Lead / Moderator
+**Audience:** All agents using shared MCP servers
+
+Defines shared MCP tool and data connections for the project. An empty `{}` file is valid when no shared MCP connections are configured.
+
+---
+
+## Reference Implementation (concept - not a file)
+
+A Reference Implementation is a candidate implementation produced outside the Development Team role, typically inside `prototype/`. It does not auto-promote to production. The Tech Lead disposes of it in `step-xx.md` as:
 
 - `Adopt as-is`
 - `Adopt with modifications`
@@ -242,13 +325,15 @@ Existing work may be analyzed and backfilled, but it may not be retroactively de
 For each new project or example:
 
 1. Copy templates from `/templates` into the project's `mod-w/` folder.
-2. Place generated `CLAUDE.md` and `AGENTS.md` at the repo root.
-3. Create `PRODUCT.md` first.
-4. Run the optional Prototype Ceremony only when warranted.
-5. Create `DOMAIN_LANGUAGE.md` and `ARCHITECTURE.md` before roadmap and Step work.
-6. Maintain `ROADMAP.md` and `STEP-XX.md` as work is planned.
-7. Update `REVIEW.md` and `QA.md` for every Step.
+2. Add the v5 support folders under `mod-w/`: `agents/`, `rules/`, `skills/`, and `validation/`.
+3. Place generated `CLAUDE.md` and `AGENTS.md` at the repo root.
+4. Add minimal root tool config: `.codex/config.toml`, `.claude/settings.json`, and `.mcp.json`.
+5. Create `product.md` first.
+6. Run the optional Prototype Ceremony only when warranted.
+7. Create `domain-language.md` and `architecture.md` before roadmap and Step work.
+8. Maintain `roadmap.md`, `step-xx.md`, and `cross-validation.md` as work is planned and validated.
+9. Update `review.md`, `qa.md`, and `validation/discrepancies.md` for every Step as applicable.
 
 ---
 
-MOD-W v4.0.1 - Moderated AI Development Workflow - https://github.com/fpmcguire/mod-w
+MOD-W v5 - Moderated AI Development Workflow - https://github.com/fpmcguire/mod-w

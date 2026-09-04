@@ -12,7 +12,8 @@ Thumbs.db
 .vscode/
 
 # Claude Code internal files
-.claude/
+.claude/*
+!.claude/settings.json
 *.swp
 *.swo
 *~

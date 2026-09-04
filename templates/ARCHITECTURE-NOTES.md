@@ -1,4 +1,4 @@
-﻿# Architecture Notes - {{PROJECT_NAME}}
+# Architecture Notes - {{PROJECT_NAME}}
 
 **Date:** {{DATE}}
 **Author:** Designer + Prototyper (Claude Design)
@@ -8,7 +8,7 @@
 
 > This document records observations from the Prototype Ceremony for the Tech Lead's consideration during Architecture Definition.
 >
-> It is **advisory**, not constraint. Confidence describes the prototyper's certainty in an observation; it is not architectural authority. The Tech Lead may accept, modify, or reject any possible implication. Material divergences should be recorded in `ARCHITECTURE.md` section "Decisions That Diverge From Prototype" with rationale.
+> It is **advisory**, not constraint. Confidence describes the prototyper's certainty in an observation; it is not architectural authority. The Tech Lead may accept, modify, or reject any possible implication. Material divergences should be recorded in `architecture.md` section "Decisions That Diverge From Prototype" with rationale.
 
 ---
 
@@ -77,4 +77,4 @@ Use one subsection per significant observation. Include concrete evidence where 
 
 ---
 
-MOD-W v4.0.1
+MOD-W v5

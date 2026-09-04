@@ -31,22 +31,22 @@ Kiro has three main spec phases:
 
 Moderated AI Development Workflow (MOD-W) has three corresponding core artifacts:
 
-- `PRODUCT.md` – product problem, users, goals, requirements
-- `ARCHITECTURE.md` – technical approach, architecture decisions
-- `ROADMAP.md` + `STEP-XX.md` – ordered Steps and per‑Step briefs
+- `product.md` – product problem, users, goals, requirements
+- `architecture.md` – technical approach, architecture decisions
+- `roadmap.md` + `step-xx.md` – ordered Steps and per‑Step briefs
 
 The mapping is:
 
 | Kiro phase   | MOD-W artifact(s)           | Purpose                                 |
 | ------------ | --------------------------- | --------------------------------------- |
-| Requirements | `PRODUCT.md`                | What we’re building and why             |
-| Design       | `ARCHITECTURE.md`           | How we’re building it                   |
-| Tasks        | `ROADMAP.md` + `STEP-XX.md` | Concrete, bounded units of work (Steps) |
+| Requirements | `product.md`                | What we’re building and why             |
+| Design       | `architecture.md`           | How we’re building it                   |
+| Tasks        | `roadmap.md` + `step-xx.md` | Concrete, bounded units of work (Steps) |
 
 MOD-W then layers on:
 
-- `REVIEW.md` and `QA.md` for **validation and evidence**
-- `DOMAIN_LANGUAGE.md` and `AI_AGENTS.md` as **steering docs** for humans and agents
+- `review.md` and `qa.md` for **validation and evidence**
+- `domain-language.md` and `ai-agents.md` as **steering docs** for humans and agents
 
 ---
 
@@ -56,17 +56,17 @@ In a Kiro + MOD-W project, roles look like this:
 
 - **Product Owner**
   - Collaborates in Kiro’s **Requirements** phase.
-  - Ensures `PRODUCT.md` reflects agreed requirements.
+  - Ensures `product.md` reflects agreed requirements.
   - Approves when Requirements are “good enough” to move to Design.
 
 - **Tech Lead**
   - Works primarily in Kiro’s **Design** and **Tasks** phases.
-  - Ensures Kiro’s Design specs reflect `ARCHITECTURE.md`.
+  - Ensures Kiro’s Design specs reflect `architecture.md`.
   - Helps translate Requirements → Design → Tasks/Steps with clear boundaries.
 
 - **Development Team**
   - Uses Kiro’s Tasks and agent features to implement individual Steps.
-  - Treats each Kiro Task as one MOD-W Step (or part of one) driven by `STEP-XX.md`.
+  - Treats each Kiro Task as one MOD-W Step (or part of one) driven by `step-xx.md`.
 
 - **Moderator**
   - Treats Kiro as one input; the **source of truth is still the repository**.
@@ -80,7 +80,7 @@ The core rule: **Kiro can move states inside the IDE; only the Moderator moves s
 
 ## Phase-by-phase playbook
 
-### 1. Requirements ↔ PRODUCT.md
+### 1. Requirements ↔ product.md
 
 **Goal:** Agree on what problem you’re solving and for whom.
 
@@ -89,7 +89,7 @@ The core rule: **Kiro can move states inside the IDE; only the Moderator moves s
   - Use Kiro’s own AI assistance to draft and refine.
 
 - In MOD-W:
-  - The Product Owner and Tech Lead sync Kiro’s Requirements into `PRODUCT.md`.
+  - The Product Owner and Tech Lead sync Kiro’s Requirements into `product.md`.
   - The Moderator checks that:
     - Requirements are clear.
     - Acceptance intent is explicit.
@@ -98,7 +98,7 @@ The core rule: **Kiro can move states inside the IDE; only the Moderator moves s
 **Gate:** The Moderator marks the Requirements phase “approved enough” to move to Design.  
 Kiro may say “Requirements ready”; MOD-W requires the Moderator’s explicit approval in the repo.
 
-### 2. Design ↔ ARCHITECTURE.md
+### 2. Design ↔ architecture.md
 
 **Goal:** Decide how the system will be structured.
 
@@ -107,8 +107,8 @@ Kiro may say “Requirements ready”; MOD-W requires the Moderator’s explicit
   - Use Kiro’s agents to propose alternatives, then refine.
 
 - In MOD-W:
-  - The Tech Lead owns `ARCHITECTURE.md` in the repo.
-  - Kiro’s Design spec is treated as a **working draft** that must be reconciled with `ARCHITECTURE.md`.
+  - The Tech Lead owns `architecture.md` in the repo.
+  - Kiro’s Design spec is treated as a **working draft** that must be reconciled with `architecture.md`.
   - The Moderator ensures:
     - Design matches the constraints and domain language.
     - There is a clear path to small, independent Steps.
@@ -126,8 +126,8 @@ Only then do they proceed to Kiro’s Tasks phase and MOD-W’s Step planning.
 
 - In MOD-W:
   - The Tech Lead and Development Team maintain:
-    - `ROADMAP.md` – ordered list of Steps.
-    - `STEP-XX.md` – detailed Step briefs.
+    - `roadmap.md` – ordered list of Steps.
+    - `step-xx.md` – detailed Step briefs.
   - Each Kiro Task is:
     - mapped to a MOD-W Step, or
     - treated as sub‑work inside a larger Step.
@@ -146,33 +146,33 @@ Only then do they proceed to Kiro’s Tasks phase and MOD-W’s Step planning.
 Here is a concrete workflow for a single Step:
 
 1. **Pick a Step**
-   - Choose a Step from `ROADMAP.md` (or define a new one).
-   - Ensure `STEP-XX.md` is clear (scope, inputs, acceptance checks).
+   - Choose a Step from `roadmap.md` (or define a new one).
+   - Ensure `step-xx.md` is clear (scope, inputs, acceptance checks).
 
 2. **Align Kiro Task**
    - In Kiro, create or select a Task that corresponds to this Step.
-   - Paste the relevant parts of `PRODUCT.md`, `ARCHITECTURE.md`, `STEP-XX.md` into the Kiro context.
+   - Paste the relevant parts of `product.md`, `architecture.md`, `step-xx.md` into the Kiro context.
 
 3. **Let the Development Team implement**
    - Use Kiro’s agents to implement the Task/Step:
      - generate or edit code
      - run tests in the Kiro environment if available
-   - Keep prompts and outputs aligned with `DOMAIN_LANGUAGE.md` and `AI_AGENTS.md`.
+   - Keep prompts and outputs aligned with `domain-language.md` and `ai-agents.md`.
 
 4. **Bring the result to the Workbench**
    - Sync or pull the changes to the local repo.
    - The Moderator:
      - runs builds and tests in the Workbench (e.g., VS Code + Copilot)
      - performs manual UX checks if needed
-     - compares behavior against `STEP-XX.md` acceptance checks
+     - compares behavior against `step-xx.md` acceptance checks
 
 5. **Review and QA**
-   - The Moderator fills in `REVIEW.md`:
+   - The Moderator fills in `review.md`:
      - what changed
      - any issues found
      - requested revisions (if any)
    - After revisions, run QA:
-     - execute the plan in `QA.md`
+     - execute the plan in `qa.md`
      - record outcomes and confidence level
 
 6. **Accept and tag**
@@ -189,16 +189,16 @@ Here is a concrete workflow for a single Step:
   Use Kiro to generate and coordinate work, but keep **acceptance power** with the Moderator in the local Workbench.
 
 - **Sync artifacts regularly.**  
-  Treat Kiro specs as drafts until they are reflected in `PRODUCT.md` and `ARCHITECTURE.md`.
+  Treat Kiro specs as drafts until they are reflected in `product.md` and `architecture.md`.
 
 - **Use the same domain language everywhere.**  
-  Keep `DOMAIN_LANGUAGE.md` up to date and paste relevant sections into Kiro prompts.
+  Keep `domain-language.md` up to date and paste relevant sections into Kiro prompts.
 
 - **Keep Steps small.**  
   If a Kiro Task feels too big to review safely, split it in MOD-W and reflect that split back into Kiro.
 
 - **Record learning in the repo.**  
-  If a Kiro session reveals important insights, capture them in `REVIEW.md`, `QA.md`, or the Domain Language, not just in Kiro’s history.
+  If a Kiro session reveals important insights, capture them in `review.md`, `qa.md`, or the Domain Language, not just in Kiro’s history.
 
 ---
 

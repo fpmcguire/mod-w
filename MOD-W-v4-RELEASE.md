@@ -1,4 +1,4 @@
-﻿# MOD-W v4.0.0 — Release Implementation Package
+# MOD-W v4.0.0 — Release Implementation Package
 
 > **For:** Claude session running in VS Code (Claude Code or chat extension) with the `mod-w` repository open as the working directory.
 > **Action:** apply this entire v4.0.0 release in one Moderator-approved pass.
@@ -43,8 +43,8 @@ Your task:
      - prompts/tech-lead.md
      - prompts/development-team.md
      - prompts/designer.md (current version, to be replaced)
-     - templates/DESIGN-SPEC.md (current version, to be replaced)
-     - templates/STEP-XX.md (current version, to be replaced)
+     - templates/design-spec.md (current version, to be replaced)
+     - templates/step-xx.md (current version, to be replaced)
      - templates/MOD-W.md (current version, to be replaced)
 
 3. Report any patch in §F that does NOT cleanly apply because the
@@ -87,25 +87,25 @@ v4.0.0 adds one new role, two new ceremonies, three new artifact classes, and a 
 
 **New role**
 
-- **Designer + Prototyper** — played by Claude Design (project-scoped Anthropic environment). Produces `DESIGN-SPEC.md`, a working `prototype/` folder, and `ARCHITECTURE-NOTES.md` during Project Kickoff.
+- **Designer + Prototyper** — played by Claude Design (project-scoped Anthropic environment). Produces `design-spec.md`, a working `prototype/` folder, and `architecture-notes.md` during Project Kickoff.
 
 **New ceremonies**
 
 - **Prototype Ceremony** (optional per project) — Designer + Prototyper produces the three artifacts above. Slots between Product Definition and Architecture Definition.
-- **Architecture Handoff** (mandatory if Prototype Ceremony ran) — Codex independently authors `ARCHITECTURE.md` from the four kickoff inputs (`PRODUCT.md`, `DESIGN-SPEC.md`, `prototype/`, `ARCHITECTURE-NOTES.md`). Codex has authority to override prototype-implied structures.
+- **Architecture Handoff** (mandatory if Prototype Ceremony ran) — Codex independently authors `architecture.md` from the four kickoff inputs (`product.md`, `design-spec.md`, `prototype/`, `architecture-notes.md`). Codex has authority to override prototype-implied structures.
 
 **New artifact classes**
 
 - `prototype/` — research artifact at repo root, explicitly non-authoritative.
-- `ARCHITECTURE-NOTES.md` — advisory input to Architecture Definition.
-- **Reference Implementation** — a dispositional concept (not a file): the Tech Lead disposes candidate code (typically from `prototype/`) in `STEP-XX.md §"Reference Implementation"` as `Adopt as-is` / `Adopt with modifications` / `Reject`.
+- `architecture-notes.md` — advisory input to Architecture Definition.
+- **Reference Implementation** — a dispositional concept (not a file): the Tech Lead disposes candidate code (typically from `prototype/`) in `step-xx.md §"Reference Implementation"` as `Adopt as-is` / `Adopt with modifications` / `Reject`.
 
 **Preserved cross-validation invariants**
 
 - Tech Lead is always Codex
 - Dev Team is never the same model as Tech Lead for the same Step
 - Moderator is always human
-- `ARCHITECTURE.md` is authored by Codex, never by Claude Design
+- `architecture.md` is authored by Codex, never by Claude Design
 - Every Step passes Codex review before QA, and Moderator final gate before tag
 
 ---
@@ -116,9 +116,9 @@ v4.0.0 adds one new role, two new ceremonies, three new artifact classes, and a 
 | --- | ------------------------------------- | ------------------------ | ------- |
 | 1   | `prompts/designer.md`                 | REPLACE (full)           | §E.1    |
 | 2   | `templates/MOD-W.md`                  | REPLACE (full)           | §E.2    |
-| 3   | `templates/DESIGN-SPEC.md`            | REPLACE (full, additive) | §E.3    |
-| 4   | `templates/STEP-XX.md`                | REPLACE (full, additive) | §E.4    |
-| 5   | `templates/ARCHITECTURE-NOTES.md`     | NEW                      | §D.1    |
+| 3   | `templates/design-spec.md`            | REPLACE (full, additive) | §E.3    |
+| 4   | `templates/step-xx.md`                | REPLACE (full, additive) | §E.4    |
+| 5   | `templates/architecture-notes.md`     | NEW                      | §D.1    |
 | 6   | `templates/prototype-README.md`       | NEW                      | §D.2    |
 | 7   | `articles/modw-with-claude-design.md` | NEW                      | §D.3    |
 | 8   | `docs/prototype-ceremony.md`          | NEW                      | §D.4    |
@@ -133,7 +133,7 @@ v4.0.0 adds one new role, two new ceremonies, three new artifact classes, and a 
 
 **Out of scope for this release** (no changes):
 
-- `templates/PRODUCT.md`, `templates/ARCHITECTURE.md`, `templates/ROADMAP.md`, `templates/REVIEW.md`, `templates/QA.md`, `templates/DOMAIN_LANGUAGE.md`, `templates/AI_AGENTS.md`, `templates/CLAUDE.md`, `templates/AGENTS.md`
+- `templates/product.md`, `templates/architecture.md`, `templates/roadmap.md`, `templates/review.md`, `templates/qa.md`, `templates/domain-language.md`, `templates/ai-agents.md`, `templates/CLAUDE.md`, `templates/root-agents.md`
 - `prompts/product-owner.md`, `prompts/moderator.md`, `prompts/qa.md`, `prompts/prompt-guidelines.md`
 - `articles/modw-with-codex.md`, `articles/modw-with-gemini.md`, `articles/modw-with-claude-code.md` (existing integration guides — Claude Design gets its own at §D.3, peers with these)
 - `examples/`, `CONTRIBUTING.md`, `LICENSE`
@@ -144,7 +144,7 @@ If any of these need bumping for the v4 version footer convention, that is a fol
 
 ## §D — New files (full content)
 
-### §D.1 — `templates/ARCHITECTURE-NOTES.md` (NEW)
+### §D.1 — `templates/architecture-notes.md` (NEW)
 
 ```markdown
 # Architecture Notes — {{PROJECT_NAME}}
@@ -157,7 +157,7 @@ If any of these need bumping for the v4 version footer convention, that is a fol
 
 > This document records observations from the Prototype Ceremony for the Tech Lead's consideration during Architecture Definition.
 >
-> It is **advisory**, not constraint. The Tech Lead has explicit authority to override anything here. Material divergences should be recorded in `ARCHITECTURE.md §"Decisions That Diverge From Prototype"` with rationale.
+> It is **advisory**, not constraint. The Tech Lead has explicit authority to override anything here. Material divergences should be recorded in `architecture.md §"Decisions That Diverge From Prototype"` with rationale.
 
 ---
 
@@ -225,24 +225,24 @@ This folder contains a clickable prototype produced by the **Designer + Prototyp
 
 ## What this is
 
-A working demonstration that the design works under realistic conditions. The prototype simulates the product's primary workflows, demonstrates every screen in `DESIGN-SPEC.md` scope, and exists as evidence the design is buildable.
+A working demonstration that the design works under realistic conditions. The prototype simulates the product's primary workflows, demonstrates every screen in `design-spec.md` scope, and exists as evidence the design is buildable.
 
 ## What this is NOT
 
 - **Not production code.** Do not import from this folder into `src/`.
-- **Not architecturally canonical.** Patterns here are research output. The authoritative architecture lives in `mod-w/ARCHITECTURE.md`, authored by the Tech Lead.
-- **Not a Reference Implementation by default.** A Reference Implementation status is granted only when the Tech Lead explicitly disposes of a specific prototype component in a `STEP-XX.md §"Reference Implementation"` block.
+- **Not architecturally canonical.** Patterns here are research output. The authoritative architecture lives in `mod-w/architecture.md`, authored by the Tech Lead.
+- **Not a Reference Implementation by default.** A Reference Implementation status is granted only when the Tech Lead explicitly disposes of a specific prototype component in a `step-xx.md §"Reference Implementation"` block.
 
 ## How this folder is used downstream
 
 1. The Tech Lead (Codex) reads this folder during Architecture Definition as one of the kickoff inputs.
-2. The Tech Lead may reference specific files here in `STEP-XX.md` as a Reference Implementation with one of three dispositions: `Adopt as-is`, `Adopt with modifications`, or `Reject`.
-3. The Development Team reads dispositions in `STEP-XX.md` and proceeds accordingly. The Dev Team does **not** read this folder directly.
+2. The Tech Lead may reference specific files here in `step-xx.md` as a Reference Implementation with one of three dispositions: `Adopt as-is`, `Adopt with modifications`, or `Reject`.
+3. The Development Team reads dispositions in `step-xx.md` and proceeds accordingly. The Dev Team does **not** read this folder directly.
 
 ## Lifecycle
 
 - **Created:** During the Prototype Ceremony.
-- **Frozen:** At the Architecture Handoff. Once `ARCHITECTURE.md` is approved, this folder is read-only.
+- **Frozen:** At the Architecture Handoff. Once `architecture.md` is approved, this folder is read-only.
 - **Retained:** For the life of the project, as historical context.
 
 ---
@@ -264,7 +264,7 @@ MOD-W v4.0.0
 
 **Claude Design** is Anthropic's project-scoped design environment. It can edit files, render HTML/JS in a preview pane, capture screenshots, and run scripted browser operations within a single project context — capabilities the Claude chatbot and Claude Code do not share.
 
-In MOD-W v4.0.0, Claude Design is the default agent for the **Designer + Prototyper** role. Optionally, it may also play the **Development Team** role for visual / chart / interaction-heavy Steps when the Moderator assigns it in `STEP-XX.md`.
+In MOD-W v4.0.0, Claude Design is the default agent for the **Designer + Prototyper** role. Optionally, it may also play the **Development Team** role for visual / chart / interaction-heavy Steps when the Moderator assigns it in `step-xx.md`.
 
 ## Where Claude Design fits
 
@@ -277,8 +277,8 @@ Claude Design does **not** replace Codex (Tech Lead), Claude Code (default Dev T
 
 ## Responsibility split
 
-- **Claude Design owns:** the Prototype Ceremony — producing `DESIGN-SPEC.md`, the `prototype/` folder, and `ARCHITECTURE-NOTES.md`. Optionally implementing visual Steps when assigned by the Moderator in `STEP-XX.md`.
-- **Codex (Tech Lead) owns:** authoring `ARCHITECTURE.md` after the Architecture Handoff. Codex has authority to override structures implied by the prototype.
+- **Claude Design owns:** the Prototype Ceremony — producing `design-spec.md`, the `prototype/` folder, and `architecture-notes.md`. Optionally implementing visual Steps when assigned by the Moderator in `step-xx.md`.
+- **Codex (Tech Lead) owns:** authoring `architecture.md` after the Architecture Handoff. Codex has authority to override structures implied by the prototype.
 - **Claude Code owns:** default Development Team implementation, QA SubAgent, Product Owner SubAgent validation.
 - **MOD-W owns:** Moderator authority at every gate, cross-validation invariants, Step-scoped discipline.
 
@@ -305,20 +305,20 @@ Full lifecycle: see `docs/prototype-ceremony.md`.
 
 Exit criteria:
 
-- `DESIGN-SPEC.md` approved by Product Owner and Moderator
+- `design-spec.md` approved by Product Owner and Moderator
 - Prototype renders without errors, demonstrates every screen in scope, and matches the spec
-- `ARCHITECTURE-NOTES.md` exists
+- `architecture-notes.md` exists
 
 ## Architecture Handoff (non-negotiable gate)
 
-After the Prototype Ceremony, the Tech Lead (Codex) consumes the four kickoff inputs — `PRODUCT.md`, `DESIGN-SPEC.md`, `prototype/`, `ARCHITECTURE-NOTES.md` — and **independently authors** `ARCHITECTURE.md`. Codex has explicit authority to:
+After the Prototype Ceremony, the Tech Lead (Codex) consumes the four kickoff inputs — `product.md`, `design-spec.md`, `prototype/`, `architecture-notes.md` — and **independently authors** `architecture.md`. Codex has explicit authority to:
 
 - Disagree with structural choices implied by the prototype
 - Reorganize service boundaries, type names, file layout
-- Reject domain term proposals from `DESIGN-SPEC.md`
-- Override `ARCHITECTURE-NOTES.md` observations when they conflict with maintainability, testability, or stack conventions
+- Reject domain term proposals from `design-spec.md`
+- Override `architecture-notes.md` observations when they conflict with maintainability, testability, or stack conventions
 
-Material divergences are recorded in `ARCHITECTURE.md §"Decisions That Diverge From Prototype"` with rationale.
+Material divergences are recorded in `architecture.md §"Decisions That Diverge From Prototype"` with rationale.
 
 **Why this gate is non-negotiable:** the architecture document is the highest-cost failure point in the project — every downstream Step inherits its assumptions. Allowing Claude Design to author it would create sequential same-model outputs (prototype → spec → notes → architecture → first Step), eliminating model contrast at exactly the point where contrast matters most. The Moderator may shorten or skip other v4 ceremonies under time pressure. **The Architecture Handoff may not be skipped.**
 
@@ -327,8 +327,8 @@ Full gate definition: see `docs/architecture-handoff.md`.
 ## New artifact classes
 
 - **`prototype/`** — research artifact at repo root, produced by Claude Design, explicitly marked non-authoritative via `prototype/README.md` disclaimer. Lives outside `src/` to prevent accidental import.
-- **`ARCHITECTURE-NOTES.md`** — advisory input to Architecture Definition, produced by Claude Design, retained in `mod-w/` as historical context.
-- **Reference Implementation** — a candidate implementation produced outside the Dev Team role (typically inside `prototype/`). Never auto-promotes. The Tech Lead disposes of it in `STEP-XX.md §"Reference Implementation"` as `Adopt as-is`, `Adopt with modifications`, or `Reject`.
+- **`architecture-notes.md`** — advisory input to Architecture Definition, produced by Claude Design, retained in `mod-w/` as historical context.
+- **Reference Implementation** — a candidate implementation produced outside the Dev Team role (typically inside `prototype/`). Never auto-promotes. The Tech Lead disposes of it in `step-xx.md §"Reference Implementation"` as `Adopt as-is`, `Adopt with modifications`, or `Reject`.
 
 ## Claude Design as Development Team (optional per Step)
 
@@ -336,15 +336,15 @@ Claude Design may play the Development Team role for a Step when:
 
 - The Step is visual, chart, animation, or interaction-heavy
 - The Step benefits from in-environment screenshot verification
-- The Moderator explicitly assigns Claude Design as Dev Team in `STEP-XX.md §"Assigned Dev Team Interface"`
+- The Moderator explicitly assigns Claude Design as Dev Team in `step-xx.md §"Assigned Dev Team Interface"`
 
 When assigned, Claude Design reads the Step brief, proposes a plan, waits for Moderator approval, and implements **only within `src/`** (the prototype folder is closed). It hands off to Codex for Tech Lead Review like any other Step.
 
-**Hard rule:** Claude Design as Dev Team **may not** also have produced the `STEP-XX.md` spec. Codex writes the spec; Claude Design implements against it. Plan vs. implement model contrast is preserved.
+**Hard rule:** Claude Design as Dev Team **may not** also have produced the `step-xx.md` spec. Codex writes the spec; Claude Design implements against it. Plan vs. implement model contrast is preserved.
 
 ## What Claude Design cannot do
 
-- Author `ARCHITECTURE.md`, `ROADMAP.md`, any `STEP-XX.md`, `REVIEW.md`, `QA.md`, `CLAUDE.md`, or `AGENTS.md`
+- Author `architecture.md`, `roadmap.md`, any `step-xx.md`, `review.md`, `qa.md`, `CLAUDE.md`, or `AGENTS.md`
 - Make canonical declarations about domain types, file paths, service boundaries, framework versions, or library choices
 - Implement production code outside an explicit Moderator-assigned Dev Team Step
 - Override or modify any artifact owned by another role
@@ -385,9 +385,9 @@ MOD-W v4.0.0 · Moderated AI Development Workflow · https://github.com/fpmcguir
 
 ## Purpose
 
-Produce a working clickable prototype and a design specification before architecture is committed. The prototype surfaces what `PRODUCT.md` alone cannot: real-time performance constraints, visual fidelity, interaction grain, and the integration shapes that emerge only when the design is forced to run.
+Produce a working clickable prototype and a design specification before architecture is committed. The prototype surfaces what `product.md` alone cannot: real-time performance constraints, visual fidelity, interaction grain, and the integration shapes that emerge only when the design is forced to run.
 
-The ceremony preserves MOD-W's cross-validation guarantee by producing **advisory** architecture input (`ARCHITECTURE-NOTES.md`) — never authoritative architecture. The authoritative `ARCHITECTURE.md` is authored by the Tech Lead in the Architecture Handoff that follows.
+The ceremony preserves MOD-W's cross-validation guarantee by producing **advisory** architecture input (`architecture-notes.md`) — never authoritative architecture. The authoritative `architecture.md` is authored by the Tech Lead in the Architecture Handoff that follows.
 
 ## When to run
 
@@ -411,7 +411,7 @@ The Moderator decides per project. The decision is recorded in the project's `MO
 
 | Input                                                      | Source        | Authority     |
 | ---------------------------------------------------------- | ------------- | ------------- |
-| `PRODUCT.md`                                               | Product Owner | Authoritative |
+| `product.md`                                               | Product Owner | Authoritative |
 | Brand assets, reference imagery, written tone descriptions | Moderator     | Directional   |
 | `prompts/designer.md`                                      | MOD-W repo    | Role prompt   |
 
@@ -419,9 +419,9 @@ The Moderator decides per project. The decision is recorded in the project's `MO
 
 | Output                  | Status                                                   | Path                          |
 | ----------------------- | -------------------------------------------------------- | ----------------------------- |
-| `DESIGN-SPEC.md`        | Authoritative (after Product Owner + Moderator approval) | `mod-w/DESIGN-SPEC.md`        |
+| `design-spec.md`        | Authoritative (after Product Owner + Moderator approval) | `mod-w/design-spec.md`        |
 | Clickable prototype     | Research artifact, **non-authoritative**                 | `prototype/` at repo root     |
-| `ARCHITECTURE-NOTES.md` | **Advisory** input to Architecture Definition            | `mod-w/ARCHITECTURE-NOTES.md` |
+| `architecture-notes.md` | **Advisory** input to Architecture Definition            | `mod-w/architecture-notes.md` |
 
 ## Lifecycle
 
@@ -429,7 +429,7 @@ The ceremony is itself a Moderator-gated loop.
 
 ### 1. Brief
 
-The Moderator provides the context packet: `PRODUCT.md`, brand assets, reference imagery, `prompts/designer.md`, and the three relevant templates (`DESIGN-SPEC.md`, `ARCHITECTURE-NOTES.md`, `prototype-README.md`).
+The Moderator provides the context packet: `product.md`, brand assets, reference imagery, `prompts/designer.md`, and the three relevant templates (`design-spec.md`, `architecture-notes.md`, `prototype-README.md`).
 
 ### 2. Restate
 
@@ -455,13 +455,13 @@ Claude Design produces the three artifacts.
 
 Before exit, the following reviews run in parallel:
 
-- **Product Owner** (ChatGPT or Claude chatbot session) — reviews `DESIGN-SPEC.md` against `PRODUCT.md` acceptance intent
-- **Codex** (Tech Lead pre-review session) — reads `ARCHITECTURE-NOTES.md` and the prototype, surfaces feasibility / cost concerns
+- **Product Owner** (ChatGPT or Claude chatbot session) — reviews `design-spec.md` against `product.md` acceptance intent
+- **Codex** (Tech Lead pre-review session) — reads `architecture-notes.md` and the prototype, surfaces feasibility / cost concerns
 - **(Optional) Independent Designer review** — visual coherence audit
 
 ### 8. Iterate
 
-Claude Design addresses feedback by section number. Re-issues the full updated `DESIGN-SPEC.md` and `ARCHITECTURE-NOTES.md`. Updates the prototype to match the revised spec.
+Claude Design addresses feedback by section number. Re-issues the full updated `design-spec.md` and `architecture-notes.md`. Updates the prototype to match the revised spec.
 
 ### 9. Moderator final gate
 
@@ -471,19 +471,19 @@ The Moderator accepts the ceremony output and advances to Architecture Definitio
 
 The ceremony exits only when:
 
-- `DESIGN-SPEC.md` is approved by Product Owner and Moderator
+- `design-spec.md` is approved by Product Owner and Moderator
 - Prototype renders without errors, demonstrates every screen in scope, and matches the spec
-- `ARCHITECTURE-NOTES.md` exists and has been read by Codex (no Codex approval required at this stage — Codex receives it as input to Architecture Definition)
+- `architecture-notes.md` exists and has been read by Codex (no Codex approval required at this stage — Codex receives it as input to Architecture Definition)
 
 ## What comes after
 
-The Architecture Handoff (`docs/architecture-handoff.md`). The Tech Lead consumes the four kickoff inputs and independently authors `ARCHITECTURE.md`.
+The Architecture Handoff (`docs/architecture-handoff.md`). The Tech Lead consumes the four kickoff inputs and independently authors `architecture.md`.
 
 ## Anti-patterns
 
 - **Skipping the cross-validation pause.** The pause is the entire point. Without it, the prototype becomes a one-model architectural lock-in.
-- **Treating the prototype as production scaffolding.** It is a research artifact. The Tech Lead disposes of every reusable component explicitly in `STEP-XX.md §"Reference Implementation"`.
-- **Allowing the Designer + Prototyper to declare canonical types or domain terms.** Terms proposed in `DESIGN-SPEC.md §"Domain Language Proposals"` are non-authoritative until Codex ratifies them.
+- **Treating the prototype as production scaffolding.** It is a research artifact. The Tech Lead disposes of every reusable component explicitly in `step-xx.md §"Reference Implementation"`.
+- **Allowing the Designer + Prototyper to declare canonical types or domain terms.** Terms proposed in `design-spec.md §"Domain Language Proposals"` are non-authoritative until Codex ratifies them.
 - **Running the ceremony when it isn't needed.** Conventional UI does not benefit. Use the "when to run" checklist.
 
 ---
@@ -515,10 +515,10 @@ Codex receives all four:
 
 | Input                   | Status            |
 | ----------------------- | ----------------- |
-| `PRODUCT.md`            | Authoritative     |
-| `DESIGN-SPEC.md`        | Authoritative     |
+| `product.md`            | Authoritative     |
+| `design-spec.md`        | Authoritative     |
 | `prototype/` folder     | Research artifact |
-| `ARCHITECTURE-NOTES.md` | Advisory          |
+| `architecture-notes.md` | Advisory          |
 
 ## Codex's authority
 
@@ -526,11 +526,11 @@ Codex has explicit authority to:
 
 - Disagree with structural choices implied by the prototype
 - Reorganize service boundaries, type names, file layout
-- Reject domain term proposals from `DESIGN-SPEC.md §"Domain Language Proposals"` and choose alternatives
-- Override `ARCHITECTURE-NOTES.md` observations when they conflict with maintainability, testability, or stack conventions
+- Reject domain term proposals from `design-spec.md §"Domain Language Proposals"` and choose alternatives
+- Override `architecture-notes.md` observations when they conflict with maintainability, testability, or stack conventions
 - Decide the disposition of every candidate Reference Implementation in `prototype/`
 
-`ARCHITECTURE-NOTES.md` is **input, not constraint**. It is the prototyper's best understanding of what worked under load. The Tech Lead's job is to weigh it against architectural principles, stack conventions, and long-term maintainability — and to override it when those concerns warrant.
+`architecture-notes.md` is **input, not constraint**. It is the prototyper's best understanding of what worked under load. The Tech Lead's job is to weigh it against architectural principles, stack conventions, and long-term maintainability — and to override it when those concerns warrant.
 
 ## Outputs
 
@@ -538,14 +538,14 @@ Codex produces:
 
 | Output               | Path                       |
 | -------------------- | -------------------------- |
-| `ARCHITECTURE.md`    | `mod-w/ARCHITECTURE.md`    |
-| `ROADMAP.md`         | `mod-w/ROADMAP.md`         |
+| `architecture.md`    | `mod-w/architecture.md`    |
+| `roadmap.md`         | `mod-w/roadmap.md`         |
 | `CLAUDE.md`          | repo root                  |
 | `AGENTS.md`          | repo root                  |
-| `STEP-01.md`         | `mod-w/STEP-01.md`         |
-| `DOMAIN_LANGUAGE.md` | `mod-w/DOMAIN_LANGUAGE.md` |
+| `step-01.md`         | `mod-w/step-01.md`         |
+| `domain-language.md` | `mod-w/domain-language.md` |
 
-If `ARCHITECTURE.md` materially diverges from `ARCHITECTURE-NOTES.md`, Codex records the divergence in `ARCHITECTURE.md §"Decisions That Diverge From Prototype"` with rationale.
+If `architecture.md` materially diverges from `architecture-notes.md`, Codex records the divergence in `architecture.md §"Decisions That Diverge From Prototype"` with rationale.
 
 ## Lifecycle
 
@@ -575,7 +575,7 @@ The Moderator approves or requests `options` / `full` depth.
 
 ### 7. Produce
 
-Codex writes `ARCHITECTURE.md`, `ROADMAP.md`, `CLAUDE.md`, `AGENTS.md`, and `STEP-01.md`. Updates `DOMAIN_LANGUAGE.md` based on `DESIGN-SPEC.md §"Domain Language Proposals"`, accepting / modifying / rejecting each proposal with a one-line rationale.
+Codex writes `architecture.md`, `roadmap.md`, `CLAUDE.md`, `AGENTS.md`, and `step-01.md`. Updates `domain-language.md` based on `design-spec.md §"Domain Language Proposals"`, accepting / modifying / rejecting each proposal with a one-line rationale.
 
 ### 8. Moderator final gate
 
@@ -595,10 +595,10 @@ Trivial divergences (file naming, lint rules, comment style) need not be flagged
 
 ## Anti-patterns
 
-- **Treating `ARCHITECTURE-NOTES.md` as authoritative.** It is advisory. If Codex finds itself unable to override it, the cross-validation gate has not run.
+- **Treating `architecture-notes.md` as authoritative.** It is advisory. If Codex finds itself unable to override it, the cross-validation gate has not run.
 - **Skipping the gate after a "small" Prototype Ceremony.** Every prototype encodes assumptions. The gate's purpose is to surface them.
-- **Codex consuming only `DESIGN-SPEC.md` and skipping the prototype or `ARCHITECTURE-NOTES.md`.** All four inputs are required. The prototype is where the integration shapes live.
-- **Letting Claude Design "help" author `ARCHITECTURE.md`.** Hard rule: `ARCHITECTURE.md` is authored by Codex, never by Claude Design.
+- **Codex consuming only `design-spec.md` and skipping the prototype or `architecture-notes.md`.** All four inputs are required. The prototype is where the integration shapes live.
+- **Letting Claude Design "help" author `architecture.md`.** Hard rule: `architecture.md` is authored by Codex, never by Claude Design.
 
 ---
 
@@ -615,12 +615,12 @@ MOD-W v4.0.0
 # Designer + Prototyper — Claude Design Prompt
 
 > Use this prompt at the start of a Claude Design session for the **Designer + Prototyper** role in Moderated AI Development Workflow.
-> Keep this session focused on producing `DESIGN-SPEC.md` + a working prototype + `ARCHITECTURE-NOTES.md` for the current product under human moderation.
+> Keep this session focused on producing `design-spec.md` + a working prototype + `architecture-notes.md` for the current product under human moderation.
 >
 > This prompt supports both interfaces in which the Designer role operates:
 >
 > - **Claude Design** (default in v4.0.0) — project-scoped environment with file editing, preview pane, and screenshot capability. Produces all three artifacts (spec + prototype + architecture notes).
-> - **Claude chatbot / Gemini** (legacy v3 interface) — text-only environment. Produces `DESIGN-SPEC.md` only. The Prototyper deliverables are skipped.
+> - **Claude chatbot / Gemini** (legacy v3 interface) — text-only environment. Produces `design-spec.md` only. The Prototyper deliverables are skipped.
 
 ---
 
@@ -632,16 +632,16 @@ You have a strong track record of translating product requirements into clean, p
 
 You are the **Designer + Prototyper** in the Moderated AI Development Workflow.
 
-Your job is to produce a `DESIGN-SPEC.md` that guides the Development Team — and, in Claude Design, to also produce a clickable prototype and `ARCHITECTURE-NOTES.md` that inform the Tech Lead.
+Your job is to produce a `design-spec.md` that guides the Development Team — and, in Claude Design, to also produce a clickable prototype and `architecture-notes.md` that inform the Tech Lead.
 
 You do **not** write production code, make product decisions, or author architecture documents.
 
-- Design only for the current product as described in `PRODUCT.md` and (if it exists) `ROADMAP.md`.
-- Respect all domain language from `DOMAIN_LANGUAGE.md`.
-- Map every UI component and design decision back to a Roadmap Step (if `ROADMAP.md` exists; otherwise to a Product requirement).
+- Design only for the current product as described in `product.md` and (if it exists) `roadmap.md`.
+- Respect all domain language from `domain-language.md`.
+- Map every UI component and design decision back to a Roadmap Step (if `roadmap.md` exists; otherwise to a Product requirement).
 - Ask clarifying questions if anything in the assets or requirements is ambiguous.
 
-The human Moderator has final authority. The Product Owner reviews and approves `DESIGN-SPEC.md` before it is handed to the Tech Lead. The Tech Lead consumes `DESIGN-SPEC.md` and `ARCHITECTURE-NOTES.md` during Architecture Definition and has authority to override prototype-implied structures.
+The human Moderator has final authority. The Product Owner reviews and approves `design-spec.md` before it is handed to the Tech Lead. The Tech Lead consumes `design-spec.md` and `architecture-notes.md` during Architecture Definition and has authority to override prototype-implied structures.
 
 ---
 
@@ -661,20 +661,20 @@ This is a drift-prevention mechanism. Do not produce any artifact until you have
 
 You **MAY**:
 
-- Produce `DESIGN-SPEC.md` (visual identity, components, screens, interactions, data-testid conventions)
+- Produce `design-spec.md` (visual identity, components, screens, interactions, data-testid conventions)
 - Produce a clickable HTML/JS prototype in `prototype/` (Claude Design only)
-- Produce `ARCHITECTURE-NOTES.md` — observations from prototyping the Tech Lead should consider (Claude Design only)
-- **Propose** domain language terms in `DESIGN-SPEC.md §"Domain Language Proposals"`, never declaring them canonical
+- Produce `architecture-notes.md` — observations from prototyping the Tech Lead should consider (Claude Design only)
+- **Propose** domain language terms in `design-spec.md §"Domain Language Proposals"`, never declaring them canonical
 - **Propose** component test-id conventions for Tech Lead ratification
 - Ask the Moderator for clarification, additional assets, or scope adjustment
 
 You **MAY NOT**:
 
-- Produce `ARCHITECTURE.md`, `ROADMAP.md`, any `STEP-XX.md`, `REVIEW.md`, `QA.md`, `CLAUDE.md`, or `AGENTS.md`
+- Produce `architecture.md`, `roadmap.md`, any `step-xx.md`, `review.md`, `qa.md`, `CLAUDE.md`, or `AGENTS.md`
 - Write or modify production application code outside the `prototype/` folder
 - Implement services, business logic, or test suites in the production codebase
 - Declare canonical domain types, file paths, service boundaries, or framework choices
-- Override or modify `DOMAIN_LANGUAGE.md`, `CLAUDE.md`, `AGENTS.md`, or any other role's authoritative artifact
+- Override or modify `domain-language.md`, `CLAUDE.md`, `AGENTS.md`, or any other role's authoritative artifact
 - Run blocking build gates, sign off Steps, or perform QA validation
 
 If asked to do any of the prohibited items, **stop and surface the request to the Moderator**. The correct response is: "This artifact is owned by [Codex Tech Lead / Claude Code Dev Team]. Please route this request through the appropriate role. I will stop here."
@@ -685,13 +685,13 @@ If asked to do any of the prohibited items, **stop and surface the request to th
 
 The Moderator will provide a **context packet** containing:
 
-- Excerpts from `PRODUCT.md` (feature overview, workflows, UX expectations)
-- `ROADMAP.md` (if it exists)
-- Relevant rows from `DOMAIN_LANGUAGE.md` (if it exists)
+- Excerpts from `product.md` (feature overview, workflows, UX expectations)
+- `roadmap.md` (if it exists)
+- Relevant rows from `domain-language.md` (if it exists)
 - **Visual assets** — any combination of reference images, brand colors / typography, links to inspiration, written descriptions of the desired look and tone
-- Any notes from `REVIEW.md` for previous Steps
+- Any notes from `review.md` for previous Steps
 
-Treat `PRODUCT.md` as authoritative for _what_ to design.
+Treat `product.md` as authoritative for _what_ to design.
 Treat visual assets as directional for _how_ it should look and feel.
 When the two conflict, flag it and ask the Moderator to clarify.
 
@@ -714,35 +714,35 @@ When the Moderator provides the context packet:
 - In Claude Design, the plan must distinguish spec work from prototype work from architecture-notes work.
 - Wait for the Moderator's approval or adjustment before proceeding.
 
-### 3. Produce `DESIGN-SPEC.md`
+### 3. Produce `design-spec.md`
 
 - Document visual identity (color, type, spacing, tone).
 - Define every UI component needed, including all states and variants.
 - Describe each screen layout, including empty, loading, and error states.
-- Map each component to the Roadmap Step in which it is first introduced (when `ROADMAP.md` exists).
-- Follow naming and terminology from `DOMAIN_LANGUAGE.md` exactly.
+- Map each component to the Roadmap Step in which it is first introduced (when `roadmap.md` exists).
+- Follow naming and terminology from `domain-language.md` exactly.
 - Align `data-testid` naming with the convention: `{feature}-{component}-{element}-{modifier?}`.
-- Use the `DESIGN-SPEC.md` template from the repo as the output structure.
+- Use the `design-spec.md` template from the repo as the output structure.
 - Include the `§"Domain Language Proposals"` section even if empty (state "none proposed").
 
 ### 4. Produce the prototype (Claude Design only)
 
 - Build the prototype in `prototype/` at the repo root.
 - Include `prototype/README.md` from the template — this carries the standard non-authoritative-artifact disclaimer.
-- Demonstrate every screen in `DESIGN-SPEC.md` scope, with realistic simulated state where applicable.
+- Demonstrate every screen in `design-spec.md` scope, with realistic simulated state where applicable.
 - Use plain HTML / CSS / JS (or React via inline Babel if interaction complexity warrants it). Do **not** import production framework packages or production source files.
-- Cross-reference the prototype from `DESIGN-SPEC.md` (e.g., "Live demonstration: `prototype/dashboard.html`").
+- Cross-reference the prototype from `design-spec.md` (e.g., "Live demonstration: `prototype/dashboard.html`").
 
-### 5. Produce `ARCHITECTURE-NOTES.md` (Claude Design only)
+### 5. Produce `architecture-notes.md` (Claude Design only)
 
-- Use the `templates/ARCHITECTURE-NOTES.md` template.
+- Use the `templates/architecture-notes.md` template.
 - Fill all six required sections. Use "none observed" if a section has no findings.
 - This file is **advisory input** to the Tech Lead's Architecture Definition session. State this explicitly at the top of the file.
 
 ### 6. Summarise the deliverables
 
-- After delivering all artifacts, provide a short summary mapping design decisions back to the product's acceptance intent in `PRODUCT.md`.
-- Call out any assumptions made and any items left open in `DESIGN-SPEC.md §"Open Questions"` and `ARCHITECTURE-NOTES.md §"Open questions for the Tech Lead"`.
+- After delivering all artifacts, provide a short summary mapping design decisions back to the product's acceptance intent in `product.md`.
+- Call out any assumptions made and any items left open in `design-spec.md §"Open Questions"` and `architecture-notes.md §"Open questions for the Tech Lead"`.
 
 ### 7. Respond to review
 
@@ -758,9 +758,9 @@ When the Moderator, Product Owner, or pre-review Tech Lead shares feedback:
 
 ## Behaviour Rules
 
-- Do **not** invent product features not described in `PRODUCT.md`.
+- Do **not** invent product features not described in `product.md`.
 - Do **not** skip states — empty, loading, error, and disabled states are required for every interactive component.
-- Do **not** use domain terms not present in `DOMAIN_LANGUAGE.md`; place candidates in `§"Domain Language Proposals"` for Tech Lead review.
+- Do **not** use domain terms not present in `domain-language.md`; place candidates in `§"Domain Language Proposals"` for Tech Lead review.
 - Do **not** declare any artifact "canonical" or "authoritative" — that is the Tech Lead's or Moderator's authority.
 - Do **not** deliver any artifact until the Moderator confirms the plan and the context is sufficient.
 - Prefer specific, measurable values (hex colors, px/rem sizes, named font weights) over vague descriptions.
@@ -772,7 +772,7 @@ When the Moderator, Product Owner, or pre-review Tech Lead shares feedback:
 ## Style Guidelines
 
 - Write for a developer audience: be precise and concrete, not aspirational.
-- Use component names consistently — exactly as they appear in `DOMAIN_LANGUAGE.md` (or as proposed in `§"Domain Language Proposals"`).
+- Use component names consistently — exactly as they appear in `domain-language.md` (or as proposed in `§"Domain Language Proposals"`).
 - Include ASCII or prose layout diagrams where a visual description is clearer than prose.
 - Keep `§"Open Questions"` honest — unresolved decisions that reach the Tech Lead create rework.
 
@@ -796,12 +796,12 @@ Do **not** choose the depth yourself. Always respond at the depth specified. If 
 >
 > I'll provide:
 >
-> - relevant parts of `PRODUCT.md` and `DOMAIN_LANGUAGE.md`
-> - the `DESIGN-SPEC.md`, `ARCHITECTURE-NOTES.md`, and `prototype/README.md` templates
+> - relevant parts of `product.md` and `domain-language.md`
+> - the `design-spec.md`, `architecture-notes.md`, and `prototype/README.md` templates
 > - brand colors, typography tokens, and reference screenshots
 > - a written description of the layout and tone
 >
-> First, identify your environment and scope per the prompt. Then confirm your understanding of the product, list the screens you expect to design, and ask any clarifying questions. After I confirm and approve your plan, produce the full `DESIGN-SPEC.md`, the prototype in `prototype/`, and `ARCHITECTURE-NOTES.md`.
+> First, identify your environment and scope per the prompt. Then confirm your understanding of the product, list the screens you expect to design, and ask any clarifying questions. After I confirm and approve your plan, produce the full `design-spec.md`, the prototype in `prototype/`, and `architecture-notes.md`.
 
 ---
 
@@ -824,11 +824,11 @@ Full methodology reference: https://github.com/fpmcguire/mod-w
 | Role                      | Owns                                                            | AI agent (default)                                    |
 | ------------------------- | --------------------------------------------------------------- | ----------------------------------------------------- |
 | **Moderator**             | Workflow orchestration, go/no-go authority, HITL gate           | Human only                                            |
-| **Product Owner**         | What and why — `PRODUCT.md`, acceptance intent                  | ChatGPT or Claude chatbot                             |
+| **Product Owner**         | What and why — `product.md`, acceptance intent                  | ChatGPT or Claude chatbot                             |
 | **Designer + Prototyper** | Visual identity, prototype, advisory architecture notes         | **Claude Design** (project-scoped browser env)        |
-| **Tech Lead**             | How — `ARCHITECTURE.md`, `ROADMAP.md`, step design, tech review | Codex (via `AGENTS.md` at repo root)                  |
+| **Tech Lead**             | How — `architecture.md`, `roadmap.md`, step design, tech review | Codex (via `AGENTS.md` at repo root)                  |
 | **Development Team**      | Implementation — code, tests, docs for each step                | Claude Code (default) or Claude Design (visual Steps) |
-| **QA / Tester**           | End-to-end verification — `QA.md`                               | Claude Code SubAgent                                  |
+| **QA / Tester**           | End-to-end verification — `qa.md`                               | Claude Code SubAgent                                  |
 
 The Designer + Prototyper role is **new in v4.0.0**. It is optional per project and runs during Project Kickoff to produce a working prototype + design spec before architecture is defined. See §"Prototype Ceremony".
 
@@ -841,9 +841,9 @@ The key differentiator in MOD-W is **intentional role and model diversity**. No 
 
 Product Owner (ChatGPT) → defines what and why
 ↓ cross-checks
-Designer + Prototyper (Claude Design) [optional] → produces DESIGN-SPEC.md + prototype + ARCHITECTURE-NOTES.md
+Designer + Prototyper (Claude Design) [optional] → produces design-spec.md + prototype + architecture-notes.md
 ↓ cross-checks (Architecture Handoff)
-Tech Lead (Codex) → authors ARCHITECTURE.md, ROADMAP.md, STEP-XX.md; reviews Dev Team output
+Tech Lead (Codex) → authors architecture.md, roadmap.md, step-xx.md; reviews Dev Team output
 ↓ cross-checks
 Development Team (Claude Code | Claude Design) → implements only the approved Step
 ↓ cross-checks
@@ -861,34 +861,34 @@ The Moderator is always the human gate. Phases iterate until acceptance is met.
 
 ### Phase 0 — Project Kickoff (once)
 
-0a. **Moderator + Product Owner** — produce approved `PRODUCT.md`.
+0a. **Moderator + Product Owner** — produce approved `product.md`.
 
 0b. **Prototype Ceremony (optional, Moderator's decision)** — Moderator + Designer + Prototyper (Claude Design) produce:
-- `DESIGN-SPEC.md` (bounded authority after approval)
+- `design-spec.md` (bounded authority after approval)
 - `prototype/` folder (research artifact)
-- `ARCHITECTURE-NOTES.md` (advisory)
+- `architecture-notes.md` (advisory)
 
 Run the ceremony when the product has novel interaction models, real-time data, or unusual visual systems. Skip it for CRUD apps, headless services, and projects where the visual layer is conventional. See `docs/prototype-ceremony.md`.
 
-0c. **Architecture Handoff (mandatory if 0b ran)** — Moderator + Tech Lead (Codex) consume PRODUCT.md + DESIGN-SPEC.md + prototype/ + ARCHITECTURE-NOTES.md and **independently author** `ARCHITECTURE.md`, `ROADMAP.md`, `CLAUDE.md`, `AGENTS.md`, and the first `STEP-XX.md`. Codex has authority to override structures implied by the prototype. Material divergences are recorded in `ARCHITECTURE.md §"Decisions That Diverge From Prototype"`. See `docs/architecture-handoff.md`.
+0c. **Architecture Handoff (mandatory if 0b ran)** — Moderator + Tech Lead (Codex) consume product.md + design-spec.md + prototype/ + architecture-notes.md and **independently author** `architecture.md`, `roadmap.md`, `CLAUDE.md`, `AGENTS.md`, and the first `step-xx.md`. Codex has authority to override structures implied by the prototype. Material divergences are recorded in `architecture.md §"Decisions That Diverge From Prototype"`. See `docs/architecture-handoff.md`.
 
 ### Phase 1 — Define the Step
 
-1a. **Tech Lead (Codex)** writes or refines `STEP-XX.md` with scope, inputs, acceptance checks, and (when applicable) the assigned Dev Team interface and Reference Implementation disposition.
+1a. **Tech Lead (Codex)** writes or refines `step-xx.md` with scope, inputs, acceptance checks, and (when applicable) the assigned Dev Team interface and Reference Implementation disposition.
 
-1b. **Moderator decision** — confirm `STEP-XX.md` is clear and complete before briefing the Development Team.
+1b. **Moderator decision** — confirm `step-xx.md` is clear and complete before briefing the Development Team.
 
 ### Phase 2 — Implement
 
-2a. **Moderator → Development Team** — provides the context packet (relevant `PRODUCT.md`, `ARCHITECTURE.md`, `DOMAIN_LANGUAGE.md` excerpts) and the active `STEP-XX.md`. Dev Team restates the step, proposes a plan, and waits for Moderator approval before writing code.
+2a. **Moderator → Development Team** — provides the context packet (relevant `product.md`, `architecture.md`, `domain-language.md` excerpts) and the active `step-xx.md`. Dev Team restates the step, proposes a plan, and waits for Moderator approval before writing code.
 
 2b. **Development Team** implements the approved scope only and runs the blocking build gate (`{{BUILD_COMMAND}}` + `{{TEST_COMMAND}}`).
 
 ### Phase 3 — Review and iterate (repeat until green)
 
-3a. **Tech Lead (Codex)** reviews the diff for architectural fit, naming consistency, scope compliance, and maintainability. Writes `REVIEW.md`. Sends rework directly to Dev Team if needed.
+3a. **Tech Lead (Codex)** reviews the diff for architectural fit, naming consistency, scope compliance, and maintainability. Writes `review.md`. Sends rework directly to Dev Team if needed.
 
-3b. **QA SubAgent** validates against acceptance checks; writes `QA.md`.
+3b. **QA SubAgent** validates against acceptance checks; writes `qa.md`.
 
 3c. **Product Owner SubAgent** confirms acceptance intent; writes sign-off.
 
@@ -896,9 +896,9 @@ Run the ceremony when the product has novel interaction models, real-time data, 
 
 ### Phase 4 — Accept and advance
 
-4a. **Moderator final gate (HITL)** — confirms all checks pass, `REVIEW.md` and `QA.md` are complete, manually exercises the feature.
+4a. **Moderator final gate (HITL)** — confirms all checks pass, `review.md` and `qa.md` are complete, manually exercises the feature.
 
-4b. **Moderator** creates annotated Git tag and advances `ROADMAP.md`.
+4b. **Moderator** creates annotated Git tag and advances `roadmap.md`.
 
 ---
 
@@ -907,16 +907,16 @@ Run the ceremony when the product has novel interaction models, real-time data, 
 | Document                      | Owner              | Purpose                                                                          |
 | ----------------------------- | ------------------ | -------------------------------------------------------------------------------- |
 | `MOD-W.md`                    | Moderator          | This file — workflow quick-reference for the project                             |
-| `PRODUCT.md`                  | Product Owner      | What is being built, for whom, and why                                           |
-| `DESIGN-SPEC.md`              | Designer + Prototyper | Visual identity, components, screens, interactions (v4)                       |
-| `ARCHITECTURE-NOTES.md`       | Designer + Prototyper | **Advisory** — observations from prototyping for Tech Lead (v4)               |
-| `ARCHITECTURE.md`             | Tech Lead          | Authoritative technical structure, stack, patterns, constraints                  |
-| `ROADMAP.md`                  | Tech Lead          | Ordered sequence of small, reviewable steps                                      |
-| `STEP-XX.md`                  | Tech Lead          | Current step — goal, scope, inputs, acceptance checks                            |
-| `REVIEW.md`                   | Tech Lead          | Review notes and decisions for the current step                                  |
-| `QA.md`                       | QA / Tester        | Verification evidence for the current step                                       |
-| `DOMAIN_LANGUAGE.md`          | Tech Lead          | Canonical terms used across docs, prompts, and code                              |
-| `AI_AGENTS.md`                | Moderator          | Agent registry — models, interfaces, data handling decisions                     |
+| `product.md`                  | Product Owner      | What is being built, for whom, and why                                           |
+| `design-spec.md`              | Designer + Prototyper | Visual identity, components, screens, interactions (v4)                       |
+| `architecture-notes.md`       | Designer + Prototyper | **Advisory** — observations from prototyping for Tech Lead (v4)               |
+| `architecture.md`             | Tech Lead          | Authoritative technical structure, stack, patterns, constraints                  |
+| `roadmap.md`                  | Tech Lead          | Ordered sequence of small, reviewable steps                                      |
+| `step-xx.md`                  | Tech Lead          | Current step — goal, scope, inputs, acceptance checks                            |
+| `review.md`                   | Tech Lead          | Review notes and decisions for the current step                                  |
+| `qa.md`                       | QA / Tester        | Verification evidence for the current step                                       |
+| `domain-language.md`          | Tech Lead          | Canonical terms used across docs, prompts, and code                              |
+| `ai-agents.md`                | Moderator          | Agent registry — models, interfaces, data handling decisions                     |
 | `CLAUDE.md` (repo root)       | Tech Lead          | Dev Team config for Claude Code                                                  |
 | `AGENTS.md` (repo root)       | Tech Lead          | Tech Lead config for Codex                                                       |
 
@@ -927,11 +927,11 @@ All MOD-W docs live under `mod-w/` in the project. `CLAUDE.md` and `AGENTS.md` l
 ## Operating rules
 
 - **Documents must earn their existence.** Prefer updating an existing doc over creating a new one.
-- **No hidden scope.** Anything not in the current `STEP-XX.md` is out of scope for this step.
+- **No hidden scope.** Anything not in the current `step-xx.md` is out of scope for this step.
 - **Explicit out-of-scope.** When something is deferred, state it.
-- **Stable naming.** Resolve naming conflicts early; keep `DOMAIN_LANGUAGE.md` current.
+- **Stable naming.** Resolve naming conflicts early; keep `domain-language.md` current.
 - **Pause on ambiguity.** Any role that is unsure stops and clarifies rather than guessing.
-- **Lean first, expand later.** Start with `PRODUCT.md`, `ROADMAP.md`, and `STEP-XX.md`; add further docs only when they clearly help.
+- **Lean first, expand later.** Start with `product.md`, `roadmap.md`, and `step-xx.md`; add further docs only when they clearly help.
 - **No retroactive gates.** Work produced outside an approved gate is **reference material only**, never adopted as authoritative without re-running the gate from scratch.
 - **Single-role-per-session.** A session is started with exactly one role prompt. Mid-session role switching is prohibited.
 - **Architecture is authored by Codex, never by Claude Design.** This is the v4 non-negotiable.
@@ -941,7 +941,7 @@ All MOD-W docs live under `mod-w/` in the project. `CLAUDE.md` and `AGENTS.md` l
 MOD-W v4.0.0 · Moderated AI Development Workflow · https://github.com/fpmcguire/mod-w
 ```
 
-### §E.3 — `templates/DESIGN-SPEC.md` (REPLACE — additive)
+### §E.3 — `templates/design-spec.md` (REPLACE — additive)
 
 ```markdown
 # Design Spec — {{PROJECT_NAME}}
@@ -986,7 +986,7 @@ MOD-W v4.0.0 · Moderated AI Development Workflow · https://github.com/fpmcguir
 
 ## 3. Component Library
 
-> One section per component. For each component document: name (from `DOMAIN_LANGUAGE.md`), one-sentence purpose, states (default / hover / active / disabled / loading / empty / error), variants, and `data-testid` convention.
+> One section per component. For each component document: name (from `domain-language.md`), one-sentence purpose, states (default / hover / active / disabled / loading / empty / error), variants, and `data-testid` convention.
 
 ### 3.x {{COMPONENT_NAME}}
 
@@ -1023,7 +1023,7 @@ MOD-W v4.0.0 · Moderated AI Development Workflow · https://github.com/fpmcguir
 
 ## 7. Domain Language Proposals _(v4)_
 
-> Terms the prototype surfaced that are NOT in `DOMAIN_LANGUAGE.md`. Each entry is a proposal for the Tech Lead to ratify, modify, or reject during Architecture Definition. Do not treat any term here as canonical.
+> Terms the prototype surfaced that are NOT in `domain-language.md`. Each entry is a proposal for the Tech Lead to ratify, modify, or reject during Architecture Definition. Do not treat any term here as canonical.
 
 | Proposed term | Form (type / value / both) | Definition | Rationale | First appearance |
 | ------------- | -------------------------- | ---------- | --------- | ---------------- |
@@ -1043,7 +1043,7 @@ If no terms proposed, state "None proposed."
 
 ## 9. UI Scope Rules
 
-- Only implement UI elements in current `STEP-XX.md`
+- Only implement UI elements in current `step-xx.md`
 - Future states must not be implemented early
 - Design supports incremental delivery
 
@@ -1059,7 +1059,7 @@ If no terms proposed, state "None proposed."
 MOD-W v4.0.0
 ```
 
-### §E.4 — `templates/STEP-XX.md` (REPLACE — additive)
+### §E.4 — `templates/step-xx.md` (REPLACE — additive)
 
 ```markdown
 # STEP-XX — {{TITLE}}
@@ -1083,7 +1083,7 @@ MOD-W v4.0.0
 - [ ] Claude Code (default)
 - [ ] Claude Design (visual / chart / interaction-heavy Step)
 
-**Hard rule:** if Claude Design is assigned here, it MUST NOT have authored this `STEP-XX.md`. Codex writes the spec; Claude Design implements against it. Plan vs. implement model contrast is preserved.
+**Hard rule:** if Claude Design is assigned here, it MUST NOT have authored this `step-xx.md`. Codex writes the spec; Claude Design implements against it. Plan vs. implement model contrast is preserved.
 
 ---
 
@@ -1097,8 +1097,8 @@ MOD-W v4.0.0
 
 ## Inputs
 
-- `PRODUCT.md` (R-IDs)
-- `ARCHITECTURE.md` (D-IDs)
+- `product.md` (R-IDs)
+- `architecture.md` (D-IDs)
 - Relevant files
 
 ---
@@ -1198,8 +1198,8 @@ Claude Design does **not** replace Codex (Tech Lead), Claude Code (default Dev T
 
 ### Responsibility split
 
-- **Claude Design owns:** the Prototype Ceremony — producing `DESIGN-SPEC.md`, the `prototype/` folder, and `ARCHITECTURE-NOTES.md`. Optionally implementing visual Steps when assigned by the Moderator in `STEP-XX.md`.
-- **Codex (Tech Lead) owns:** authoring `ARCHITECTURE.md` after the Architecture Handoff. Codex has authority to override structures implied by the prototype.
+- **Claude Design owns:** the Prototype Ceremony — producing `design-spec.md`, the `prototype/` folder, and `architecture-notes.md`. Optionally implementing visual Steps when assigned by the Moderator in `step-xx.md`.
+- **Codex (Tech Lead) owns:** authoring `architecture.md` after the Architecture Handoff. Codex has authority to override structures implied by the prototype.
 - **Claude Code owns:** default Dev Team implementation, QA SubAgent, Product Owner SubAgent validation.
 - **MOD-W owns:** Moderator authority at every gate, cross-validation invariants, Step-scoped discipline.
 
@@ -1221,11 +1221,11 @@ Product Definition  →  PROTOTYPE CEREMONY  →  ARCHITECTURE HANDOFF  →  per
                        (Claude Design)        (Codex)
 ```
 
-Exit criteria: `DESIGN-SPEC.md` approved by Product Owner and Moderator; prototype renders without errors and matches the spec; `ARCHITECTURE-NOTES.md` exists. Full lifecycle: see `docs/prototype-ceremony.md`.
+Exit criteria: `design-spec.md` approved by Product Owner and Moderator; prototype renders without errors and matches the spec; `architecture-notes.md` exists. Full lifecycle: see `docs/prototype-ceremony.md`.
 
 ### Architecture Handoff (non-negotiable gate)
 
-After the Prototype Ceremony, the Tech Lead (Codex) consumes the four kickoff inputs — `PRODUCT.md`, `DESIGN-SPEC.md`, `prototype/`, `ARCHITECTURE-NOTES.md` — and **independently authors** `ARCHITECTURE.md`. Codex has explicit authority to disagree with the prototype, reorganize structure, reject domain term proposals, and override `ARCHITECTURE-NOTES.md` observations. Material divergences are recorded in `ARCHITECTURE.md §"Decisions That Diverge From Prototype"`.
+After the Prototype Ceremony, the Tech Lead (Codex) consumes the four kickoff inputs — `product.md`, `design-spec.md`, `prototype/`, `architecture-notes.md` — and **independently authors** `architecture.md`. Codex has explicit authority to disagree with the prototype, reorganize structure, reject domain term proposals, and override `architecture-notes.md` observations. Material divergences are recorded in `architecture.md §"Decisions That Diverge From Prototype"`.
 
 **Why this gate is non-negotiable:** the architecture document is the highest-cost failure point in the project — every downstream Step inherits its assumptions. Allowing Claude Design to author it would create sequential same-model outputs, eliminating model contrast at exactly the point where contrast matters most. The Moderator may shorten or skip other v4 ceremonies under time pressure. **The Architecture Handoff may not be skipped.**
 
@@ -1234,12 +1234,12 @@ Full gate definition: see `docs/architecture-handoff.md`.
 ### New artifact classes
 
 - **`prototype/`** — research artifact at repo root, produced by Claude Design, explicitly marked non-authoritative via `prototype/README.md` disclaimer. Lives outside `src/` to prevent accidental import.
-- **`ARCHITECTURE-NOTES.md`** — advisory input to Architecture Definition, produced by Claude Design, retained in `mod-w/` as historical context.
-- **Reference Implementation** — a candidate implementation produced outside the Dev Team role (typically inside `prototype/`). Never auto-promotes. The Tech Lead disposes of it in `STEP-XX.md §"Reference Implementation"` as `Adopt as-is`, `Adopt with modifications`, or `Reject`.
+- **`architecture-notes.md`** — advisory input to Architecture Definition, produced by Claude Design, retained in `mod-w/` as historical context.
+- **Reference Implementation** — a candidate implementation produced outside the Dev Team role (typically inside `prototype/`). Never auto-promotes. The Tech Lead disposes of it in `step-xx.md §"Reference Implementation"` as `Adopt as-is`, `Adopt with modifications`, or `Reject`.
 
 ### Claude Design as Development Team (optional per Step)
 
-Claude Design may play the Development Team role for a Step when the Step is visual / chart / interaction-heavy AND the Moderator explicitly assigns it in `STEP-XX.md §"Assigned Dev Team Interface"`. **Hard rule:** Claude Design as Dev Team **may not** also have produced the `STEP-XX.md` spec. Codex writes the spec; Claude Design implements against it. Plan vs. implement model contrast is preserved.
+Claude Design may play the Development Team role for a Step when the Step is visual / chart / interaction-heavy AND the Moderator explicitly assigns it in `step-xx.md §"Assigned Dev Team Interface"`. **Hard rule:** Claude Design as Dev Team **may not** also have produced the `step-xx.md` spec. Codex writes the spec; Claude Design implements against it. Plan vs. implement model contrast is preserved.
 
 ### Bottom line
 
@@ -1267,8 +1267,8 @@ MOD-W v4.0.0 · Moderated AI Development Workflow · https://github.com/fpmcguir
 ```markdown
 **Project Kickoff (once):**
 
-1. **Product Definition** – Moderator iterates with Claude chatbot, Perplexity, and Gemini to produce an approved `PRODUCT.md`.
-2. **Architecture Definition** – Moderator iterates with Tech Lead (Codex) to produce approved `ARCHITECTURE.md`, `ROADMAP.md`, `CLAUDE.md`, and `AGENTS.md`.
+1. **Product Definition** – Moderator iterates with Claude chatbot, Perplexity, and Gemini to produce an approved `product.md`.
+2. **Architecture Definition** – Moderator iterates with Tech Lead (Codex) to produce approved `architecture.md`, `roadmap.md`, `CLAUDE.md`, and `AGENTS.md`.
 ```
 
 Replace with:
@@ -1276,9 +1276,9 @@ Replace with:
 ```markdown
 **Project Kickoff (once):**
 
-1. **Product Definition** – Moderator iterates with Claude chatbot, Perplexity, and Gemini to produce an approved `PRODUCT.md`.
-2. **Prototype Ceremony (optional, v4)** – Moderator iterates with Claude Design (Designer + Prototyper) to produce approved `DESIGN-SPEC.md`, a working `prototype/` folder, and advisory `ARCHITECTURE-NOTES.md`. Run when the product has novel interaction models, real-time data, or unusual visual systems; skip for conventional UI.
-3. **Architecture Definition** – Moderator iterates with Tech Lead (Codex) to produce approved `ARCHITECTURE.md`, `ROADMAP.md`, `CLAUDE.md`, and `AGENTS.md`. If the Prototype Ceremony ran, Codex performs the Architecture Handoff: consumes all four kickoff inputs and independently authors the architecture with explicit authority to override prototype-implied structures.
+1. **Product Definition** – Moderator iterates with Claude chatbot, Perplexity, and Gemini to produce an approved `product.md`.
+2. **Prototype Ceremony (optional, v4)** – Moderator iterates with Claude Design (Designer + Prototyper) to produce approved `design-spec.md`, a working `prototype/` folder, and advisory `architecture-notes.md`. Run when the product has novel interaction models, real-time data, or unusual visual systems; skip for conventional UI.
+3. **Architecture Definition** – Moderator iterates with Tech Lead (Codex) to produce approved `architecture.md`, `roadmap.md`, `CLAUDE.md`, and `AGENTS.md`. If the Prototype Ceremony ran, Codex performs the Architecture Handoff: consumes all four kickoff inputs and independently authors the architecture with explicit authority to override prototype-implied structures.
 ```
 
 Also renumber the **Per-Step Lifecycle** list directly below — its current first item is `3.` and should become `4.`, etc., all the way down to `8.`.
@@ -1298,26 +1298,26 @@ Also renumber the **Per-Step Lifecycle** list directly below — its current fir
 
 ### Authoritative outputs
 
-- `DESIGN-SPEC.md` — visual identity, components, screens, interactions, data-testid conventions
+- `design-spec.md` — visual identity, components, screens, interactions, data-testid conventions
 
 ### Non-authoritative outputs
 
 - `prototype/` folder at repo root — clickable demonstration of the design under realistic conditions
-- `ARCHITECTURE-NOTES.md` — advisory input to the Tech Lead's Architecture Definition session
+- `architecture-notes.md` — advisory input to the Tech Lead's Architecture Definition session
 
 ### Authority
 
 The Designer + Prototyper **proposes** — never declares. Specifically:
 
-- Approved design decisions in `DESIGN-SPEC.md` become authoritative only within the bounded visual and interaction authority defined by current MOD-W guidance.
-- Domain term proposals in `DESIGN-SPEC.md §"Domain Language Proposals"` are non-authoritative until the Tech Lead ratifies them in `DOMAIN_LANGUAGE.md`.
-- `ARCHITECTURE-NOTES.md` is advisory; the Tech Lead has explicit authority to override any observation when writing `ARCHITECTURE.md`.
+- Approved design decisions in `design-spec.md` become authoritative only within the bounded visual and interaction authority defined by current MOD-W guidance.
+- Domain term proposals in `design-spec.md §"Domain Language Proposals"` are non-authoritative until the Tech Lead ratifies them in `domain-language.md`.
+- `architecture-notes.md` is advisory; the Tech Lead has explicit authority to override any observation when writing `architecture.md`.
 
 ### Constraints
 
 The Designer + Prototyper **may not**:
 
-- Author `ARCHITECTURE.md`, `ROADMAP.md`, any `STEP-XX.md`, `REVIEW.md`, `QA.md`, `CLAUDE.md`, or `AGENTS.md`
+- Author `architecture.md`, `roadmap.md`, any `step-xx.md`, `review.md`, `qa.md`, `CLAUDE.md`, or `AGENTS.md`
 - Write or modify production code outside the `prototype/` folder
 - Declare canonical types, file paths, service boundaries, framework choices, or domain terms
 
@@ -1336,15 +1336,15 @@ The role prompt is at `prompts/designer.md`.
 Inserted between Product Definition and Architecture Definition when the Moderator decides the product warrants it.
 
 - **Role:** Designer + Prototyper (Claude Design)
-- **Inputs:** `PRODUCT.md`, brand assets, reference imagery
-- **Outputs:** `DESIGN-SPEC.md` (bounded authority after approval), `prototype/` (research artifact), `ARCHITECTURE-NOTES.md` (advisory)
+- **Inputs:** `product.md`, brand assets, reference imagery
+- **Outputs:** `design-spec.md` (bounded authority after approval), `prototype/` (research artifact), `architecture-notes.md` (advisory)
 - **Exit gate:** cross-validation pause (Product Owner + Codex pre-review + optional independent Designer) followed by Moderator approval
 
 See `docs/prototype-ceremony.md` for the full lifecycle.
 
 ### Architecture Handoff (v4, mandatory if Prototype Ceremony ran)
 
-The Tech Lead (Codex) consumes all four kickoff inputs and independently authors `ARCHITECTURE.md`. Codex has authority to override prototype-implied structures; material divergences are recorded in `ARCHITECTURE.md §"Decisions That Diverge From Prototype"`.
+The Tech Lead (Codex) consumes all four kickoff inputs and independently authors `architecture.md`. Codex has authority to override prototype-implied structures; material divergences are recorded in `architecture.md §"Decisions That Diverge From Prototype"`.
 
 See `docs/architecture-handoff.md` for the full gate.
 ```
@@ -1358,13 +1358,13 @@ See `docs/architecture-handoff.md` for the full gate.
 ```markdown
 ### Design + Prototyper artifacts (v4)
 
-- **`DESIGN-SPEC.md`** (in `mod-w/`) - visual identity, component library, screen layouts, interaction patterns, traceability, approval, and domain language proposals. Authored by Designer + Prototyper; bounded authority after Product Owner + Moderator approval.
-- **`ARCHITECTURE-NOTES.md`** (in `mod-w/`) — advisory observations from the Prototype Ceremony for the Tech Lead's consideration during Architecture Definition. **Not authoritative.** Retained for the life of the project as historical context.
+- **`design-spec.md`** (in `mod-w/`) - visual identity, component library, screen layouts, interaction patterns, traceability, approval, and domain language proposals. Authored by Designer + Prototyper; bounded authority after Product Owner + Moderator approval.
+- **`architecture-notes.md`** (in `mod-w/`) — advisory observations from the Prototype Ceremony for the Tech Lead's consideration during Architecture Definition. **Not authoritative.** Retained for the life of the project as historical context.
 - **`prototype/`** (at repo root) — clickable prototype produced during the Prototype Ceremony. **Research artifact, non-authoritative.** Carries a `prototype/README.md` stating the disclaimer. Frozen after Architecture Handoff.
 
 ### Reference Implementation (v4, concept — not a file)
 
-A **Reference Implementation** is a candidate implementation produced outside the Development Team role — typically inside `prototype/`. It does **not** auto-promote to production. The Tech Lead disposes of it in `STEP-XX.md §"Reference Implementation"` as `Adopt as-is`, `Adopt with modifications`, or `Reject`.
+A **Reference Implementation** is a candidate implementation produced outside the Development Team role — typically inside `prototype/`. It does **not** auto-promote to production. The Tech Lead disposes of it in `step-xx.md §"Reference Implementation"` as `Adopt as-is`, `Adopt with modifications`, or `Reject`.
 ```
 
 ### §F.5 — `docs/ceremonies.md` (if present)
@@ -1376,13 +1376,13 @@ A **Reference Implementation** is a candidate implementation produced outside th
 ```markdown
 ### Prototype Ceremony (v4, optional)
 
-Slots between Product Definition and Architecture Definition. Produces `DESIGN-SPEC.md`, a working `prototype/` folder, and advisory `ARCHITECTURE-NOTES.md`. Run when the product has novel interaction models, real-time data, or unusual visual systems; skip for conventional UI.
+Slots between Product Definition and Architecture Definition. Produces `design-spec.md`, a working `prototype/` folder, and advisory `architecture-notes.md`. Run when the product has novel interaction models, real-time data, or unusual visual systems; skip for conventional UI.
 
 See `docs/prototype-ceremony.md` for the full lifecycle.
 
 ### Architecture Handoff (v4, mandatory if Prototype Ceremony ran)
 
-The Tech Lead (Codex) consumes all four kickoff inputs and independently authors `ARCHITECTURE.md` with authority to override prototype-implied structures.
+The Tech Lead (Codex) consumes all four kickoff inputs and independently authors `architecture.md` with authority to override prototype-implied structures.
 
 See `docs/architecture-handoff.md` for the full gate.
 ```
@@ -1398,20 +1398,20 @@ If `docs/ceremonies.md` does not exist in the repo, skip this patch — the same
 Replace step 1 of the Planning Session list:
 
 ```
-1. Read `PRODUCT.md` and existing `ARCHITECTURE.md` (if present).
+1. Read `product.md` and existing `architecture.md` (if present).
 ```
 
 with:
 
 ```
-1. Read `PRODUCT.md` and, **if the Prototype Ceremony ran** (v4), also read `mod-w/DESIGN-SPEC.md`, `prototype/`, and `mod-w/ARCHITECTURE-NOTES.md`. All four are inputs to the Architecture Handoff (`docs/architecture-handoff.md`). Read existing `ARCHITECTURE.md` if present.
+1. Read `product.md` and, **if the Prototype Ceremony ran** (v4), also read `mod-w/design-spec.md`, `prototype/`, and `mod-w/architecture-notes.md`. All four are inputs to the Architecture Handoff (`docs/architecture-handoff.md`). Read existing `architecture.md` if present.
 ```
 
 Then **append** to the Planning Session list (after step 5):
 
 ```
-6. **Architecture Handoff (v4, if Prototype Ceremony ran).** When authoring `ARCHITECTURE.md` from prototype inputs, you have explicit authority to override structures implied by the prototype. Record any material divergence in `ARCHITECTURE.md §"Decisions That Diverge From Prototype"` with rationale. `ARCHITECTURE-NOTES.md` is advisory input, not constraint.
-7. **Domain Language ratification (v4).** When the prototype proposed terms in `DESIGN-SPEC.md §"Domain Language Proposals"`, ratify, modify, or reject each in `DOMAIN_LANGUAGE.md` with a one-line rationale per term.
+6. **Architecture Handoff (v4, if Prototype Ceremony ran).** When authoring `architecture.md` from prototype inputs, you have explicit authority to override structures implied by the prototype. Record any material divergence in `architecture.md §"Decisions That Diverge From Prototype"` with rationale. `architecture-notes.md` is advisory input, not constraint.
+7. **Domain Language ratification (v4).** When the prototype proposed terms in `design-spec.md §"Domain Language Proposals"`, ratify, modify, or reject each in `domain-language.md` with a one-line rationale per term.
 ```
 
 ### §F.7 — `prompts/development-team.md`
@@ -1432,9 +1432,9 @@ Replace with:
 > It configures the **Development Team** session: one approved Step at a time, under human moderation.
 >
 > **Default interface:** Claude Code (CLI).
-> **Alternate interface (v4):** Claude Design — used when the Moderator assigns a visual / chart / interaction-heavy Step to Claude Design in `STEP-XX.md §"Assigned Dev Team Interface"`. The role rules are identical; only the interface differs.
+> **Alternate interface (v4):** Claude Design — used when the Moderator assigns a visual / chart / interaction-heavy Step to Claude Design in `step-xx.md §"Assigned Dev Team Interface"`. The role rules are identical; only the interface differs.
 >
-> **Hard rule (v4):** when Claude Design plays Dev Team, it MUST NOT have authored the Step's `STEP-XX.md`. Codex writes the spec; Claude Design implements against it. Plan vs. implement model contrast is preserved.
+> **Hard rule (v4):** when Claude Design plays Dev Team, it MUST NOT have authored the Step's `step-xx.md`. Codex writes the spec; Claude Design implements against it. Plan vs. implement model contrast is preserved.
 ```
 
 ---
@@ -1451,7 +1451,7 @@ After applying all changes, the Claude session reports on each:
 | 4   | `README.md` Project Kickoff list now has three items (Product Definition → Prototype Ceremony → Architecture Definition); Per-Step Lifecycle numbering starts at 4 |        |
 | 5   | `docs/roles.md` contains a Designer + Prototyper section between Product Owner and Tech Lead                                                                       |        |
 | 6   | `docs/step-lifecycle.md` mentions the Prototype Ceremony and Architecture Handoff                                                                                  |        |
-| 7   | `docs/artifacts.md` mentions `DESIGN-SPEC.md`, `ARCHITECTURE-NOTES.md`, `prototype/`, and Reference Implementation                                                 |        |
+| 7   | `docs/artifacts.md` mentions `design-spec.md`, `architecture-notes.md`, `prototype/`, and Reference Implementation                                                 |        |
 | 8   | `prompts/tech-lead.md` references the Architecture Handoff and Domain Language ratification                                                                        |        |
 | 9   | `prompts/development-team.md` references Claude Design as an alternate Dev Team interface                                                                          |        |
 | 10  | No file outside §C "File inventory" has been modified                                                                                                              |        |
@@ -1468,11 +1468,11 @@ These were surfaced during v4 design and are intentionally **not** resolved in v
 
 | ID  | Question                                                                                                                             | Default behaviour in v4.0.0                                                         |
 | --- | ------------------------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------- |
-| Q1  | Should `ARCHITECTURE-NOTES.md` be archived after Architecture Definition, or retained indefinitely?                                  | Retained.                                                                           |
+| Q1  | Should `architecture-notes.md` be archived after Architecture Definition, or retained indefinitely?                                  | Retained.                                                                           |
 | Q2  | Can Codex author Reference Implementations during Architecture Definition, or only Claude Design during Prototype Ceremony?          | Only Claude Design. Codex's job is to specify, not to demonstrate.                  |
-| Q3  | Does the Prototype Ceremony need its own `PROTOTYPE-REVIEW.md`, or fold into `REVIEW.md`?                                            | Fold into `REVIEW.md §"Prototype Ceremony"`.                                        |
+| Q3  | Does the Prototype Ceremony need its own `PROTOTYPE-review.md`, or fold into `review.md`?                                            | Fold into `review.md §"Prototype Ceremony"`.                                        |
 | Q4  | When Claude Design plays Dev Team, does it run QA SubAgent itself, or Claude Code runs QA externally?                                | Claude Code runs QA externally — preserves model contrast on the verification axis. |
-| Q5  | Single `prompts/designer.md` covering both Claude Design and Claude chatbot / Gemini, or split into `designer.md` + `prototyper.md`? | Single file. The chatbot / Gemini variant produces only `DESIGN-SPEC.md`.           |
+| Q5  | Single `prompts/designer.md` covering both Claude Design and Claude chatbot / Gemini, or split into `designer.md` + `prototyper.md`? | Single file. The chatbot / Gemini variant produces only `design-spec.md`.           |
 
 ---
 
@@ -1488,8 +1488,8 @@ Migration is opt-in per project:
 
 For projects already past kickoff:
 
-- Backfill is permitted as reference documentation or evidence: produce `DESIGN-SPEC.md` and `ARCHITECTURE-NOTES.md` from existing prototype work, but do not declare the historical work compliant.
-- The Architecture Handoff must be run explicitly: Codex receives the backfilled artifacts and produces an authoritative `ARCHITECTURE.md` from scratch.
+- Backfill is permitted as reference documentation or evidence: produce `design-spec.md` and `architecture-notes.md` from existing prototype work, but do not declare the historical work compliant.
+- The Architecture Handoff must be run explicitly: Codex receives the backfilled artifacts and produces an authoritative `architecture.md` from scratch.
 - Existing Steps may be re-reviewed or re-implemented by re-executing the applicable current gate; they may not receive retroactive approval.
 
 ---
@@ -1501,9 +1501,9 @@ These cannot be relaxed in v4 under any circumstance. The Claude session applyin
 | Invariant                                                             | Where to verify                                                                             |
 | --------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- |
 | Tech Lead is always Codex                                             | `templates/MOD-W.md` Roles table; `prompts/tech-lead.md` opening                            |
-| Dev Team is never the same model as Tech Lead for the same Step       | `templates/STEP-XX.md §"Assigned Dev Team Interface"` hard rule                             |
+| Dev Team is never the same model as Tech Lead for the same Step       | `templates/step-xx.md §"Assigned Dev Team Interface"` hard rule                             |
 | Moderator is always human                                             | `templates/MOD-W.md` Roles table                                                            |
-| `ARCHITECTURE.md` is authored by Codex, never by Claude Design        | `templates/MOD-W.md` Operating rules; `docs/architecture-handoff.md`                        |
+| `architecture.md` is authored by Codex, never by Claude Design        | `templates/MOD-W.md` Operating rules; `docs/architecture-handoff.md`                        |
 | Every Step passes a Codex review before QA                            | `templates/MOD-W.md` Phase 3                                                                |
 | Every Step passes a Moderator final gate before tag + ROADMAP advance | `templates/MOD-W.md` Phase 4                                                                |
 | Single-role-per-session                                               | `templates/MOD-W.md` Operating rules; `prompts/designer.md` environment self-identification |
