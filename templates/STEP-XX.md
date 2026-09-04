@@ -10,7 +10,7 @@
 
 - R1 -
 
-## Related Design IDs  *(if design-spec.md exists)*
+## Related Design IDs _(if design-spec.md exists)_
 
 | Design ID | Design element | Design intent to preserve | Product requirement |
 | --------- | -------------- | ------------------------- | ------------------- |
@@ -71,14 +71,14 @@
 
 - ...
 
-### Prototype Assumption Disposition  *(required if Claude Design implements from its own prototype)*
+### Prototype Assumption Disposition _(required if Claude Design implements from its own prototype)_
 
-| Assumption type | Details |
-| --------------- | ------- |
-| Accepted prototype assumptions | |
-| Modified prototype assumptions | |
-| Rejected prototype assumptions | |
-| Mandatory divergence from prototype | |
+| Assumption type                     | Details |
+| ----------------------------------- | ------- |
+| Accepted prototype assumptions      |         |
+| Modified prototype assumptions      |         |
+| Rejected prototype assumptions      |         |
+| Mandatory divergence from prototype |         |
 
 The implementing Claude Design session must treat this Step and authoritative architecture as controlling, even when they conflict with its earlier prototype.
 
@@ -116,4 +116,4 @@ The implementing Claude Design session must treat this Step and authoritative ar
 
 ---
 
-MOD-W v5
+MOD-W v5.0.0

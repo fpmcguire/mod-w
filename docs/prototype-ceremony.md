@@ -29,24 +29,24 @@ The Moderator decides per project and records the decision in the project's `MOD
 
 ## Inputs
 
-| Input | Source | Authority |
-| ----- | ------ | --------- |
-| `product.md` | Product Owner | Authoritative |
-| Brand assets, reference imagery, written tone descriptions | Moderator | Directional |
-| `templates/design-spec.md` | MOD-W repo | Template |
-| `templates/architecture-notes.md` | MOD-W repo | Template |
-| `templates/prototype-README.md` | MOD-W repo | Template |
-| `prompts/designer.md` | MOD-W repo | Role prompt |
+| Input                                                      | Source        | Authority     |
+| ---------------------------------------------------------- | ------------- | ------------- |
+| `product.md`                                               | Product Owner | Authoritative |
+| Brand assets, reference imagery, written tone descriptions | Moderator     | Directional   |
+| `templates/design-spec.md`                                 | MOD-W repo    | Template      |
+| `templates/architecture-notes.md`                          | MOD-W repo    | Template      |
+| `templates/prototype-README.md`                            | MOD-W repo    | Template      |
+| `prompts/designer.md`                                      | MOD-W repo    | Role prompt   |
 
 ---
 
 ## Outputs
 
-| Output | Status | Path |
-| ------ | ------ | ---- |
-| `design-spec.md` | Bounded authority after Product Owner and Moderator approval | `mod-w/design-spec.md` |
-| Clickable prototype | Research artifact, non-authoritative | `prototype/` at repo root |
-| `architecture-notes.md` | Advisory evidence for Architecture Definition | `mod-w/architecture-notes.md` |
+| Output                  | Status                                                       | Path                          |
+| ----------------------- | ------------------------------------------------------------ | ----------------------------- |
+| `design-spec.md`        | Bounded authority after Product Owner and Moderator approval | `mod-w/design-spec.md`        |
+| Clickable prototype     | Research artifact, non-authoritative                         | `prototype/` at repo root     |
+| `architecture-notes.md` | Advisory evidence for Architecture Definition                | `mod-w/architecture-notes.md` |
 
 After approval, `design-spec.md` is authoritative for user-facing visual behavior, interaction intent, screen composition, component states and variants, accessibility expectations, and approved user-facing terminology and content presentation.
 
@@ -135,4 +135,4 @@ Existing design or prototype work may be analyzed and backfilled as reference do
 
 ---
 
-MOD-W v5
+MOD-W v5.0.0

@@ -26,7 +26,3 @@
 ## Notes for Reviewers
 
 <!-- Anything you want reviewers to pay special attention to -->
-
----
-
-MOD-W v4.0.1 · Moderated AI Development Workflow · https://github.com/fpmcguire/mod-w

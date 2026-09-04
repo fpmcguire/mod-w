@@ -19,13 +19,13 @@ This article explains:
 
 In MOD-W v3, Codex is the **default** agent for the **Tech Lead** role. It reads `AGENTS.md` from the repo root, writes planning artifacts directly to the filesystem, and reviews Development Team output — no copy-paste required.
 
-| Role             | Default agent (v3)                                    |
-| ---------------- | ----------------------------------------------------- |
+| Role             | Default agent (v3)                                                                         |
+| ---------------- | ------------------------------------------------------------------------------------------ |
 | Product Owner    | Claude chatbot + Perplexity + Gemini (Definition phase); Claude Code SubAgent (Validation) |
-| **Tech Lead**    | **Codex** (full session, reads `AGENTS.md`)           |
-| Development Team | Claude Code SubAgent (reads `CLAUDE.md`)              |
-| QA               | Claude Code SubAgent                                  |
-| Moderator        | Human only                                            |
+| **Tech Lead**    | **Codex** (full session, reads `AGENTS.md`)                                                |
+| Development Team | Claude Code SubAgent (reads `CLAUDE.md`)                                                   |
+| QA               | Claude Code SubAgent                                                                       |
+| Moderator        | Human only                                                                                 |
 
 Cross-validation is intentional: Codex plans and reviews; Claude Code implements. Model diversity at the Tech Lead / Dev Team boundary is MOD-W's primary quality lever.
 
@@ -152,7 +152,3 @@ Codex (Tech Lead) and Claude Code (Development Team) are designed to work alongs
 | **Implement**  | Claude Code (Dev Team) | Step implemented and summarised                 |
 | **Review**     | Codex (Tech Lead)      | Must-fix / nice-to-have findings in `review.md` |
 | **Accept**     | Moderator (human)      | Git tag, `roadmap.md` advanced                  |
-
----
-
-MOD-W v4.0.1 · Moderated AI Development Workflow · https://github.com/fpmcguire/mod-w

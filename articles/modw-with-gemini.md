@@ -228,7 +228,3 @@ If evidence is weak, request a revision and keep the step open.
 - [docs/quality-gates.md](quality-gates.md)
 - [docs/step-lifecycle.md](step-lifecycle.md)
 - [docs/artifacts.md](artifacts.md)
-
----
-
-MOD-W v4.0.1 · Moderated AI Development Workflow · https://github.com/fpmcguire/mod-w

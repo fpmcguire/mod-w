@@ -91,4 +91,4 @@ _(Adjust names to your chosen stack once architecture.md is written.)_
 
 ---
 
-MOD-W v5 · Moderated AI Development Workflow · https://github.com/fpmcguire/mod-w
+MOD-W v5.0.0 · Moderated AI Development Workflow · https://github.com/fpmcguire/mod-w

@@ -155,7 +155,3 @@ The change is only "finished" when it moves from a delta to the system's permane
 | **Plan**   | `/opsx:continue`               | Tech Lead     | Approved `design.md` & `tasks.md`.    |
 | **Build**  | `/opsx:apply`                  | Dev Team      | Verified implementation via `verify`. |
 | **Finish** | `/opsx:archive`                | Moderator     | `review.md` sign-off & spec sync.     |
-
----
-
-MOD-W v4.0.1 · Moderated AI Development Workflow · https://github.com/fpmcguire/mod-w

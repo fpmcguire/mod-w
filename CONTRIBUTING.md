@@ -40,7 +40,3 @@ This project follows the [Code of Conduct](CODE_OF_CONDUCT.md). By participating
 ## Governance
 
 See [GOVERNANCE.md](GOVERNANCE.md) for how decisions are made in this project.
-
----
-
-MOD-W v4.0.1 · Moderated AI Development Workflow · https://github.com/fpmcguire/mod-w

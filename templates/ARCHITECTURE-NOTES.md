@@ -18,14 +18,14 @@ Use one subsection per significant observation. Include concrete evidence where 
 
 ### OBS-001 - {{SHORT_TITLE}}
 
-| Field | Notes |
-| ----- | ----- |
-| Observation | |
-| Evidence | |
-| Prototype location | `prototype/...` |
-| Reproduction conditions | Browser, viewport, data volume, interaction path, or simulated integration used |
-| Confidence | High / Medium / Low |
-| Possible architectural implication | |
+| Field                              | Notes                                                                           |
+| ---------------------------------- | ------------------------------------------------------------------------------- |
+| Observation                        |                                                                                 |
+| Evidence                           |                                                                                 |
+| Prototype location                 | `prototype/...`                                                                 |
+| Reproduction conditions            | Browser, viewport, data volume, interaction path, or simulated integration used |
+| Confidence                         | High / Medium / Low                                                             |
+| Possible architectural implication |                                                                                 |
 
 ---
 
@@ -77,4 +77,4 @@ Use one subsection per significant observation. Include concrete evidence where 
 
 ---
 
-MOD-W v5
+MOD-W v5.0.0

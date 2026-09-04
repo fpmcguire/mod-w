@@ -39,12 +39,12 @@
 
 > Stable IDs (R-IDs) are required for traceability.
 
-| ID | Requirement | Priority     |
-| -- | ----------- | ------------ |
-| R1 |             | Must have    |
-| R2 |             | Must have    |
-| R3 |             | Should have  |
-| R4 |             | Nice to have |
+| ID  | Requirement | Priority     |
+| --- | ----------- | ------------ |
+| R1  |             | Must have    |
+| R2  |             | Must have    |
+| R3  |             | Should have  |
+| R4  |             | Nice to have |
 
 ---
 
@@ -57,11 +57,11 @@
 
 ## Acceptance Criteria (Product-Level)
 
-* [ ] All Must-have requirements implemented
-* [ ] No unresolved critical risks
-* [ ] qa.md completed
-* [ ] review.md approved
-* [ ] Moderator sign-off
+- [ ] All Must-have requirements implemented
+- [ ] No unresolved critical risks
+- [ ] qa.md completed
+- [ ] review.md approved
+- [ ] Moderator sign-off
 
 ---
 
@@ -85,9 +85,7 @@
 
 ## Sources / References
 
-*
-
----
+- ***
 
 ## Change Log
 
@@ -96,4 +94,4 @@
 
 ---
 
-MOD-W v5
+MOD-W v5.0.0

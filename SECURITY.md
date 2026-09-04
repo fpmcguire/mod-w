@@ -30,7 +30,3 @@ When using the prompts and templates in this repository:
 ## Supported Versions
 
 This methodology framework does not have versioned releases in the traditional software sense. See [CHANGELOG.md](CHANGELOG.md) for the history of changes.
-
----
-
-MOD-W v4.0.1 · Moderated AI Development Workflow · https://github.com/fpmcguire/mod-w

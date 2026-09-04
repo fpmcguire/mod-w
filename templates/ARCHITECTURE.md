@@ -31,13 +31,11 @@
 
 ### Components
 
-*
+-
 
 ### Data Flow
 
-*
-
----
+- ***
 
 ## Architectural Decisions (D-IDs)
 
@@ -55,9 +53,9 @@
 
 ## Decision Index
 
-| ID | Title | Status | Requirements |
-| -- | ----- | ------ | ------------ |
-| D1 |       | Active | R1           |
+| ID  | Title | Status | Requirements |
+| --- | ----- | ------ | ------------ |
+| D1  |       | Active | R1           |
 
 ---
 
@@ -84,4 +82,4 @@
 
 ---
 
-MOD-W v5
+MOD-W v5.0.0

@@ -165,7 +165,3 @@ If you want one sentence:
 
 Use vibe coding when you are exploring.  
 Use Moderated AI Development Workflow when you care about what happens next week, next month, and after your next teammate joins.
-
----
-
-MOD-W v4.0.1 · Moderated AI Development Workflow · https://github.com/fpmcguire/mod-w

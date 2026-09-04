@@ -165,7 +165,3 @@ Moderated AI Development Workflow’s sweet spot is:
 - a strong need for **traceability, maintainability, and human accountability**
 
 It assumes AI will only get more powerful — and argues that **moderation, artifacts, and roles** are the inevitable counterpart if you want to keep your codebase viable.
-
----
-
-MOD-W v4.0.1 · Moderated AI Development Workflow · https://github.com/fpmcguire/mod-w

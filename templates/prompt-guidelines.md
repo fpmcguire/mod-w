@@ -41,4 +41,4 @@ Ask:
 
 ---
 
-MOD-W v5
+MOD-W v5.0.0

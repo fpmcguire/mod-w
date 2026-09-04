@@ -65,6 +65,7 @@ Claude Code edits files directly in the repo — no pull or paste required.
 - [ ] Review the diff in the Workbench (VS Code). The diff is the source of truth, not the summary.
 
 If issues are significant:
+
 - [ ] Summarize problems clearly.
 - [ ] Return feedback to the Development Team and repeat until acceptance checks are met.
 
@@ -118,4 +119,4 @@ This checklist should be lightweight enough to use for every Step but strict eno
 
 ---
 
-MOD-W v5 · Moderated AI Development Workflow · https://github.com/fpmcguire/mod-w
+MOD-W v5.0.0 · Moderated AI Development Workflow · https://github.com/fpmcguire/mod-w

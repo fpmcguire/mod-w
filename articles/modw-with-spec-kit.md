@@ -263,7 +263,3 @@ The combination shines when:
 
 You don’t have to abandon Spec Kit to adopt Moderated AI Development Workflow.  
 You give Spec Kit the job of **structuring** your specs and tasks, and you give Moderated AI Development Workflow the job of **making them safe to depend on**.
-
----
-
-MOD-W v4.0.1 · Moderated AI Development Workflow · https://github.com/fpmcguire/mod-w

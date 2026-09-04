@@ -26,17 +26,17 @@ Pass / Pass with changes / Rework required
 
 ## Requirement Coverage
 
-| Requirement | Status | Notes |
-| ----------- | ------ | ----- |
-| R1 | Pass / Fail | |
+| Requirement | Status      | Notes |
+| ----------- | ----------- | ----- |
+| R1          | Pass / Fail |       |
 
 ---
 
-## Design ID Coverage  *(if applicable)*
+## Design ID Coverage _(if applicable)_
 
-| Design ID | Status | Notes |
-| --------- | ------ | ----- |
-| DS-001 | Pass / Fail | |
+| Design ID | Status      | Notes |
+| --------- | ----------- | ----- |
+| DS-001    | Pass / Fail |       |
 
 ---
 
@@ -68,9 +68,9 @@ Pass / Pass with changes / Rework required
 
 ## Findings
 
-| # | Finding | Severity | Related ID | Resolution |
-| - | ------- | -------- | ---------- | ---------- |
-| 1 | | Must fix now / Could fix later | R1 / DS-001 / D-001 | |
+| #   | Finding | Severity                       | Related ID          | Resolution |
+| --- | ------- | ------------------------------ | ------------------- | ---------- |
+| 1   |         | Must fix now / Could fix later | R1 / DS-001 / D-001 |            |
 
 ---
 
@@ -85,4 +85,4 @@ Pass / Pass with changes / Rework required
 
 ---
 
-MOD-W v5
+MOD-W v5.0.0

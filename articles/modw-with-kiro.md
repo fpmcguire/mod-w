@@ -213,7 +213,3 @@ You get the best of both:
 
 - Kiro drives SDD in the IDE.
 - MOD-W keeps the system understandable, reviewable, and safe to evolve.
-
----
-
-MOD-W v4.0.1 · Moderated AI Development Workflow · https://github.com/fpmcguire/mod-w

@@ -54,7 +54,7 @@ Pass | Pass with notes | Fail
 ### Acceptance check results
 
 | Check | Result | Notes |
-|-------|--------|-------|
+| ----- | ------ | ----- |
 | AC1   | Pass   | ...   |
 | AC2   | Fail   | ...   |
 
@@ -82,4 +82,4 @@ List any checks that require human or browser verification.
 
 ---
 
-MOD-W v5 · Moderated AI Development Workflow · https://github.com/fpmcguire/mod-w
+MOD-W v5.0.0 · Moderated AI Development Workflow · https://github.com/fpmcguire/mod-w

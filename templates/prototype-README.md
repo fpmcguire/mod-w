@@ -46,9 +46,9 @@ A working demonstration that the design works under realistic conditions. The pr
 
 ### Architecturally relevant files
 
-| File | Why it matters |
-| ---- | -------------- |
-| `prototype/...` | |
+| File            | Why it matters |
+| --------------- | -------------- |
+| `prototype/...` |                |
 
 ## What this is NOT
 
@@ -71,4 +71,4 @@ A working demonstration that the design works under realistic conditions. The pr
 
 ---
 
-MOD-W v5
+MOD-W v5.0.0

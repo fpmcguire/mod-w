@@ -13,7 +13,3 @@ They are informational, not normative — the methodology specification lives in
 - modw-with-kiro.md – How to use MOD-W with Kiro
 - modw-with-spec-kit.md – How to use MOD-W with Spec Kit
 - modw-with-openspec.md – How to use MOD-W with OpenSpec
-
----
-
-MOD-W v4.0.1 · Moderated AI Development Workflow · https://github.com/fpmcguire/mod-w

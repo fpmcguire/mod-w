@@ -84,4 +84,4 @@ If I don’t specify a depth, ask me which one to use before answering.
 
 ---
 
-MOD-W v5 · Moderated AI Development Workflow · https://github.com/fpmcguire/mod-w
+MOD-W v5.0.0 · Moderated AI Development Workflow · https://github.com/fpmcguire/mod-w

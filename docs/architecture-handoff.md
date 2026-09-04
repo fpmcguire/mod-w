@@ -16,12 +16,12 @@ This gate may not be skipped when the Prototype Ceremony has run.
 
 Codex receives all four kickoff inputs:
 
-| Input | Status |
-| ----- | ------ |
-| `product.md` | Authoritative product intent |
-| `design-spec.md` | Bounded design authority after approval |
-| `prototype/` folder | Research artifact with inventory |
-| `architecture-notes.md` | Advisory evidence |
+| Input                   | Status                                  |
+| ----------------------- | --------------------------------------- |
+| `product.md`            | Authoritative product intent            |
+| `design-spec.md`        | Bounded design authority after approval |
+| `prototype/` folder     | Research artifact with inventory        |
+| `architecture-notes.md` | Advisory evidence                       |
 
 `design-spec.md` is authoritative only for user-facing visual behavior, interaction intent, screen composition, component states and variants, accessibility expectations, and approved user-facing terminology and content presentation. Technical matters remain under Tech Lead authority.
 
@@ -61,14 +61,14 @@ Codex has explicit authority to:
 
 Codex produces:
 
-| Output | Path |
-| ------ | ---- |
-| `architecture.md` | `mod-w/architecture.md` |
+| Output               | Path                       |
+| -------------------- | -------------------------- |
+| `architecture.md`    | `mod-w/architecture.md`    |
 | `domain-language.md` | `mod-w/domain-language.md` |
-| `roadmap.md` | `mod-w/roadmap.md` |
-| `CLAUDE.md` | repo root |
-| `AGENTS.md` | repo root |
-| `step-01.md` | `mod-w/step-01.md` |
+| `roadmap.md`         | `mod-w/roadmap.md`         |
+| `CLAUDE.md`          | repo root                  |
+| `AGENTS.md`          | repo root                  |
+| `step-01.md`         | `mod-w/step-01.md`         |
 
 If `architecture.md` materially diverges from prototype implications, Codex records the divergence in `architecture.md` section "Decisions That Diverge From Prototype" with rationale.
 
@@ -119,4 +119,4 @@ Existing work may be analyzed and backfilled, but it may not be retroactively de
 
 ---
 
-MOD-W v5
+MOD-W v5.0.0

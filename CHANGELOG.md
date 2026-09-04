@@ -140,7 +140,3 @@ _No unreleased changes yet._
 - GitHub issue templates and PR template.
 - Copilot instructions for AI-assisted contributions.
 - Community files: CONTRIBUTING, CODE_OF_CONDUCT, SECURITY, GOVERNANCE.
-
----
-
-MOD-W v4.0.1 - Moderated AI Development Workflow - https://github.com/fpmcguire/mod-w

@@ -22,22 +22,22 @@
 
 ## Test Cases
 
-| ID | Description | Expected | Actual | Status |
-| -- | ----------- | -------- | ------ | ------ |
+| ID  | Description | Expected | Actual | Status |
+| --- | ----------- | -------- | ------ | ------ |
 
 ---
 
 ## Defects
 
-| ID | Description | Severity | Status |
-| -- | ----------- | -------- | ------ |
+| ID  | Description | Severity | Status |
+| --- | ----------- | -------- | ------ |
 
 ---
 
 ## Regression Check
 
-* [ ] No regressions
-* [ ] Existing tests pass
+- [ ] No regressions
+- [ ] Existing tests pass
 
 ---
 
@@ -45,4 +45,4 @@
 
 ---
 
-MOD-W v5
+MOD-W v5.0.0
