@@ -1,6 +1,6 @@
-# Using MOD-W with Claude Design
+﻿# Using MOD-W with Claude Design
 
-> Companion integration guide for MOD-W v4.0.0.
+> Companion integration guide for MOD-W v4.0.1.
 > Peers with `articles/modw-with-codex.md`, `articles/modw-with-claude-code.md`, and `articles/modw-with-gemini.md`.
 
 ---
@@ -9,7 +9,7 @@
 
 **Claude Design** is Anthropic's project-scoped design environment. It can edit files, render HTML/JS in a preview pane, capture screenshots, and run scripted browser operations within a single project context — capabilities the Claude chatbot and Claude Code do not share.
 
-In MOD-W v4.0.0, Claude Design is the default agent for the **Designer + Prototyper** role. Optionally, it may also play the **Development Team** role for visual / chart / interaction-heavy Steps when the Moderator assigns it in `STEP-XX.md`.
+In MOD-W v4.0.1, Claude Design is the default agent for the **Designer + Prototyper** role. Optionally, it may also play the **Development Team** role for visual / chart / interaction-heavy Steps when the Moderator assigns it in `STEP-XX.md`.
 
 ## Where Claude Design fits
 
@@ -29,7 +29,7 @@ Claude Design does **not** replace Codex (Tech Lead), Claude Code (default Dev T
 
 ## Prototype Ceremony
 
-The Prototype Ceremony is an **optional kickoff ceremony** added in v4.0.0. Run it when:
+The Prototype Ceremony is an **optional kickoff ceremony** in v4. Run it when:
 
 - The product has novel interaction models, real-time data, or unusual visual systems
 - Design decisions cannot be confidently made from text-only requirements
@@ -49,18 +49,18 @@ Full lifecycle: see `docs/prototype-ceremony.md`.
 
 Exit criteria:
 
-- `DESIGN-SPEC.md` approved by Product Owner and Moderator
-- Prototype renders without errors, demonstrates every screen in scope, and matches the spec
-- `ARCHITECTURE-NOTES.md` exists
+- `DESIGN-SPEC.md` Approval Record shows Product Owner and Moderator approval
+- Prototype renders without errors, demonstrates every screen in scope, includes a complete inventory, and matches the spec
+- `ARCHITECTURE-NOTES.md` exists with evidence and confidence levels
 
 ## Architecture Handoff (non-negotiable gate)
 
-After the Prototype Ceremony, the Tech Lead (Codex) consumes the four kickoff inputs — `PRODUCT.md`, `DESIGN-SPEC.md`, `prototype/`, `ARCHITECTURE-NOTES.md` — and **independently authors** `ARCHITECTURE.md`. Codex has explicit authority to:
+After the Prototype Ceremony, the Tech Lead (Codex) consumes the four kickoff inputs - `PRODUCT.md`, bounded `DESIGN-SPEC.md`, complete `prototype/` inventory, and `ARCHITECTURE-NOTES.md` evidence - and **independently authors** `ARCHITECTURE.md`. Codex has explicit authority to:
 
 - Disagree with structural choices implied by the prototype
 - Reorganize service boundaries, type names, file layout
 - Reject domain term proposals from `DESIGN-SPEC.md §"Domain Language Proposals"` and choose alternatives
-- Override `ARCHITECTURE-NOTES.md` observations when they conflict with maintainability, testability, or stack conventions
+- Accept, modify, or reject `ARCHITECTURE-NOTES.md` implications after evaluating evidence, reproduction conditions, and confidence
 
 Material divergences are recorded in `ARCHITECTURE.md §"Decisions That Diverge From Prototype"` with rationale.
 
@@ -71,8 +71,8 @@ Full gate definition: see `docs/architecture-handoff.md`.
 ## New artifact classes
 
 - **`prototype/`** — research artifact at repo root, produced by Claude Design, explicitly marked non-authoritative via `prototype/README.md` disclaimer. Lives outside `src/` to prevent accidental import.
-- **`ARCHITECTURE-NOTES.md`** — advisory input to Architecture Definition, produced by Claude Design, retained in `mod-w/` as historical context.
-- **Reference Implementation** — a candidate implementation produced outside the Dev Team role (typically inside `prototype/`). Never auto-promotes. The Tech Lead disposes of it in `STEP-XX.md §"Reference Implementation"` as `Adopt as-is`, `Adopt with modifications`, or `Reject`.
+- **`ARCHITECTURE-NOTES.md`** - advisory input to Architecture Definition, produced by Claude Design, retained in `mod-w/` as historical context. Observations include evidence and confidence; confidence is not authority.
+- **Reference Implementation** - a candidate implementation produced outside the Dev Team role (typically inside `prototype/`). Never auto-promotes. The Tech Lead disposes of it in `STEP-XX.md` as `Adopt as-is`, `Adopt with modifications`, or `Reject`. `Adopt as-is` preserves approved behavior and relevant structure without redesign while still requiring production adaptation, architecture compliance, review, QA, tests, accessibility, security, performance, and repository conventions.
 
 ## Claude Design as Development Team (optional per Step)
 
@@ -84,7 +84,7 @@ Claude Design may play the Development Team role for a Step when:
 
 When assigned, Claude Design reads the Step brief, proposes a plan, waits for Moderator approval, and implements **only within `src/`** (the prototype folder is closed). It hands off to Codex for Tech Lead Review like any other Step.
 
-**Hard rule:** Claude Design as Dev Team **may not** also have produced the `STEP-XX.md` spec. Codex writes the spec; Claude Design implements against it. Plan vs. implement model contrast is preserved.
+**Hard rule:** Claude Design as Dev Team **may not** also have produced the `STEP-XX.md` spec. When Claude Design implements from its own prototype, Codex must record accepted, modified, rejected, and mandatory-divergence prototype assumptions in `STEP-XX.md`; the implementation session treats the Step and architecture as controlling.
 
 ## What Claude Design cannot do
 
@@ -104,7 +104,7 @@ Designer + Prototyper sessions in Claude Design follow these rules:
 2. **Environment self-identification on session start.** The agent restates its interface (`Claude Design`), its role (`Designer + Prototyper`), and its MAY / MAY NOT scope before producing any artifact.
 3. **Refuse out-of-lane requests.** When asked to produce an out-of-lane artifact, the response is: "This artifact is owned by [Codex Tech Lead / Claude Code Dev Team]. Please route this request through the appropriate role. I will stop here."
 4. **Moderator-confirmed plan before any artifact production.** Even within-lane, the agent proposes the artifact list and waits for Moderator approval.
-5. **No retroactive gates.** Work produced outside an approved gate is reference material only, never adopted as authoritative without re-running the gate from scratch.
+5. **No retroactive approval.** Existing work may be backfilled as reference documentation or evidence, but authoritative adoption requires the applicable gate to be re-executed under the current workflow.
 
 ## Bottom line
 
@@ -114,4 +114,4 @@ Claude Design is a tool for the kickoff phase and for visual Step implementation
 
 ---
 
-MOD-W v4.0.0 · Moderated AI Development Workflow · https://github.com/fpmcguire/moderated-ai-development-workflow
+MOD-W v4.0.1 - Moderated AI Development Workflow - https://github.com/fpmcguire/mod-w

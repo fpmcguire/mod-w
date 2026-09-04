@@ -1,4 +1,4 @@
-# Introducing Moderated AI Development Workflow into a Legacy Codebase
+﻿# Introducing Moderated AI Development Workflow into a Legacy Codebase
 
 ## Overview
 
@@ -55,8 +55,10 @@ For legacy, you can start with a very small set of MOD-W docs:
 - `STEP-XX.md` – for the **one** piece of work you want to run through MOD-W.
 - `REVIEW.md` and `QA.md` – to record what was checked and why it was accepted.
 
-You don’t need to document the entire legacy system up front.  
+You don’t need to document the entire legacy system up front.
 Start with the **slice you are actually changing**.
+
+Existing work may be analyzed and backfilled as reference documentation or evidence, but it may not be retroactively declared compliant. Authoritative adoption requires the applicable MOD-W gate to be re-executed under the current workflow.
 
 ---
 
@@ -126,7 +128,7 @@ For that first legacy Step:
 
 ## Step 5: Make MOD-W the default for AI work only
 
-You do **not** have to put every change through MOD-W on day one.  
+You do **not** have to put every change through MOD-W on day one.
 A practical pattern for legacy is:
 
 - **MOD-W required** for:
@@ -193,9 +195,9 @@ To introduce MOD-W into a legacy project:
 4. Require MOD-W for AI‑assisted changes first.
 5. Let MOD-W slowly **recover structure** in your legacy system over multiple Steps.
 
-You don’t have to fix the legacy system all at once.  
+You don’t have to fix the legacy system all at once.
 You just need to make sure every AI‑assisted change makes it a little safer and clearer than before.
 
 ---
 
-MOD-W v4.0.0 · Moderated AI Development Workflow · https://github.com/fpmcguire/moderated-ai-development-workflow
+MOD-W v4.0.1 - Moderated AI Development Workflow - https://github.com/fpmcguire/mod-w

@@ -1,4 +1,4 @@
-# Roadmap: Saved Views (Frontend Example)
+﻿# Roadmap: Saved Views (Frontend Example)
 
 This roadmap breaks the Saved Views feature into small Moderated AI Development Workflow Steps that can each be implemented, reviewed, and tagged independently.
 
@@ -6,7 +6,7 @@ This roadmap breaks the Saved Views feature into small Moderated AI Development 
 
 ## Step 1 – Saved Views List (Read-only)
 
-**Goal**  
+**Goal**
 Display a list of Saved Views for the current user and allow selecting one to apply its configuration to the current dashboard.
 
 **In scope**
@@ -53,7 +53,7 @@ Display a list of Saved Views for the current user and allow selecting one to ap
 
 ## Step 2 – Create Saved View
 
-**Goal**  
+**Goal**
 Allow users to create a new Saved View from the current dashboard state for the current dashboard only.
 
 **In scope**
@@ -102,7 +102,7 @@ Allow users to create a new Saved View from the current dashboard state for the 
 
 ## Step 3 – Rename and Delete Saved View
 
-**Goal**  
+**Goal**
 Allow users to rename or delete existing Saved Views for the current dashboard.
 
 **In scope**
@@ -149,8 +149,8 @@ Allow users to rename or delete existing Saved Views for the current dashboard.
 - Saved Views are scoped to one dashboard only in this example
 - Persistence remains in memory for this example; a later profile can introduce backend integration as new Steps
 - Explicit “Update current view” / overwrite is intentionally deferred out of scope for this initial roadmap
-- Each Step should follow the Moderated AI Development Workflow lifecycle: define STEP.md → Development Team implementation → Workbench verification → revision loop → Tech Lead review → QA → annotated tag
+- Each Step should follow the Moderated AI Development Workflow lifecycle: define STEP-XX.md → Development Team implementation → Workbench verification → revision loop → Tech Lead review → QA → annotated tag
 
 ---
 
-MOD-W v4.0.0 · Moderated AI Development Workflow · https://github.com/fpmcguire/moderated-ai-development-workflow
+MOD-W v4.0.1 - Moderated AI Development Workflow - https://github.com/fpmcguire/mod-w

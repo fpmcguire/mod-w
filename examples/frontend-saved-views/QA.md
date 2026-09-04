@@ -1,8 +1,8 @@
-# QA: Step 01
+﻿# QA: Step 01
 
-**Project:** Frontend Saved Views  
-**Step:** 01 — SavedView Data Model and REST API  
-**Tester:** Sam Okafor  
+**Project:** Frontend Saved Views
+**Step:** 01 — SavedView Data Model and REST API
+**Tester:** Sam Okafor
 **Test Date:** 2026-01-20
 
 ---
@@ -59,8 +59,8 @@ No defects found.
 
 ## Notes
 
-TC-11 was added by the tester as a security-focused case not listed in STEP.md. It passes — the server correctly ignores the `userId` field in the request body. Recommend adding this case to the Level 2 quality gate checklist for future API steps.
+TC-11 was added by the tester as a security-focused case not listed in STEP-XX.md. It passes — the server correctly ignores the `userId` field in the request body. Recommend adding this case to the Level 2 quality gate checklist for future API steps.
 
 ---
 
-MOD-W v4.0.0 · Moderated AI Development Workflow · https://github.com/fpmcguire/moderated-ai-development-workflow
+MOD-W v4.0.1 - Moderated AI Development Workflow - https://github.com/fpmcguire/mod-w

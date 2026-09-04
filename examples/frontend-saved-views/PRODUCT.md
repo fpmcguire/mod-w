@@ -124,4 +124,4 @@ For the **Saved Views example**, Moderated AI Development Workflow is considered
 
 ---
 
-MOD-W v4.0.0 · Moderated AI Development Workflow · https://github.com/fpmcguire/moderated-ai-development-workflow
+MOD-W v4.0.1 · Moderated AI Development Workflow · https://github.com/fpmcguire/mod-w

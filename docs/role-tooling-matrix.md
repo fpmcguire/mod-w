@@ -75,4 +75,4 @@ These commands are populated by the Tech Lead when generating the project-specif
 
 ---
 
-MOD-W v4.0.0 · Moderated AI Development Workflow · https://github.com/fpmcguire/moderated-ai-development-workflow
+MOD-W v4.0.1 · Moderated AI Development Workflow · https://github.com/fpmcguire/mod-w

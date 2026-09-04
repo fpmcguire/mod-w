@@ -1,224 +1,191 @@
-# Roles in Moderated AI Development Workflow
+﻿# Roles in Moderated AI Development Workflow
 
-Moderated AI Development Workflow defines a small set of core roles with clear boundaries and accountability. Some roles may be supported or implemented by AI tools, but the role names remain the same regardless of tool choice.
+Moderated AI Development Workflow defines a small set of roles with clear boundaries and accountability. Some roles may be supported by AI tools, but the role names and authority boundaries remain stable.
 
 ---
 
-## Human Roles
+## Moderator
 
-### Moderator
-
-The Moderator is the primary human-in-the-loop operator of Moderated AI Development Workflow.
+The Moderator is the human-in-the-loop operator of MOD-W.
 
 The Moderator:
 
-- Orchestrates handoffs between roles and artifacts
-- Works in the **Workbench** (e.g., VS Code + Copilot) to build, run, test, debug, and fine‑tune changes
-- Reviews each step's AI output against the quality gate criteria
-- Records decisions in the [REVIEW.md](../templates/REVIEW.md) and [QA.md](../templates/QA.md) artifacts
-- Has authority to reject output, request retries, or adjust scope
+- Orchestrates handoffs between roles and artifacts.
+- Works in the Workbench to build, run, test, debug, and fine-tune changes.
+- Approves or rejects each gate.
+- Uses `REVIEW.md` and `QA.md` as inputs to the final gate and records final Moderator decisions.
+- Has authority to reject output, request retries, adjust scope, or stop work.
 
-On very small teams the Moderator may also be the Tech Lead and/or Product Owner.
-
-### Product Owner
-
-The Product Owner is responsible for defining _what_ is built and _why_.
-
-The Product Owner:
-
-- Authors and maintains the [PRODUCT.md](../templates/PRODUCT.md) artifact
-- Sets acceptance intent and criteria for each roadmap step
-- Reviews and approves the [ROADMAP.md](../templates/ROADMAP.md) before implementation
-- Participates in ceremonies: Kickoff, Step Review, and Retrospective
-- Does **not** directly merge code or override quality gates
-
-In one common setup, the Product Owner role is supported by a Claude Code SubAgent for product shaping, user stories, and acceptance validation.
-
-### Designer + Prototyper
-
-**Owns:** Visual identity, design specification, working prototype, and advisory architecture observations.
-**AI agent (default):** Claude Design.
-**Optional role:** This role is **optional per project**. Run the Prototype Ceremony only when the visual / interaction surface justifies it — see `docs/prototype-ceremony.md`.
-
-#### Authoritative outputs
-
-- `DESIGN-SPEC.md` — visual identity, components, screens, interactions, data-testid conventions
-
-#### Non-authoritative outputs
-
-- `prototype/` folder at repo root — clickable demonstration of the design under realistic conditions
-- `ARCHITECTURE-NOTES.md` — advisory input to the Tech Lead's Architecture Definition session
-
-#### Authority
-
-The Designer + Prototyper **proposes** — never declares. Specifically:
-
-- Visual decisions in `DESIGN-SPEC.md` become authoritative on Product Owner + Moderator approval.
-- Domain term proposals in `DESIGN-SPEC.md §"Domain Language Proposals"` are non-authoritative until the Tech Lead ratifies them in `DOMAIN_LANGUAGE.md`.
-- `ARCHITECTURE-NOTES.md` is advisory; the Tech Lead has explicit authority to override any observation when writing `ARCHITECTURE.md`.
-
-#### Constraints
-
-The Designer + Prototyper **may not**:
-
-- Author `ARCHITECTURE.md`, `ROADMAP.md`, any `STEP-XX.md`, `REVIEW.md`, `QA.md`, `CLAUDE.md`, or `AGENTS.md`
-- Write or modify production code outside the `prototype/` folder
-- Declare canonical types, file paths, service boundaries, framework choices, or domain terms
-
-The role prompt is at `prompts/designer.md`.
+The Moderator is always human. On very small teams the Moderator may also hold Product Owner or local technical responsibilities, but the Moderator gate remains a human decision.
 
 ---
 
-### Tech Lead
+## Product Owner
 
-The Tech Lead is responsible for _how_ the product is built.
+The Product Owner defines what is built and why.
+
+The Product Owner:
+
+- Authors and maintains `PRODUCT.md`.
+- Sets acceptance intent and criteria for each Roadmap Step.
+- Reviews and approves `ROADMAP.md` before implementation.
+- Reviews `DESIGN-SPEC.md` during the Prototype Ceremony when that ceremony runs.
+- Does not merge code, author architecture, or override quality gates.
+
+In one common setup, the Product Owner role is supported by chatbot sessions during definition and by a Claude Code SubAgent during per-Step validation.
+
+---
+
+## Designer + Prototyper
+
+**Default interface:** Claude Design
+**Optional role:** Run the Prototype Ceremony only when visual, interaction, chart, animation, or real-time behavior warrants it.
+
+The Designer + Prototyper produces:
+
+- `DESIGN-SPEC.md`
+- `prototype/` at repo root
+- `ARCHITECTURE-NOTES.md`
+
+### Authority
+
+After Product Owner and Moderator approval, `DESIGN-SPEC.md` is authoritative for:
+
+- user-facing visual behavior
+- interaction intent
+- screen composition
+- component states and variants
+- accessibility expectations
+- approved user-facing terminology and content presentation
+
+`DESIGN-SPEC.md` is not independently authoritative for:
+
+- production file paths
+- service or module boundaries
+- framework or library choices
+- canonical domain types
+- internal implementation names
+- test implementation strategy
+- technical component decomposition
+
+Those technical matters remain under Tech Lead authority in `ARCHITECTURE.md`, `DOMAIN_LANGUAGE.md`, and `STEP-XX.md`.
+
+### Non-authoritative outputs
+
+- `prototype/` is a research artifact and evidence source, not production code.
+- `ARCHITECTURE-NOTES.md` is advisory evidence for the Tech Lead. Confidence levels in the notes are not architectural authority.
+- Domain language proposals in `DESIGN-SPEC.md` are non-authoritative until the Tech Lead ratifies them in `DOMAIN_LANGUAGE.md`.
+
+### Constraints
+
+The Designer + Prototyper may not:
+
+- Author `ARCHITECTURE.md`, `ROADMAP.md`, any `STEP-XX.md`, `REVIEW.md`, `QA.md`, `CLAUDE.md`, or `AGENTS.md`.
+- Write or modify production code outside the `prototype/` folder unless separately assigned as Development Team for an approved Step.
+- Declare canonical types, file paths, service boundaries, framework choices, test strategy, or domain terms.
+
+The role prompt is `prompts/designer.md`.
+
+---
+
+## Tech Lead
+
+The Tech Lead defines how the product is built. In the default MOD-W v4 workflow, the Tech Lead is Codex.
 
 The Tech Lead:
 
-- Iteratively cross-validates the [PRODUCT.md](../templates/PRODUCT.md) artifact with the Product Owner to clarify intent and constraints
-- Authors and maintains the [ARCHITECTURE.md](../templates/ARCHITECTURE.md) artifact
-- Authors and maintains the [ROADMAP.md](../templates/ROADMAP.md) artifact
-- Defines the [DOMAIN_LANGUAGE.md](../templates/DOMAIN_LANGUAGE.md)
-- Writes and refines briefs and prompts for AI agents
-- Reviews roadmap quality and implementation for technical correctness and maintainability
-- Reviews completed steps before they are tagged as done
-- Revises output based on Moderator and Product Owner feedback until quality gates are met
-- Generates the project-specific `CLAUDE.md` from `ARCHITECTURE.md` and the `CLAUDE.md` template
+- Cross-validates `PRODUCT.md` with the Product Owner.
+- Authors and maintains `ARCHITECTURE.md`.
+- Authors and maintains `DOMAIN_LANGUAGE.md`.
+- Authors and maintains `ROADMAP.md`.
+- Writes and refines `STEP-XX.md`.
+- Generates project-specific `CLAUDE.md` and `AGENTS.md`.
+- Runs the Architecture Handoff when the Prototype Ceremony ran.
+- Evaluates `DESIGN-SPEC.md`, prototype inventory, and `ARCHITECTURE-NOTES.md` evidence without treating prototype code as authoritative.
+- Reviews completed Steps and writes `REVIEW.md` before QA acceptance.
 
-In one common setup, the Tech Lead role is supported by a Codex full session for architecture thinking, roadmap shaping, step authoring, and technical review.
+`ARCHITECTURE.md` is authored by Codex, never by Claude Design.
 
-### Development Team
+---
 
-The Development Team is responsible for executing the roadmap steps to build the product.
+## Development Team
 
-- Iteratively reviews the [ARCHITECTURE.md](../templates/ARCHITECTURE.md) and [ROADMAP.md](../templates/ROADMAP.md) artifacts with the Tech Lead to understand context and constraints
-- Executes the implementation of each step, including code, tests, and documentation
-- Revises output based on Moderator and Tech Lead feedback until quality gates are met
-- Does **not** directly merge code or override quality gates
+The Development Team implements approved Steps.
 
-**Supported interface:**
+The Development Team:
 
-| Interface         | Config                               | Best for                                                               |
-| ----------------- | ------------------------------------ | ---------------------------------------------------------------------- |
-| Claude Code (CLI) | `CLAUDE.md` in repo root, auto-read  | File writing, multi-file changes, direct repo edits, SubAgent spawning |
+- Reads the active `STEP-XX.md` and relevant approved artifacts.
+- Proposes a plan and waits for Moderator approval before writing files.
+- Implements code, tests, and docs scoped to the active Step.
+- Runs the blocking build gate before handoff.
+- Revises output based on Tech Lead review.
+- Does not redefine product scope, architecture, domain language, or acceptance intent.
 
-The active `STEP-XX.md` is provided by the Moderator at session start as a file path. After implementation, the Dev Team session spawns QA and Product Owner SubAgents before handing off to Tech Lead review.
+Supported interfaces:
 
-### QA / Tester
+| Interface | Config | Best for |
+| --------- | ------ | -------- |
+| Claude Code | `CLAUDE.md` at repo root | Default implementation, multi-file code changes, SubAgent spawning |
+| Claude Design | `CLAUDE.md` at repo root, by Moderator assignment | Visual, chart, animation, or interaction-heavy Steps |
 
-The QA role validates that accepted output behaves correctly end‑to‑end.
+Claude Design as Development Team may not have authored the Step it implements. If the Step is derived from a prototype Claude Design previously produced, the Tech Lead must record accepted, modified, rejected, and mandatory-divergence prototype assumptions in `STEP-XX.md`. The implementing Claude Design session treats `STEP-XX.md` and authoritative architecture as controlling.
 
-The QA function is performed by a Claude Code SubAgent spawned by the Dev Team session:
+---
 
-- Reads the implementation and `STEP-XX.md` acceptance checks
-- Produces `QA.md` with results, manual check list, and known limitations
-- Raises defects if acceptance checks are not met
-- Flags checks that require human or browser verification
+## QA / Tester
 
-### Workbench
+The QA role validates accepted output end to end after Tech Lead approval.
+
+The QA function is commonly performed by a Claude Code SubAgent:
+
+- Reads implementation files and `STEP-XX.md` acceptance checks.
+- Verifies relevant Design IDs and approved design acceptance intent when applicable.
+- Does not treat prototype code as authoritative.
+- Produces `QA.md` with results, manual checks, defects, and known limitations.
+- Flags checks that require human or browser verification.
+
+---
+
+## Workbench
 
 The Workbench is the human-operated development environment used by the Moderator.
 
 The Workbench:
 
-- Hosts the local clone of the repository (e.g., in VS Code)
-- Runs builds, tests, linters, and manual UX checks
-- Uses tools like GitHub Copilot for light‑to‑moderate code edits and debugging
-- Is the final place where a step must pass before Tech Lead approval and tagging
+- Hosts the local repository.
+- Runs builds, tests, linters, and manual UX checks.
+- Supports light code edits and debugging under Moderator control.
+- Is where final human validation happens before tagging and Roadmap advancement.
 
 ---
 
 ## Default Tool Implementations
 
-Most roles use **Claude Code** as the default interface. The **Designer + Prototyper** role uses **Claude Design** by default. Full sessions handle complex, multi-step work. SubAgents handle bounded validation tasks.
+| Role | Default interface | Primary artifacts |
+| ---- | ----------------- | ----------------- |
+| Moderator | Human Workbench | repo state, approvals, tags |
+| Product Owner definition | Claude chatbot + Perplexity + Gemini | `PRODUCT.md` |
+| Product Owner validation | Claude Code SubAgent | sign-off |
+| Designer + Prototyper | Claude Design | `DESIGN-SPEC.md`, `prototype/`, `ARCHITECTURE-NOTES.md` |
+| Tech Lead | Codex full session | `ARCHITECTURE.md`, `DOMAIN_LANGUAGE.md`, `ROADMAP.md`, `STEP-XX.md`, `CLAUDE.md`, `AGENTS.md`, `REVIEW.md` |
+| Development Team | Claude Code by default; Claude Design by assignment | code, tests, docs |
+| QA | Claude Code SubAgent | `QA.md` |
 
-### Product Owner role — two modes (default)
-
-**Definition phase** (project start, no agent infrastructure yet):
-
-- Moderator uses Claude chatbot to draft and iterate on `PRODUCT.md`
-- Moderator uses Perplexity for research and fact-finding
-- Moderator uses Gemini for informal cross-validation of scope and goals
-- Moderator gates approval before architecture begins
-
-**Validation phase** (per-step, after Tech Lead approval):
-
-- Claude Code SubAgent validates completed Steps against `STEP-XX.md` acceptance checks
-- Signs off before Moderator final gate
-
-See: [prompts/product-owner.md](../prompts/product-owner.md)
-
-### Tech Lead role — Codex full session (default)
-
-The Tech Lead session (Codex, reads `AGENTS.md`):
-
-- Generates `ARCHITECTURE.md`, `ROADMAP.md`, and `STEP-XX.md` at planning time
-- Generates project-specific `CLAUDE.md` and `AGENTS.md` from `ARCHITECTURE.md` and the MOD-W templates
-- Reviews completed Steps and writes `REVIEW.md`
-
-Two session types: **Planning** (writes artifacts) and **Review** (reads diff, writes `REVIEW.md` only).
-
-Cross-validation: Codex plans and reviews; Claude Code implements. Model diversity is intentional.
-
-See: [prompts/tech-lead.md](../prompts/tech-lead.md)
-
-### Designer + Prototyper role — Claude Design (default)
-
-Claude Design is used for the Designer + Prototyper role by:
-
-- Receiving `PRODUCT.md`, brand assets, and the three Prototype Ceremony templates from the Moderator
-- Producing `DESIGN-SPEC.md`, a clickable `prototype/` folder, and `ARCHITECTURE-NOTES.md` during the Prototype Ceremony
-- Optionally implementing visual / chart / interaction-heavy Steps when the Moderator assigns Claude Design as Dev Team in `STEP-XX.md §"Assigned Dev Team Interface"`
-
-All output is moderated before acceptance.
-
-See: [prompts/designer.md](../prompts/designer.md)
-
-### Development Team role — Claude Code SubAgent (default)
-
-The Dev Team SubAgent (Claude Code, reads `CLAUDE.md`):
-
-- Reads `CLAUDE.md`, `STEP-XX.md`, `ARCHITECTURE.md`, `AGENTS.md`, and `DOMAIN_LANGUAGE.md`
-- Enters Plan Mode to confirm scope before writing any files
-- Implements the Step with minimal, scoped changes
-- Runs blocking build gate before handing off
-
-All output is moderated before acceptance.
-
-See: [templates/CLAUDE.md](../templates/CLAUDE.md)
-
-### QA role — Claude Code SubAgent (default)
-
-The QA SubAgent (Claude Code):
-
-- Spawned after Tech Lead approval
-- Reads implementation files and `STEP-XX.md` acceptance checks
-- Produces `QA.md` with results, manual check list, and known limitations
-- Flags checks requiring human or browser verification
-
-See: [prompts/qa.md](../prompts/qa.md)
+All AI output is moderated. No AI role self-approves its own work.
 
 ---
 
-## Role Summary Table
+## Role Summary
 
-| Role                    | Human or AI                    | Primary artifacts                                             | Quality gate responsibility               |
-| ----------------------- | ------------------------------ | ------------------------------------------------------------- | ----------------------------------------- |
-| Moderator               | Human                          | repo state, approvals, git tags                               | Accepts/rejects AI output and step status |
-| Product Owner           | Human                          | PRODUCT.md, acceptance intent                                 | Accepts/rejects step scope and intent     |
-| Tech Lead               | Human                          | ARCHITECTURE.md, ROADMAP.md, STEP-XX.md, CLAUDE.md            | Reviews technical quality and fit         |
-| QA / Tester             | Human                          | QA.md (final sign-off)                                        | Validates end‑to‑end behaviour            |
-| Workbench               | Human env.                     | Local repo, build/test tooling                                | Executes builds/tests, manual checks      |
-| Product Owner Agent (Definition)  | Claude chatbot + Perplexity + Gemini | PRODUCT.md                                                    | None — all output is moderated            |
-| Product Owner Agent (Validation)  | AI (Claude Code SubAgent)            | acceptance sign-off                                           | None — all output is moderated            |
-| Tech Lead Agent                   | AI (Codex full session)              | ARCHITECTURE.md, ROADMAP.md, STEP-XX.md, CLAUDE.md, REVIEW.md | None — all output is moderated            |
-| Development Team Agent            | AI (Claude Code SubAgent)            | Code, tests, docs for each step                               | None — all output is moderated            |
-| QA Agent                          | AI (Claude Code SubAgent)            | QA.md                                                         | None — all output is moderated            |
-| ----------------------- | ------------------------------ | ------------------------------------------------------------- | ----------------------------------------- |
-| Optional (v4):          |                                |                                                               |                                           |
-| Designer + Prototyper   | Human (optional role)          | DESIGN-SPEC.md (auth.), prototype/ (research), ARCHITECTURE-NOTES.md (advisory) | Reviews visual quality and fit |
-| Designer + Prototyper Agent | AI (Claude Design)         | DESIGN-SPEC.md, prototype/, ARCHITECTURE-NOTES.md             | None — all output is moderated            |
+- Moderator is always human.
+- Tech Lead is Codex in the default v4 workflow.
+- `ARCHITECTURE.md` is authored by Codex, never Claude Design.
+- The same model does not both author a Step and implement that Step.
+- Every Step receives Codex Tech Lead review before QA acceptance.
+- Every Step receives Moderator final approval before tagging and Roadmap advancement.
+- Single-role-per-session remains enforced.
+- Historical work cannot receive retroactive approval.
 
 ---
 
-MOD-W v4.0.0 · Moderated AI Development Workflow · https://github.com/fpmcguire/moderated-ai-development-workflow
+MOD-W v4.0.1 - Moderated AI Development Workflow - https://github.com/fpmcguire/mod-w

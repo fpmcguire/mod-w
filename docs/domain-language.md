@@ -37,7 +37,7 @@ Each entry in the matrix records:
 
 Every prompt sent to an AI agent should include the relevant portion of the DOMAIN_LANGUAGE.md. This ensures AI output uses team-agreed vocabulary consistently.
 
-Example pattern (from [prompts/development-team-claude.md](../prompts/development-team-claude.md)):
+Example pattern (from [prompts/development-team.md](../prompts/development-team.md)):
 
 ```
 ## Domain Language
@@ -58,4 +58,4 @@ The following terms must be used consistently in all output:
 
 ---
 
-MOD-W v4.0.0 · Moderated AI Development Workflow · https://github.com/fpmcguire/moderated-ai-development-workflow
+MOD-W v4.0.1 · Moderated AI Development Workflow · https://github.com/fpmcguire/mod-w

@@ -1,9 +1,55 @@
-# Design Spec — {{PROJECT_NAME}}
+﻿# Design Spec - {{PROJECT_NAME}}
 
 **Date:** {{DATE}}
 **Designer:** {{DESIGNER_NAME}}
 **Authored in:** {{CLAUDE_DESIGN | CLAUDE_CHATBOT | GEMINI}}
 **Prototype:** {{PROTOTYPE_PATH or "n/a"}}
+
+---
+
+## Authority Boundary
+
+After Product Owner and Moderator approval, this spec is authoritative for user-facing visual behavior, interaction intent, screen composition, component states and variants, accessibility expectations, and approved user-facing terminology and content presentation.
+
+It is not independently authoritative for production file paths, service or module boundaries, framework or library choices, canonical domain types, internal implementation names, test implementation strategy, or technical component decomposition. Those decisions remain under Tech Lead authority in `ARCHITECTURE.md`, `DOMAIN_LANGUAGE.md`, and `STEP-XX.md`.
+
+The prototype is evidence for this spec, not an authoritative production source.
+
+---
+
+## Approval Record
+
+### Product Owner review
+
+- **Status:** Pending / Approved / Changes requested
+- **Reviewer:**
+- **Date:**
+- **Conditions or findings:**
+
+### Tech Lead feasibility pre-review
+
+- **Status:** Pending / Reviewed
+- **Reviewer:**
+- **Date:**
+- **Feasibility concerns:**
+- **Architecture questions:**
+
+### Moderator gate
+
+- **Status:** Pending / Approved for Architecture Handoff / Rejected
+- **Moderator:**
+- **Date:**
+- **Conditions:**
+
+Product Owner and Moderator approval are required before this spec becomes authoritative within its boundary. Tech Lead pre-review is advisory and does not transfer architecture authority. Approval of this spec does not make the prototype authoritative.
+
+---
+
+## DESIGN.md Policy
+
+`DESIGN-SPEC.md` is the canonical MOD-W design artifact. A separate `DESIGN.md` is optional project documentation for broader design-system foundations, brand language, or durable visual principles.
+
+When both exist, `DESIGN.md` contains reusable principles and global design-system guidance; `DESIGN-SPEC.md` contains product-specific screens, components, states, interactions, traceability, and approval. Reference `DESIGN.md` instead of duplicating token catalogues here.
 
 ---
 
@@ -67,11 +113,13 @@
 
 ---
 
-## 6. Component–Step Mapping
+## 6. Design Traceability
 
-| Component | First Step | Notes |
-| --------- | ---------- | ----- |
-|           | STEP-01    |       |
+> Assign stable IDs such as `DS-001`. Every in-scope screen, major component, or significant interaction must map to at least one Product requirement. `First implementation Step` may be `TBD` during kickoff. Prototype evidence may be a file, page, route, screenshot, or flow. A Roadmap is not required before design work begins.
+
+| Design ID | Design element | Product requirement | Prototype evidence | First implementation Step | Notes |
+| --------- | -------------- | ------------------- | ------------------ | ------------------------- | ----- |
+| DS-001    |                | R-001               |                    | TBD                       |       |
 
 ---
 
@@ -90,8 +138,9 @@ If no terms proposed, state "None proposed."
 ## 8. Scope Rules
 
 - Only define components required for current or near-term Steps
-- Do not design beyond ROADMAP scope
-- Each component must map to a Step
+- Do not design beyond approved PRODUCT scope
+- Each in-scope screen, major component, and significant interaction must have a Design ID and Product requirement mapping
+- When `ROADMAP.md` exists, connect Design IDs to the first implementation Step
 
 ---
 
@@ -110,4 +159,4 @@ If no terms proposed, state "None proposed."
 
 ---
 
-MOD-W v4.0.0
+MOD-W v4.0.1

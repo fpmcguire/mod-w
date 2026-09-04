@@ -82,4 +82,4 @@ List any checks that require human or browser verification.
 
 ---
 
-MOD-W v4.0.0 · Moderated AI Development Workflow · https://github.com/fpmcguire/moderated-ai-development-workflow
+MOD-W v4.0.1 · Moderated AI Development Workflow · https://github.com/fpmcguire/mod-w

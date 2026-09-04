@@ -155,4 +155,4 @@ Codex (Tech Lead) and Claude Code (Development Team) are designed to work alongs
 
 ---
 
-MOD-W v4.0.0 · Moderated AI Development Workflow · https://github.com/fpmcguire/moderated-ai-development-workflow
+MOD-W v4.0.1 · Moderated AI Development Workflow · https://github.com/fpmcguire/mod-w

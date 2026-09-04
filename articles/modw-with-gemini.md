@@ -56,7 +56,7 @@ Start from:
 
 - [prompts/product-owner.md](../prompts/product-owner.md)
 - [prompts/tech-lead.md](../prompts/tech-lead.md)
-- [prompts/development-team-claude.md](../prompts/development-team-claude.md)
+- [prompts/development-team.md](../prompts/development-team.md)
 - [docs/moderator-checklist.md](../docs/moderator-checklist.md)
 - [prompts/prompt-guidelines.md](../prompts/prompt-guidelines.md)
 
@@ -231,4 +231,4 @@ If evidence is weak, request a revision and keep the step open.
 
 ---
 
-MOD-W v4.0.0 · Moderated AI Development Workflow · https://github.com/fpmcguire/moderated-ai-development-workflow
+MOD-W v4.0.1 · Moderated AI Development Workflow · https://github.com/fpmcguire/mod-w

@@ -1,6 +1,6 @@
 # CLAUDE.md
 
-> Instructions for Claude Code working in the `moderated-ai-development-workflow` repository.
+> Instructions for Claude Code working in the `mod-w` repository.
 > This file is repository-specific and is intended to guide direct local edits.
 
 ## Purpose

@@ -1,169 +1,139 @@
-# Ceremonies in Moderated AI Development Workflow
+﻿# Ceremonies in Moderated AI Development Workflow
 
-Ceremonies are structured events that create rhythm, transparency, and shared understanding in a Moderated AI Development Workflow team.
+Ceremonies are structured, Moderator-gated events that create shared understanding and traceable decisions.
 
 ---
 
 ## 1. Project Kickoff
 
-The kickoff has up to three sequential, Moderator-gated phases. When the optional Prototype Ceremony runs (v4), it slots between Product Definition and Architecture Definition. No phase ends until the Moderator explicitly approves its output; the next phase does not begin until the previous is approved.
-
----
+The kickoff has up to three sequential phases. No phase ends until the Moderator explicitly approves its output.
 
 ### 1a. Product Definition
 
-**When:** Once at project start; revisited when scope changes materially  
-**Who:** Moderator, with Claude chatbot, Perplexity, and Gemini as research and cross-validation tools  
+**When:** Once at project start; revisited when scope changes materially
+**Who:** Moderator, Product Owner, research and cross-validation tools
 
-**Purpose:** Produce a Moderator-approved `PRODUCT.md` before any architecture work begins.
-
-Note: no `CLAUDE.md` or `AGENTS.md` exists yet at this stage. All tools are used as external chatbots or research assistants, not as configured agents.
-
-**Activities:**
-
-- Moderator uses Claude chatbot to draft and refine `PRODUCT.md`.
-- Moderator uses Perplexity for fact-finding, market context, and requirement research.
-- Moderator uses Gemini for informal cross-validation of scope, goals, and user workflows.
-- Moderator iterates across tools until satisfied — requesting `options`, `ramifications`, or alternative framings as needed.
-- Revisions loop until Moderator is satisfied.
-
-**Gate:** Moderator explicitly approves `PRODUCT.md`. Architecture work does not begin until this gate is passed.
+**Purpose:** Produce a Moderator-approved `PRODUCT.md`.
 
 **Output:** Approved `PRODUCT.md`.
 
----
+### 1b. Prototype Ceremony (optional, v4)
 
-### 1b. Prototype Ceremony (v4, optional)
+**When:** After `PRODUCT.md` is approved, when visual or interaction risk warrants it
+**Who:** Moderator, Designer + Prototyper (Claude Design)
 
-**When:** After `PRODUCT.md` is approved; when the Moderator decides the product warrants it
-**Who:** Moderator, with Claude Design as the Designer + Prototyper
+Produces `DESIGN-SPEC.md`, `prototype/`, and `ARCHITECTURE-NOTES.md`.
 
-Produces `DESIGN-SPEC.md`, a working `prototype/` folder, and advisory `ARCHITECTURE-NOTES.md`. Run when the product has novel interaction models, real-time data, or unusual visual systems; skip for conventional UI.
+`DESIGN-SPEC.md` becomes authoritative only after Product Owner and Moderator approval, and only within its bounded visual and interaction authority. The prototype remains non-authoritative. `ARCHITECTURE-NOTES.md` remains advisory.
 
-**Gate:** Moderator explicitly approves the ceremony output (cross-validation pause required). Architecture Definition does not begin until this gate is passed.
+**Output:** Approved `DESIGN-SPEC.md`, complete `prototype/` inventory, advisory `ARCHITECTURE-NOTES.md`.
 
-**Output:** Approved `DESIGN-SPEC.md`, `prototype/` folder, `ARCHITECTURE-NOTES.md`.
+See `docs/prototype-ceremony.md`.
 
-See `docs/prototype-ceremony.md` for the full lifecycle.
+### 1c. Architecture Definition / Architecture Handoff
 
----
+**When:** After `PRODUCT.md` approval; after Prototype Ceremony if it ran
+**Who:** Moderator, Tech Lead (Codex)
 
-### 1c. Architecture Definition
+**Purpose:** Produce approved technical artifacts before Roadmap and Step implementation.
 
-**When:** After `PRODUCT.md` is approved; revisited when product scope changes materially  
-**Who:** Tech Lead (Codex) session, Moderator
+If the Prototype Ceremony ran, this is the Architecture Handoff: Codex consumes `PRODUCT.md`, bounded `DESIGN-SPEC.md`, the complete `prototype/` inventory, and `ARCHITECTURE-NOTES.md`; evaluates evidence; and independently authors `ARCHITECTURE.md`.
 
-**Purpose:** Produce a Moderator-approved `ARCHITECTURE.md` and `DOMAIN_LANGUAGE.md` before the roadmap and steps are defined.
+**Output:** Approved `ARCHITECTURE.md`, `DOMAIN_LANGUAGE.md`, `ROADMAP.md`, `CLAUDE.md`, `AGENTS.md`, and first `STEP-XX.md`.
 
-**Activities:**
-
-- Moderator triggers a Tech Lead Planning Session with the approved `PRODUCT.md`.
-- Tech Lead drafts `ARCHITECTURE.md` and `DOMAIN_LANGUAGE.md`.
-- Moderator reviews and iterates — requesting `options`, `ramifications`, or cross-validation from other agents as needed.
-- Revisions loop until Moderator is satisfied.
-- Once `ARCHITECTURE.md` is approved, Tech Lead generates `ROADMAP.md`, `CLAUDE.md`, and `AGENTS.md`.
-
-**Gate:** Moderator explicitly approves `ARCHITECTURE.md`. Roadmap and step definition do not begin until this gate is passed.
-
-**Output:** Approved `ARCHITECTURE.md`, `DOMAIN_LANGUAGE.md`, `ROADMAP.md`, `CLAUDE.md`, `AGENTS.md`.
-
-> **v4 note:** If the Prototype Ceremony ran, this ceremony is the Architecture Handoff — Codex consumes all four kickoff inputs (`PRODUCT.md`, `DESIGN-SPEC.md`, `prototype/`, `ARCHITECTURE-NOTES.md`) and independently authors `ARCHITECTURE.md` with explicit authority to override prototype-implied structures. See `docs/architecture-handoff.md`.
+See `docs/architecture-handoff.md`.
 
 ---
 
 ## 2. Step Planning
 
-**When:** Before each step begins  
-**Who:** Tech Lead, (optional) Product Owner  
-**Duration:** 30–60 minutes
+**When:** Before each Step begins
+**Who:** Tech Lead (Codex), Moderator, Product Owner when needed
 
-**Purpose:** Define the scope, inputs, outputs, and quality gate for the next step.
-
-**Activities:**
-
-- Author or refine the [STEP-XX.md](../templates/STEP-XX.md) for the upcoming step
-- Confirm acceptance criteria with the Product Owner
-- Select the appropriate AI agent and prompt template
-- Identify any risks or dependencies
-
-**Output:** Approved STEP-XX.md for the next step
-
----
-
-## 3. Development Team Session
-
-**When:** During the step, after the Implementation Options Gate  
-**Who:** Moderator + Development Team (Claude Code)  
-**Duration:** Variable
-
-**Purpose:** Implement the approved Step directly in the repository under human moderation.
+**Purpose:** Define scope, inputs, outputs, quality gate, relevant Design IDs, and implementation constraints for the next Step.
 
 **Activities:**
 
-- Moderator opens a Claude Code session in the project root — `CLAUDE.md` loads automatically
-- Moderator states the active Step (e.g. `The current Step is STEP-02.md`)
-- Development Team restates the Step, proposes an implementation plan, and waits for Moderator approval before writing any files
-- Development Team implements the Step, runs the build gate, and spawns QA and Product Owner SubAgents
-- Moderator reviews the diff in the Workbench and responds to any clarifying questions
-- See [development team prompt](../prompts/development-team-claude.md) and [workbench guide](../docs/workbench-guide.md) for detail
+- Author or refine `STEP-XX.md`.
+- Confirm acceptance criteria with Product Owner.
+- Cite relevant Design IDs when `DESIGN-SPEC.md` exists.
+- Record Reference Implementation disposition when candidate prototype code exists.
+- If Claude Design implements from its own prototype, record accepted, modified, rejected, and mandatory-divergence prototype assumptions.
 
-**Output:** Implemented Step with passing build, `QA.md`, and Product Owner sign-off
+**Output:** Approved `STEP-XX.md`.
 
 ---
 
-## 4. Step Review
+## 3. Implementation Options Gate
 
-**When:** After the AI work session, before the step is closed  
-**Who:** Moderator, Tech Lead, (optional) Product Owner  
-**Duration:** 30–60 minutes
+**When:** After Step approval, before code is written
+**Who:** Moderator and assigned Development Team interface
 
-**Purpose:** Moderate AI output against the quality gate and decide whether to accept, revise, or reject.
+**Purpose:** Confirm implementation plan before file edits.
+
+**Output:** Moderator-approved implementation plan.
+
+---
+
+## 4. Development Team Session
+
+**When:** During the Step after the Options Gate
+**Who:** Moderator and Development Team
+
+**Purpose:** Implement the approved Step directly in the repository.
 
 **Activities:**
 
-- Review AI output against STEP-XX.md acceptance criteria
-- Complete the [REVIEW.md](../templates/REVIEW.md) artifact
-- Record moderation decisions and any concerns
-- Accept, request revisions, or reject the output
+- Development Team implements only the approved `STEP-XX.md`.
+- Development Team treats `ARCHITECTURE.md`, `DOMAIN_LANGUAGE.md`, and `STEP-XX.md` as controlling.
+- If Claude Design implements from its own prototype, it follows the assumption disposition in `STEP-XX.md`.
+- Development Team runs the blocking build gate.
 
-**Output:** Completed REVIEW.md; accepted artifacts committed to the repository
-
----
-
-## 5. QA Verification
-
-**When:** After step acceptance, before the step is marked Done  
-**Who:** QA / Tester  
-**Duration:** Variable
-
-**Purpose:** Verify that accepted AI output behaves correctly in context.
-
-**Activities:**
-
-- Execute the test plan in [QA.md](../templates/QA.md)
-- Record test results and any defects found
-
-**Output:** Completed QA.md; step marked Done or defects raised
+**Output:** Implemented Step with passing build gate.
 
 ---
 
-## 6. Retrospective
+## 5. Tech Lead Review
 
-**When:** At the end of each sprint, release, or significant milestone  
-**Who:** All team members  
-**Duration:** 1 hour
+**When:** After Development Team handoff and before QA acceptance
+**Who:** Tech Lead (Codex)
 
-**Purpose:** Reflect on how the methodology is working and identify improvements.
+**Purpose:** Review implementation for architecture, maintainability, scope compliance, domain language, tests, and approved design intent.
 
-**Activities:**
-
-- What went well with MOD-W this iteration?
-- What friction did we encounter?
-- What should we change about our prompts, quality gates, or ceremonies?
-- Are there adoption stories or method improvements to contribute to the community?
-
-**Output:** Action items; potential community contributions (adoption story, method improvement issue)
+**Output:** `REVIEW.md` with Tech Lead verdict and findings.
 
 ---
 
-MOD-W v4.0.0 · Moderated AI Development Workflow · https://github.com/fpmcguire/moderated-ai-development-workflow
+## 6. QA and Product Owner Validation
+
+**When:** After Tech Lead approval
+**Who:** QA SubAgent and Product Owner SubAgent
+
+**Purpose:** Verify behavior against acceptance checks and product intent.
+
+QA may verify approved Design ID intent but does not treat prototype code as authoritative.
+
+**Output:** `QA.md` and Product Owner sign-off.
+
+---
+
+## 7. Moderator Final Gate
+
+**When:** After Tech Lead review, QA, and Product Owner validation
+**Who:** Moderator
+
+**Purpose:** Human final approval before tagging and Roadmap advancement.
+
+**Output:** Annotated Git tag and updated `ROADMAP.md`.
+
+---
+
+## Backfill and Retroactive Approval
+
+Backfill produces reference documentation or evidence from work that already exists. A re-executed gate runs the current ceremony again and produces new authoritative outputs under the present workflow. Retroactive approval declares historical work compliant without rerunning the required gate and is prohibited.
+
+Existing work may be analyzed and backfilled, but it may not be retroactively declared compliant. Authoritative adoption requires the applicable gate to be re-executed.
+
+---
+
+MOD-W v4.0.1 - Moderated AI Development Workflow - https://github.com/fpmcguire/mod-w

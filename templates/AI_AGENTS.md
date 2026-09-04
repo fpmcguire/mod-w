@@ -1,4 +1,4 @@
-# AI Agents
+﻿# AI Agents
 
 **Project:** {{PROJECT_NAME}}
 **Date:** {{DATE}}
@@ -8,13 +8,7 @@
 
 ## Overview
 
-This project uses multiple AI agents under MOD-W.
-
-Each agent has:
-
-- a defined role
-- controlled scope
-- human moderation
+This project uses multiple AI agents under MOD-W. Each agent has a defined role, controlled scope, and human moderation.
 
 ---
 
@@ -23,77 +17,77 @@ Each agent has:
 ### Product Owner
 
 **Role:** Product definition and acceptance validation
-**Interface (Definition):** Claude chatbot + Perplexity + Gemini — no project infrastructure yet
-**Interface (Validation):** Claude Code SubAgent
-**Responsibility:**
+**Interfaces:** Claude chatbot + Perplexity + Gemini for definition; Claude Code SubAgent for validation
 
-- Author and maintain PRODUCT.md (via chatbot at project start)
-- Validate completed Steps against acceptance checks (via SubAgent, after Tech Lead approval)
-- Sign off before Moderator final gate
+Responsibilities:
 
----
+- Author and maintain `PRODUCT.md`.
+- Validate completed Steps against acceptance intent after Tech Lead approval.
+
+### Designer + Prototyper
+
+**Role:** Optional v4 design and prototype role
+**Interface:** Claude Design
+
+Responsibilities:
+
+- Produce `DESIGN-SPEC.md` with bounded authority, Design IDs, traceability, and approval record.
+- Produce `prototype/` with inventory.
+- Produce advisory `ARCHITECTURE-NOTES.md` with evidence and confidence.
+
+Constraints:
+
+- Does not author architecture, Steps, review, QA, or production code except when separately assigned as Development Team for an approved Step.
+- Prototype artifacts do not silently become production architecture.
 
 ### Tech Lead
 
-**Role:** Architecture, planning, and technical review
-**Interface:** Codex (full session, reads AGENTS.md)
-**Responsibility:**
+**Role:** Architecture, planning, Step authoring, and technical review
+**Interface:** Codex
 
-- Author and maintain ARCHITECTURE.md, ROADMAP.md, STEP-XX.md
-- Generate project-specific CLAUDE.md and AGENTS.md
-- Review completed Steps and write REVIEW.md
+Responsibilities:
 
----
+- Author and maintain `ARCHITECTURE.md`, `DOMAIN_LANGUAGE.md`, `ROADMAP.md`, `STEP-XX.md`, `CLAUDE.md`, and `AGENTS.md`.
+- Perform Architecture Handoff when Prototype Ceremony ran.
+- Review completed Steps and write `REVIEW.md` before QA acceptance.
 
 ### Development Team
 
 **Role:** Implementation
-**Interface:** Claude Code SubAgent (reads CLAUDE.md)
-**Responsibility:**
+**Interface:** Claude Code by default; Claude Design only by Moderator assignment in `STEP-XX.md`
 
-- Implement STEP-XX.md following the approved plan
-- Run blocking build gate before handing off
-- Produce code + tests scoped to the active Step
+Responsibilities:
 
----
+- Implement the approved `STEP-XX.md`.
+- Preserve relevant Design ID intent.
+- Run the blocking build gate.
+- Apply normal production adaptation for any Reference Implementation.
 
 ### QA
 
 **Role:** Acceptance validation
 **Interface:** Claude Code SubAgent
-**Responsibility:**
 
-- Validate implementation against STEP-XX.md acceptance checks
-- Write QA.md with results and manual check list
-- Runs after Tech Lead approval
+Responsibilities:
+
+- Validate implementation against `STEP-XX.md` acceptance checks.
+- Verify approved Design ID intent where applicable without treating prototype code as authoritative.
+- Write `QA.md`.
 
 ---
 
 ## Agent Interaction Rules
 
-- No agent self-approves its work
-- Planning and implementation are separated
-- All work is Step-scoped
-- Moderator approves all transitions
+- Moderator is always human.
+- No agent self-approves its work.
+- Planning and implementation are separated.
+- The same model does not both author and implement a Step.
+- `ARCHITECTURE.md` is authored by Codex, never Claude Design.
+- Every Step receives Codex Tech Lead review before QA acceptance.
+- Every Step receives Moderator final approval before tagging and Roadmap advancement.
+- Single-role-per-session remains enforced.
+- Historical work cannot receive retroactive approval.
 
 ---
 
-## Data Handling
-
-- No credentials or sensitive data shared
-- Only necessary context packets provided
-- External data validated via Product Owner
-
----
-
-## Update Rules
-
-- Update when:
-  - a new agent is introduced
-  - model version changes
-  - role responsibilities change
-- Do NOT update per Step
-
----
-
-MOD-W v4.0.0
+MOD-W v4.0.1
