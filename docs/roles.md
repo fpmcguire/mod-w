@@ -103,6 +103,7 @@ The Tech Lead:
 - Runs the Architecture Handoff when the Prototype Ceremony ran.
 - Evaluates `design-spec.md`, prototype inventory, and `architecture-notes.md` evidence without treating prototype code as authoritative.
 - Reviews completed Steps and writes `review.md` before QA acceptance.
+- Does not blur its planning/review role with the Development Team's implementation role, and does not self-approve its own architecture or review decisions.
 
 `architecture.md` is authored by Codex, never by Claude Design.
 
@@ -123,10 +124,10 @@ The Development Team:
 
 Supported interfaces:
 
-| Interface | Config | Best for |
-| --------- | ------ | -------- |
-| Claude Code | `CLAUDE.md` at repo root | Default implementation, multi-file code changes, SubAgent spawning |
-| Claude Design | `CLAUDE.md` at repo root, by Moderator assignment | Visual, chart, animation, or interaction-heavy Steps |
+| Interface     | Config                                            | Best for                                                           |
+| ------------- | ------------------------------------------------- | ------------------------------------------------------------------ |
+| Claude Code   | `CLAUDE.md` at repo root                          | Default implementation, multi-file code changes, SubAgent spawning |
+| Claude Design | `CLAUDE.md` at repo root, by Moderator assignment | Visual, chart, animation, or interaction-heavy Steps               |
 
 Claude Design as Development Team may not have authored the Step it implements. If the Step is derived from a prototype Claude Design previously produced, the Tech Lead must record accepted, modified, rejected, and mandatory-divergence prototype assumptions in `step-xx.md`. The implementing Claude Design session treats `step-xx.md` and authoritative architecture as controlling.
 
@@ -161,15 +162,15 @@ The Workbench:
 
 ## Default Tool Implementations
 
-| Role | Default interface | Primary artifacts |
-| ---- | ----------------- | ----------------- |
-| Moderator | Human Workbench | repo state, approvals, tags |
-| Product Owner definition | Claude chatbot + Perplexity + Gemini | `product.md` |
-| Product Owner validation | Claude Code SubAgent | sign-off |
-| Designer + Prototyper | Claude Design | `design-spec.md`, `prototype/`, `architecture-notes.md` |
-| Tech Lead | Codex full session | `architecture.md`, `domain-language.md`, `roadmap.md`, `step-xx.md`, `CLAUDE.md`, `AGENTS.md`, `cross-validation.md`, `review.md` |
-| Development Team | Claude Code by default; Claude Design by assignment | code, tests, docs |
-| QA | Claude Code SubAgent | `qa.md` |
+| Role                     | Default interface                                   | Primary artifacts                                                                                                                 |
+| ------------------------ | --------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
+| Moderator                | Human Workbench                                     | repo state, approvals, tags                                                                                                       |
+| Product Owner definition | Claude chatbot + Perplexity + Gemini                | `product.md`                                                                                                                      |
+| Product Owner validation | Claude Code SubAgent                                | sign-off                                                                                                                          |
+| Designer + Prototyper    | Claude Design                                       | `design-spec.md`, `prototype/`, `architecture-notes.md`                                                                           |
+| Tech Lead                | Codex full session                                  | `architecture.md`, `domain-language.md`, `roadmap.md`, `step-xx.md`, `CLAUDE.md`, `AGENTS.md`, `cross-validation.md`, `review.md` |
+| Development Team         | Claude Code by default; Claude Design by assignment | code, tests, docs                                                                                                                 |
+| QA                       | Claude Code SubAgent                                | `qa.md`                                                                                                                           |
 
 All AI output is moderated. No AI role self-approves its own work.
 
@@ -188,4 +189,4 @@ All AI output is moderated. No AI role self-approves its own work.
 
 ---
 
-MOD-W v5 - Moderated AI Development Workflow - https://github.com/fpmcguire/mod-w
+MOD-W v5.0.1 - Moderated AI Development Workflow - https://github.com/fpmcguire/mod-w

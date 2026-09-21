@@ -71,4 +71,4 @@ This QA record is example evidence for the MOD-W lifecycle. It documents what ac
 
 ---
 
-MOD-W v5 - Moderated AI Development Workflow - https://github.com/fpmcguire/mod-w
+MOD-W v5.0.1 - Moderated AI Development Workflow - https://github.com/fpmcguire/mod-w

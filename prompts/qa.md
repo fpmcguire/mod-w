@@ -79,7 +79,8 @@ List any checks that require human or browser verification.
 - Do **not** expand scope or suggest new features.
 - Be specific — name files and functions when noting issues.
 - If an acceptance check is untestable from code alone, flag it for the Moderator.
+- Default posture: when evidence is ambiguous or missing, mark the check Fail or flag it for manual verification — never round up to Pass.
 
 ---
 
-MOD-W v5.0.0 · Moderated AI Development Workflow · https://github.com/fpmcguire/mod-w
+MOD-W v5.0.1 · Moderated AI Development Workflow · https://github.com/fpmcguire/mod-w

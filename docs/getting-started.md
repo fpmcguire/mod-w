@@ -50,4 +50,4 @@ Follow the [`docs/step-lifecycle.md`](step-lifecycle.md) end-to-end for your fir
 
 ---
 
-MOD-W v5 - Moderated AI Development Workflow - https://github.com/fpmcguire/mod-w
+MOD-W v5.0.1 - Moderated AI Development Workflow - https://github.com/fpmcguire/mod-w

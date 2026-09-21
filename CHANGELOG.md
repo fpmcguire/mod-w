@@ -19,6 +19,16 @@ Each version of MOD-W addressed a specific problem that the previous version cou
 
 _No unreleased changes yet._
 
+## [5.0.1] - 2026-09-21
+
+### Changed
+
+- Restored an explicit Role Boundary (no role-blurring with the Development Team, no self-approval of architecture or review decisions) to the Tech Lead prompt and the generated `AGENTS.md` template.
+- Added a default evidence-based posture (treat checks as unmet/Fail until proven) to the Tech Lead review, reviewer/validator agents, QA, and Product Owner acceptance sign-off, so no role rounds up to Pass or Accepted without a citable finding.
+- Added a corresponding challenge-assumptions constraint to the Architect agent and a scaled-down Authority Boundary and self-approval ban to the lightweight text-only Designer prompt.
+- Added Moderator "Challenge" prompts to `docs/moderator-checklist.md` at each gate to assist the Moderator's HITL duty to challenge, not just review, each role's output.
+- Bumped all `MOD-W v5.0.0` / `MOD-W v5` file footers to `MOD-W v5.0.1` so all footers reflect the current release.
+
 ## [5.0.0] - 2026-09-04
 
 ### Changed

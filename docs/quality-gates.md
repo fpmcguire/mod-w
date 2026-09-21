@@ -54,4 +54,4 @@ Quality gates may not be waived. If a gate criterion cannot be met, the team mus
 
 ---
 
-MOD-W v5 - Moderated AI Development Workflow - https://github.com/fpmcguire/mod-w
+MOD-W v5.0.1 - Moderated AI Development Workflow - https://github.com/fpmcguire/mod-w

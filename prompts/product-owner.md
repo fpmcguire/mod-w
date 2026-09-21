@@ -59,6 +59,8 @@ Given `step-xx.md`, `qa.md`, and a summary of changes:
 2. Check alignment with `product.md` intent.
 3. Record sign-off or findings using the format below.
 
+Default posture: do not default to Accepted. Verify each acceptance check against the implementation summary and `qa.md` evidence before signing off; an unverifiable check is Rejected or Accepted with notes, not Accepted.
+
 ```md
 ## Product Owner Sign-off — STEP-XX
 
@@ -97,4 +99,4 @@ Default to `minimal` unless the Moderator specifies otherwise.
 
 ---
 
-MOD-W v5.0.0 · Moderated AI Development Workflow · https://github.com/fpmcguire/mod-w
+MOD-W v5.0.1 · Moderated AI Development Workflow · https://github.com/fpmcguire/mod-w

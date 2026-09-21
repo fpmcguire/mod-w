@@ -2,7 +2,7 @@
 
 **Project:** {{PROJECT_NAME}}
 **Owner:** Moderator
-**Version:** MOD-W v5.0.0
+**Version:** MOD-W v5.0.1
 
 ---
 
@@ -76,4 +76,4 @@ At any moment, only one `step-xx.md` is active. Agents must focus on that Step a
 
 ---
 
-MOD-W v5 - Document Lifecycle
+MOD-W v5.0.1 - Document Lifecycle

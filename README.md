@@ -579,4 +579,4 @@ For inquiries, open an issue or contact the maintainer via the repository profil
 
 ---
 
-MOD-W v5 - Moderated AI Development Workflow - https://github.com/fpmcguire/mod-w
+MOD-W v5.0.1 - Moderated AI Development Workflow - https://github.com/fpmcguire/mod-w

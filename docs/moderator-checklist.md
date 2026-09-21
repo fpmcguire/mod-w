@@ -4,6 +4,12 @@ Use this checklist for every Step in the MOD-W workflow.
 
 ---
 
+## Why challenge, not just review
+
+Every role prompt in MOD-W defaults to a skeptical posture: no self-approval, no rounding up to Pass without evidence. That default only holds if the Moderator actively tests it. Reviewing a summary and clicking approve is not the same as challenging the work. At each gate below, use the **Challenge** prompts — ask them verbatim, in the role's own session — before accepting the artifact. A role that cannot answer a Challenge prompt with a specific citation (file, line, test, requirement ID) has not earned the gate.
+
+---
+
 ## 1. Before Engaging AI
 
 - [ ] `roadmap.md`: next Step chosen and clearly named.
@@ -31,6 +37,8 @@ Trigger a Tech Lead Planning Session when starting a new project phase or when `
 - [ ] Review all artifacts and iterate until Moderator-approved.
 - [ ] Confirm `CLAUDE.md`, `AGENTS.md`, and root tool config files are committed before briefing the Development Team.
 
+> **Challenge:** "What in `product.md` forced this specific choice, and what alternative did you reject — and why?" · "Which part of this roadmap slice is inferred rather than grounded in `product.md`?" · "If a skeptical second reviewer read this Step brief, what's the weakest part?"
+
 ---
 
 ## 3. Brief the Development Team (Claude Code)
@@ -39,6 +47,8 @@ Trigger a Tech Lead Planning Session when starting a new project phase or when `
 - [ ] State the active Step at session start, e.g.: `The current Step is STEP-02.md`
 - [ ] Ask the Development Team to restate the goal and scope in their own words.
 - [ ] Confirm the restatement is correct before proceeding. Correct any misunderstandings now.
+
+> **Challenge:** "What part of this Step is still ambiguous to you?" · "What would you flag if you were reviewing this instead of implementing it?"
 
 ---
 
@@ -51,6 +61,8 @@ Trigger a Tech Lead Planning Session when starting a new project phase or when `
   - `ramifications` — technical debt risks, side effects, and likely pain points
 - [ ] Approve the plan explicitly before any code is written.
 - [ ] If the plan reveals scope or architectural concerns, pause and return to the Tech Lead before proceeding.
+
+> **Challenge:** "What did you deliberately leave out that the Step could reasonably include?" · "What's the riskiest assumption in this plan, and how would we know if it's wrong?"
 
 ---
 
@@ -69,6 +81,8 @@ If issues are significant:
 - [ ] Summarize problems clearly.
 - [ ] Return feedback to the Development Team and repeat until acceptance checks are met.
 
+> **Challenge:** For each acceptance check, ask: "Point to the specific file, line, or test that proves this — not the summary." Do not accept a restated acceptance check as evidence of one.
+
 ---
 
 ## 6. QA + Product Owner SubAgents
@@ -83,6 +97,8 @@ The Development Team spawns these automatically after the build gate passes.
 - [ ] Perform any manual checks flagged by the QA SubAgent (UX, visual, edge cases) in the Workbench.
 - [ ] If acceptance checks are not met, return findings to the Development Team.
 
+> **Challenge:** Ask QA: "Which checks did you mark Pass without direct evidence?" Ask the Product Owner: "Would you still sign off if you assumed the Dev Team's summary was wrong?"
+
 ---
 
 ## 7. Tech Lead Review Session (Codex)
@@ -94,6 +110,8 @@ The Development Team spawns these automatically after the build gate passes.
   - **Must-fix** items return to the Development Team.
   - **Could-fix-later** items are logged for a future Step.
 - [ ] Repeat the Development Team → Build Gate → QA → Tech Lead loop until all must-fix items are resolved.
+
+> **Challenge:** "What would make you reject this if you were less lenient?" · "What's the one thing you're least confident about in this review?" Do not accept a Pass verdict that doesn't name specific evidence per finding.
 
 ---
 
@@ -119,4 +137,4 @@ This checklist should be lightweight enough to use for every Step but strict eno
 
 ---
 
-MOD-W v5.0.0 · Moderated AI Development Workflow · https://github.com/fpmcguire/mod-w
+MOD-W v5.0.1 · Moderated AI Development Workflow · https://github.com/fpmcguire/mod-w

@@ -15,6 +15,14 @@ The Development Team implements. The Moderator has final decision authority.
 
 ---
 
+## Role Boundary
+
+You plan and review; you do not implement. Do not blur this boundary with the Development Team.
+
+Do not self-approve your own architecture decisions or Step reviews. A Pass verdict requires evidence from the diff, tests, or QA - not a restatement of intent.
+
+---
+
 ## Artifact Ownership
 
 You author and maintain:
@@ -97,6 +105,8 @@ Triggered after Development Team implementation and before QA acceptance.
 2. Review for architectural fit, naming, maintainability, tests, security, scope compliance, Reference Implementation disposition, and approved design intent.
 3. Write `review.md` with verdict and findings.
 
+Default posture: treat each acceptance check as unmet until the diff, tests, or QA evidence prove otherwise. Actively look for scope creep, silent architecture drift, and untested edge cases before writing a Pass verdict.
+
 In a Review Session, prefer reading over editing. Only write `review.md`.
 
 ---
@@ -165,4 +175,4 @@ Default: `minimal` for review tasks, `options` for planning and architecture tas
 
 ---
 
-MOD-W v5 - Moderated AI Development Workflow - https://github.com/fpmcguire/mod-w
+MOD-W v5.0.1 - Moderated AI Development Workflow - https://github.com/fpmcguire/mod-w
