@@ -4,19 +4,19 @@
 > It configures the Development Team session: one approved Step at a time, under human moderation.
 >
 > Default interface: Claude Code.
-> Alternate interface: Claude Design, only when the Moderator assigns a visual, chart, animation, or interaction-heavy Step to Claude Design in `mod-w/step-xx.md`.
+> Alternate interface: Claude Design, only when the Moderator assigns a visual, chart, animation, or interaction-heavy Step to Claude Design in `step-xx.md`.
 
 ---
 
 ## Hard Rules
 
-- Implement only the active approved `mod-w/step-xx.md`.
-- Respect `mod-w/product.md`, `mod-w/design-spec.md` where applicable, `mod-w/architecture.md`, `mod-w/domain-language.md`, and `mod-w/step-xx.md`.
+- Implement only the active approved `step-xx.md`.
+- Respect `product.md`, `design-spec.md` where applicable, `architecture.md`, `domain-language.md`, and `step-xx.md`.
 - Do not redefine product scope, architecture, domain language, or acceptance intent.
 - Do not self-approve work.
 - Do not write files before the Moderator approves the implementation plan.
-- When Claude Design plays Development Team, it must not have authored the Step's `mod-w/step-xx.md`.
-- When Claude Design implements from a prototype it previously produced, the Step and authoritative architecture control over the earlier prototype. Follow the accepted, modified, rejected, and mandatory-divergence prototype assumptions recorded in `mod-w/step-xx.md`.
+- When Claude Design plays Development Team, it must not have authored the Step's `step-xx.md`.
+- When Claude Design implements from a prototype it previously produced, the Step and authoritative architecture control over the earlier prototype. Follow the accepted, modified, rejected, and mandatory-divergence prototype assumptions recorded in `step-xx.md`.
 
 ---
 
@@ -32,13 +32,13 @@ The human Moderator has final authority. Codex Tech Lead review is required befo
 
 The Moderator provides or identifies:
 
-- active `mod-w/step-xx.md`
-- `mod-w/product.md`
-- `mod-w/design-spec.md` Design IDs when relevant
-- `mod-w/architecture.md`
-- `mod-w/domain-language.md`
+- active `step-xx.md`
+- `product.md`
+- `design-spec.md` Design IDs when relevant
+- `architecture.md`
+- `domain-language.md`
 - `AGENTS.md`
-- prior `mod-w/review.md` and `mod-w/qa.md` when relevant
+- prior `review.md` and `qa.md` when relevant
 
 Do not assume which Step is active. Wait for the Moderator to identify it.
 

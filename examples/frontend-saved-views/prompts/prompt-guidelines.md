@@ -118,7 +118,7 @@ This is useful for:
 Good example:
 
 > You are the Tech Lead.  
-> Here are excerpts from `mod-w/architecture.md`, `mod-w/domain-language.md`, and `STEP-03.md`.  
+> Here are excerpts from `architecture.md`, `domain-language.md`, and `STEP-03.md`.  
 > Answer at `options` depth.  
 > Tell me whether this Step is too large, propose a tighter version if needed, and list the likely files affected.
 
@@ -132,8 +132,8 @@ Use prompts to reinforce MOD-W discipline:
 - ask what is out of scope
 - ask what could break
 - ask how acceptance checks will be verified
-- ask whether naming matches `mod-w/domain-language.md`
-- ask whether the implementation drifted from `mod-w/product.md` or `mod-w/architecture.md`
+- ask whether naming matches `domain-language.md`
+- ask whether the implementation drifted from `product.md` or `architecture.md`
 
 These questions help the Moderator stay in control.
 
