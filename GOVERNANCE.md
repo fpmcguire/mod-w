@@ -37,6 +37,18 @@ Changes that alter the core Moderated AI Development Workflow methodology (e.g.,
 3. Consensus among all active maintainers
 4. A CHANGELOG entry and version tag
 
+## Moderator Decisions
+
+### Skill naming convention (2026-10-03)
+
+Decided while planning a product-definition skill in `prod-w-dev`. To be written into MOD-W when the first skill is added.
+
+- Skill names use lowercase letters and hyphens, matching the lowercase-kebab-case file rule and the Agent Skills name rule.
+- A `-w` suffix marks a skill shared across MOD-W and PROD-W (working example: `discover-w`).
+- A project prefix marks a skill owned by one project (`prod-w-`; `mod-w-` proposed).
+- Open: noun or gerund names. Pick one and state it beside the file naming rule in the README.
+- Related: `templates/` still has uppercase file names that the lowercase rule doesn't mention.
+
 ## Contributions
 
 All contributions are welcome. See [CONTRIBUTING.md](CONTRIBUTING.md) for how to get started.
